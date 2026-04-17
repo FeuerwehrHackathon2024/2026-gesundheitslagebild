@@ -362,6 +362,24 @@ export function MapContainer() {
         );
       };
 
+      const onClick = (
+        e: MapMouseEvent & { features?: MapGeoJSONFeature[] },
+      ) => {
+        const f = e.features?.[0];
+        if (!f) return;
+        const p = f.properties as Partial<SimFeatureProps & IncFeatureProps>;
+        if (!p.id) return;
+        if (f.source === 'hospitals-sim') {
+          useSimStore
+            .getState()
+            .setSelection({ kind: 'hospital', id: String(p.id) });
+        } else if (f.source === 'incidents') {
+          useSimStore
+            .getState()
+            .setSelection({ kind: 'incident', id: String(p.id) });
+        }
+      };
+
       for (const layer of Object.keys(LAYER_KIND)) {
         map.on(
           'mouseenter',
@@ -370,6 +388,10 @@ export function MapContainer() {
         );
         map.on('mousemove', layer, onMove as (e: MapLayerMouseEvent) => void);
         map.on('mouseleave', layer, onLeave);
+        // Klick auf sim/incident layers selektiert das Feature
+        if (layer !== 'hospitals-context-layer') {
+          map.on('click', layer, onClick as (e: MapLayerMouseEvent) => void);
+        }
       }
     });
 
