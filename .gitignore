@@ -40,3 +40,7 @@ lib/data/hospitals.json
 # Cache
 .cache/
 *.tmp
+
+# Claude Code runtime artifacts (lokal, nicht versionieren)
+.claude/session.log
+.claude/scheduled_tasks.lock

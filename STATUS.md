@@ -5,11 +5,11 @@
 | Feld | Wert |
 |------|------|
 | Aktive Phase | Phase 0 — Repo-Bootstrap |
-| Aktueller Schritt | Schritt 0.1 erledigt (pnpm init + SPEC §2 Dependencies installiert, Peer-Pins gesetzt). Als naechstes Schritt 0.2: tsconfig + next.config + postcss + .eslintrc |
+| Aktueller Schritt | Schritt 0.2 erledigt (tsconfig strict + next.config + postcss + .eslintrc; typecheck gruen). Als naechstes Schritt 0.3: tailwind.config.ts + app/globals.css + Liquid-Glass-Tokens aus DESIGN.md |
 | Session | 1 |
 | Letztes Update | 2026-04-18 |
 | Blockiert durch | — |
-| Naechste Aktion | Schritt 0.2: `tsconfig.json` strict + `next.config.mjs` + `postcss.config.mjs` + `.eslintrc.json` anlegen |
+| Naechste Aktion | Schritt 0.3: `tailwind.config.ts` mit Liquid-Glass-Tokens (aus `doc/DESIGN.md`) + `app/globals.css` |
 
 ## Changelog
 
@@ -27,6 +27,7 @@
   - `doc/DESIGN.md`, `doc/UI.md`, `doc/TIMELINE.md`
   - `doc/AUDIT.md`, `doc/TESTING.md`
 - **00:44** — Phase 0, Schritt 0.1: `pnpm init` + `package.json` mit allen Scripts (dev/build/start/lint/typecheck/test/test:e2e/format). SPEC-§2-Dependencies installiert: next@14, react@18, maplibre-gl, zustand, recharts, idb, exceljs (runtime); tailwind@3, typescript, vitest, @playwright/test, RTL-Toolkit, eslint@9 + eslint-config-next@14, tsx, prettier (dev). Peer-Pins gesetzt (eslint, @types/react, eslint-config-next) damit Gate gruenbar bleibt.
+- **00:50** — Phase 0, Schritt 0.2: `tsconfig.json` (strict, Pfad-Alias `@/*`), `next.config.mjs` (reactStrictMode), `postcss.config.mjs` (tailwind + autoprefixer), `.eslintrc.json` (`next/core-web-vitals`), leerer `next-env.d.ts`-Stub. `pnpm typecheck` gruen. `.gitignore` erweitert um `.claude/session.log` und `.claude/scheduled_tasks.lock` (Runtime-Artefakte).
 
 ## Loop-Betrieb
 
