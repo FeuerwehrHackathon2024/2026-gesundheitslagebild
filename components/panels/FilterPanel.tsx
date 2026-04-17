@@ -19,7 +19,6 @@ export function FilterPanel() {
   const isActive =
     filters.freeMin > 0 ||
     filters.occupiedMax > 0 ||
-    filters.reservedMin > 0 ||
     filters.emergencyMin > 0 ||
     SK_KEYS.some((k) => !filters.sk[k]);
 
@@ -51,12 +50,6 @@ export function FilterPanel() {
           value={filters.occupiedMax}
           onChange={(v) => setFilter('occupiedMax', v)}
           placeholder="0 = aus"
-        />
-        <FilterInput
-          label="MANV-Reserve"
-          relation="≥"
-          value={filters.reservedMin}
-          onChange={(v) => setFilter('reservedMin', v)}
         />
         <FilterInput
           label="Notfallbetten"

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T18:10:06.706Z",
+  "generatedAt": "2026-04-17T18:40:14.432Z",
   "simulated": [
     {
       "id": "H-DE-00001",
@@ -20,7 +20,6 @@
         "notaufnahme": {
           "bedsTotal": 69,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -29,7 +28,6 @@
         "chirurgie": {
           "bedsTotal": 416,
           "bedsOccupied": 328,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 83,
           "surgeActive": false,
           "staffOnDuty": 104,
@@ -38,7 +36,6 @@
         "innere": {
           "bedsTotal": 416,
           "bedsOccupied": 304,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 83,
           "surgeActive": false,
           "staffOnDuty": 104,
@@ -47,7 +44,6 @@
         "neurochir": {
           "bedsTotal": 139,
           "bedsOccupied": 100,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 28,
           "surgeActive": false,
           "staffOnDuty": 35,
@@ -56,7 +52,6 @@
         "paediatrie": {
           "bedsTotal": 208,
           "bedsOccupied": 160,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 42,
           "surgeActive": false,
           "staffOnDuty": 52,
@@ -90,7 +85,6 @@
         "its": {
           "bedsTotal": 48,
           "bedsOccupied": 33,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -99,7 +93,6 @@
         "notaufnahme": {
           "bedsTotal": 50,
           "bedsOccupied": 39,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -108,7 +101,6 @@
         "chirurgie": {
           "bedsTotal": 302,
           "bedsOccupied": 241,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 60,
           "surgeActive": false,
           "staffOnDuty": 76,
@@ -117,7 +109,6 @@
         "innere": {
           "bedsTotal": 302,
           "bedsOccupied": 202,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 60,
           "surgeActive": false,
           "staffOnDuty": 76,
@@ -126,7 +117,6 @@
         "neurochir": {
           "bedsTotal": 101,
           "bedsOccupied": 77,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 20,
           "surgeActive": false,
           "staffOnDuty": 25,
@@ -135,7 +125,6 @@
         "paediatrie": {
           "bedsTotal": 151,
           "bedsOccupied": 111,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 38,
@@ -169,7 +158,6 @@
         "its": {
           "bedsTotal": 56,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -178,7 +166,6 @@
         "notaufnahme": {
           "bedsTotal": 59,
           "bedsOccupied": 45,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -187,7 +174,6 @@
         "chirurgie": {
           "bedsTotal": 355,
           "bedsOccupied": 269,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 71,
           "surgeActive": false,
           "staffOnDuty": 89,
@@ -196,7 +182,6 @@
         "innere": {
           "bedsTotal": 355,
           "bedsOccupied": 272,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 71,
           "surgeActive": false,
           "staffOnDuty": 89,
@@ -205,7 +190,6 @@
         "neurochir": {
           "bedsTotal": 118,
           "bedsOccupied": 92,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 30,
@@ -214,7 +198,6 @@
         "paediatrie": {
           "bedsTotal": 178,
           "bedsOccupied": 121,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 36,
           "surgeActive": false,
           "staffOnDuty": 45,
@@ -248,7 +231,6 @@
         "its": {
           "bedsTotal": 55,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -257,7 +239,6 @@
         "notaufnahme": {
           "bedsTotal": 58,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -266,7 +247,6 @@
         "chirurgie": {
           "bedsTotal": 348,
           "bedsOccupied": 256,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 70,
           "surgeActive": false,
           "staffOnDuty": 87,
@@ -275,7 +255,6 @@
         "innere": {
           "bedsTotal": 349,
           "bedsOccupied": 278,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 70,
           "surgeActive": false,
           "staffOnDuty": 87,
@@ -284,7 +263,6 @@
         "neurochir": {
           "bedsTotal": 116,
           "bedsOccupied": 89,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 29,
@@ -293,7 +271,6 @@
         "paediatrie": {
           "bedsTotal": 174,
           "bedsOccupied": 114,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 35,
           "surgeActive": false,
           "staffOnDuty": 44,
@@ -327,7 +304,6 @@
         "its": {
           "bedsTotal": 17,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -336,7 +312,6 @@
         "notaufnahme": {
           "bedsTotal": 8,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -345,7 +320,6 @@
         "chirurgie": {
           "bedsTotal": 47,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -354,7 +328,6 @@
         "innere": {
           "bedsTotal": 47,
           "bedsOccupied": 35,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -363,7 +336,6 @@
         "neurochir": {
           "bedsTotal": 16,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -397,7 +369,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -406,7 +377,6 @@
         "notaufnahme": {
           "bedsTotal": 9,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -415,7 +385,6 @@
         "chirurgie": {
           "bedsTotal": 57,
           "bedsOccupied": 42,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -424,7 +393,6 @@
         "innere": {
           "bedsTotal": 57,
           "bedsOccupied": 43,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -433,7 +401,6 @@
         "neurochir": {
           "bedsTotal": 19,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -467,7 +434,6 @@
         "its": {
           "bedsTotal": 24,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -476,7 +442,6 @@
         "notaufnahme": {
           "bedsTotal": 9,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -485,7 +450,6 @@
         "chirurgie": {
           "bedsTotal": 57,
           "bedsOccupied": 43,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -494,7 +458,6 @@
         "innere": {
           "bedsTotal": 57,
           "bedsOccupied": 40,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -503,7 +466,6 @@
         "neurochir": {
           "bedsTotal": 19,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -537,7 +499,6 @@
         "its": {
           "bedsTotal": 65,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -546,7 +507,6 @@
         "notaufnahme": {
           "bedsTotal": 62,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -555,7 +515,6 @@
         "chirurgie": {
           "bedsTotal": 369,
           "bedsOccupied": 243,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 74,
           "surgeActive": false,
           "staffOnDuty": 92,
@@ -564,7 +523,6 @@
         "innere": {
           "bedsTotal": 368,
           "bedsOccupied": 248,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 74,
           "surgeActive": false,
           "staffOnDuty": 92,
@@ -573,7 +531,6 @@
         "neurochir": {
           "bedsTotal": 123,
           "bedsOccupied": 83,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 31,
@@ -582,7 +539,6 @@
         "verbrennung": {
           "bedsTotal": 123,
           "bedsOccupied": 85,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 31,
@@ -591,7 +547,6 @@
         "paediatrie": {
           "bedsTotal": 185,
           "bedsOccupied": 137,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 37,
           "surgeActive": false,
           "staffOnDuty": 46,
@@ -625,7 +580,6 @@
         "its": {
           "bedsTotal": 77,
           "bedsOccupied": 59,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -634,7 +588,6 @@
         "notaufnahme": {
           "bedsTotal": 62,
           "bedsOccupied": 42,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -643,7 +596,6 @@
         "chirurgie": {
           "bedsTotal": 370,
           "bedsOccupied": 246,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 74,
           "surgeActive": false,
           "staffOnDuty": 93,
@@ -652,7 +604,6 @@
         "innere": {
           "bedsTotal": 369,
           "bedsOccupied": 286,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 74,
           "surgeActive": false,
           "staffOnDuty": 92,
@@ -661,7 +612,6 @@
         "neurochir": {
           "bedsTotal": 123,
           "bedsOccupied": 83,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 31,
@@ -670,7 +620,6 @@
         "paediatrie": {
           "bedsTotal": 185,
           "bedsOccupied": 128,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 37,
           "surgeActive": false,
           "staffOnDuty": 46,
@@ -704,7 +653,6 @@
         "its": {
           "bedsTotal": 46,
           "bedsOccupied": 35,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -713,7 +661,6 @@
         "notaufnahme": {
           "bedsTotal": 48,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -722,7 +669,6 @@
         "chirurgie": {
           "bedsTotal": 288,
           "bedsOccupied": 200,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 58,
           "surgeActive": false,
           "staffOnDuty": 72,
@@ -731,7 +677,6 @@
         "innere": {
           "bedsTotal": 288,
           "bedsOccupied": 190,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 58,
           "surgeActive": false,
           "staffOnDuty": 72,
@@ -740,7 +685,6 @@
         "neurochir": {
           "bedsTotal": 96,
           "bedsOccupied": 74,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 19,
           "surgeActive": false,
           "staffOnDuty": 24,
@@ -749,7 +693,6 @@
         "paediatrie": {
           "bedsTotal": 144,
           "bedsOccupied": 108,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -783,7 +726,6 @@
         "its": {
           "bedsTotal": 20,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -792,7 +734,6 @@
         "notaufnahme": {
           "bedsTotal": 24,
           "bedsOccupied": 18,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -801,7 +742,6 @@
         "chirurgie": {
           "bedsTotal": 143,
           "bedsOccupied": 114,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -810,7 +750,6 @@
         "innere": {
           "bedsTotal": 143,
           "bedsOccupied": 101,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -819,7 +758,6 @@
         "paediatrie": {
           "bedsTotal": 72,
           "bedsOccupied": 49,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -853,7 +791,6 @@
         "its": {
           "bedsTotal": 22,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -862,7 +799,6 @@
         "notaufnahme": {
           "bedsTotal": 32,
           "bedsOccupied": 23,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -871,7 +807,6 @@
         "chirurgie": {
           "bedsTotal": 192,
           "bedsOccupied": 133,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 38,
           "surgeActive": false,
           "staffOnDuty": 48,
@@ -880,7 +815,6 @@
         "innere": {
           "bedsTotal": 191,
           "bedsOccupied": 141,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 38,
           "surgeActive": false,
           "staffOnDuty": 48,
@@ -914,7 +848,6 @@
         "its": {
           "bedsTotal": 12,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -923,7 +856,6 @@
         "notaufnahme": {
           "bedsTotal": 13,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -932,7 +864,6 @@
         "chirurgie": {
           "bedsTotal": 77,
           "bedsOccupied": 60,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -941,7 +872,6 @@
         "innere": {
           "bedsTotal": 76,
           "bedsOccupied": 57,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -950,7 +880,6 @@
         "neurochir": {
           "bedsTotal": 26,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -959,7 +888,6 @@
         "paediatrie": {
           "bedsTotal": 39,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -993,7 +921,6 @@
         "its": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -1002,7 +929,6 @@
         "notaufnahme": {
           "bedsTotal": 15,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -1011,7 +937,6 @@
         "chirurgie": {
           "bedsTotal": 90,
           "bedsOccupied": 59,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -1020,7 +945,6 @@
         "innere": {
           "bedsTotal": 90,
           "bedsOccupied": 66,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -1054,7 +978,6 @@
         "its": {
           "bedsTotal": 51,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -1063,7 +986,6 @@
         "notaufnahme": {
           "bedsTotal": 46,
           "bedsOccupied": 33,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -1072,7 +994,6 @@
         "chirurgie": {
           "bedsTotal": 276,
           "bedsOccupied": 207,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 55,
           "surgeActive": false,
           "staffOnDuty": 69,
@@ -1081,7 +1002,6 @@
         "innere": {
           "bedsTotal": 276,
           "bedsOccupied": 216,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 55,
           "surgeActive": false,
           "staffOnDuty": 69,
@@ -1090,7 +1010,6 @@
         "neurochir": {
           "bedsTotal": 92,
           "bedsOccupied": 72,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -1099,7 +1018,6 @@
         "paediatrie": {
           "bedsTotal": 138,
           "bedsOccupied": 107,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 28,
           "surgeActive": false,
           "staffOnDuty": 35,
@@ -1133,7 +1051,6 @@
         "its": {
           "bedsTotal": 77,
           "bedsOccupied": 53,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -1142,7 +1059,6 @@
         "notaufnahme": {
           "bedsTotal": 25,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -1151,7 +1067,6 @@
         "chirurgie": {
           "bedsTotal": 149,
           "bedsOccupied": 108,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -1160,7 +1075,6 @@
         "innere": {
           "bedsTotal": 148,
           "bedsOccupied": 97,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -1169,7 +1083,6 @@
         "neurochir": {
           "bedsTotal": 50,
           "bedsOccupied": 36,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -1178,7 +1091,6 @@
         "paediatrie": {
           "bedsTotal": 74,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -1212,7 +1124,6 @@
         "its": {
           "bedsTotal": 73,
           "bedsOccupied": 56,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -1221,7 +1132,6 @@
         "notaufnahme": {
           "bedsTotal": 77,
           "bedsOccupied": 54,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -1230,7 +1140,6 @@
         "chirurgie": {
           "bedsTotal": 459,
           "bedsOccupied": 366,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 92,
           "surgeActive": false,
           "staffOnDuty": 115,
@@ -1239,7 +1148,6 @@
         "innere": {
           "bedsTotal": 458,
           "bedsOccupied": 326,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 92,
           "surgeActive": false,
           "staffOnDuty": 115,
@@ -1248,7 +1156,6 @@
         "neurochir": {
           "bedsTotal": 153,
           "bedsOccupied": 114,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 31,
           "surgeActive": false,
           "staffOnDuty": 38,
@@ -1257,7 +1164,6 @@
         "paediatrie": {
           "bedsTotal": 230,
           "bedsOccupied": 159,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 46,
           "surgeActive": false,
           "staffOnDuty": 58,
@@ -1291,7 +1197,6 @@
         "its": {
           "bedsTotal": 33,
           "bedsOccupied": 22,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -1300,7 +1205,6 @@
         "notaufnahme": {
           "bedsTotal": 42,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -1309,7 +1213,6 @@
         "chirurgie": {
           "bedsTotal": 252,
           "bedsOccupied": 183,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 50,
           "surgeActive": false,
           "staffOnDuty": 63,
@@ -1318,7 +1221,6 @@
         "innere": {
           "bedsTotal": 252,
           "bedsOccupied": 173,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 50,
           "surgeActive": false,
           "staffOnDuty": 63,
@@ -1327,7 +1229,6 @@
         "neurochir": {
           "bedsTotal": 84,
           "bedsOccupied": 58,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 21,
@@ -1336,7 +1237,6 @@
         "paediatrie": {
           "bedsTotal": 126,
           "bedsOccupied": 89,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -1370,7 +1270,6 @@
         "notaufnahme": {
           "bedsTotal": 84,
           "bedsOccupied": 65,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 21,
@@ -1379,7 +1278,6 @@
         "chirurgie": {
           "bedsTotal": 503,
           "bedsOccupied": 373,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 101,
           "surgeActive": false,
           "staffOnDuty": 126,
@@ -1388,7 +1286,6 @@
         "innere": {
           "bedsTotal": 502,
           "bedsOccupied": 372,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 100,
           "surgeActive": false,
           "staffOnDuty": 126,
@@ -1397,7 +1294,6 @@
         "neurochir": {
           "bedsTotal": 168,
           "bedsOccupied": 117,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 34,
           "surgeActive": false,
           "staffOnDuty": 42,
@@ -1406,7 +1302,6 @@
         "paediatrie": {
           "bedsTotal": 252,
           "bedsOccupied": 175,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 50,
           "surgeActive": false,
           "staffOnDuty": 63,
@@ -1440,7 +1335,6 @@
         "its": {
           "bedsTotal": 36,
           "bedsOccupied": 27,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -1449,7 +1343,6 @@
         "notaufnahme": {
           "bedsTotal": 46,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -1458,7 +1351,6 @@
         "chirurgie": {
           "bedsTotal": 275,
           "bedsOccupied": 208,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 55,
           "surgeActive": false,
           "staffOnDuty": 69,
@@ -1467,7 +1359,6 @@
         "innere": {
           "bedsTotal": 275,
           "bedsOccupied": 198,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 55,
           "surgeActive": false,
           "staffOnDuty": 69,
@@ -1476,7 +1367,6 @@
         "neurochir": {
           "bedsTotal": 92,
           "bedsOccupied": 69,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -1510,7 +1400,6 @@
         "its": {
           "bedsTotal": 12,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -1519,7 +1408,6 @@
         "notaufnahme": {
           "bedsTotal": 18,
           "bedsOccupied": 12,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -1528,7 +1416,6 @@
         "chirurgie": {
           "bedsTotal": 109,
           "bedsOccupied": 79,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -1537,7 +1424,6 @@
         "innere": {
           "bedsTotal": 110,
           "bedsOccupied": 74,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 28,
@@ -1571,7 +1457,6 @@
         "its": {
           "bedsTotal": 4,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -1580,7 +1465,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -1589,7 +1473,6 @@
         "chirurgie": {
           "bedsTotal": 30,
           "bedsOccupied": 24,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -1598,7 +1481,6 @@
         "innere": {
           "bedsTotal": 31,
           "bedsOccupied": 21,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -1632,7 +1514,6 @@
         "its": {
           "bedsTotal": 18,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -1641,7 +1522,6 @@
         "notaufnahme": {
           "bedsTotal": 21,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -1650,7 +1530,6 @@
         "chirurgie": {
           "bedsTotal": 126,
           "bedsOccupied": 85,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -1659,7 +1538,6 @@
         "innere": {
           "bedsTotal": 126,
           "bedsOccupied": 83,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -1668,7 +1546,6 @@
         "paediatrie": {
           "bedsTotal": 63,
           "bedsOccupied": 45,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -1702,7 +1579,6 @@
         "its": {
           "bedsTotal": 24,
           "bedsOccupied": 18,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -1711,7 +1587,6 @@
         "notaufnahme": {
           "bedsTotal": 65,
           "bedsOccupied": 51,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -1720,7 +1595,6 @@
         "chirurgie": {
           "bedsTotal": 392,
           "bedsOccupied": 262,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 78,
           "surgeActive": false,
           "staffOnDuty": 98,
@@ -1729,7 +1603,6 @@
         "innere": {
           "bedsTotal": 392,
           "bedsOccupied": 262,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 78,
           "surgeActive": false,
           "staffOnDuty": 98,
@@ -1738,7 +1611,6 @@
         "neurochir": {
           "bedsTotal": 131,
           "bedsOccupied": 87,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -1747,7 +1619,6 @@
         "paediatrie": {
           "bedsTotal": 196,
           "bedsOccupied": 151,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 39,
           "surgeActive": false,
           "staffOnDuty": 49,
@@ -1781,7 +1652,6 @@
         "its": {
           "bedsTotal": 45,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -1790,7 +1660,6 @@
         "notaufnahme": {
           "bedsTotal": 48,
           "bedsOccupied": 32,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -1799,7 +1668,6 @@
         "chirurgie": {
           "bedsTotal": 288,
           "bedsOccupied": 195,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 58,
           "surgeActive": false,
           "staffOnDuty": 72,
@@ -1808,7 +1676,6 @@
         "innere": {
           "bedsTotal": 288,
           "bedsOccupied": 227,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 58,
           "surgeActive": false,
           "staffOnDuty": 72,
@@ -1817,7 +1684,6 @@
         "neurochir": {
           "bedsTotal": 96,
           "bedsOccupied": 66,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 19,
           "surgeActive": false,
           "staffOnDuty": 24,
@@ -1826,7 +1692,6 @@
         "paediatrie": {
           "bedsTotal": 144,
           "bedsOccupied": 105,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -1860,7 +1725,6 @@
         "its": {
           "bedsTotal": 11,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -1869,7 +1733,6 @@
         "notaufnahme": {
           "bedsTotal": 13,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -1878,7 +1741,6 @@
         "chirurgie": {
           "bedsTotal": 78,
           "bedsOccupied": 57,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -1887,7 +1749,6 @@
         "innere": {
           "bedsTotal": 77,
           "bedsOccupied": 55,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -1896,7 +1757,6 @@
         "paediatrie": {
           "bedsTotal": 39,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -1930,7 +1790,6 @@
         "its": {
           "bedsTotal": 20,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -1939,7 +1798,6 @@
         "notaufnahme": {
           "bedsTotal": 21,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -1948,7 +1806,6 @@
         "chirurgie": {
           "bedsTotal": 127,
           "bedsOccupied": 87,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -1957,7 +1814,6 @@
         "innere": {
           "bedsTotal": 127,
           "bedsOccupied": 99,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -1966,7 +1822,6 @@
         "neurochir": {
           "bedsTotal": 42,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -1975,7 +1830,6 @@
         "paediatrie": {
           "bedsTotal": 63,
           "bedsOccupied": 41,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -2009,7 +1863,6 @@
         "its": {
           "bedsTotal": 31,
           "bedsOccupied": 24,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -2018,7 +1871,6 @@
         "notaufnahme": {
           "bedsTotal": 36,
           "bedsOccupied": 24,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -2027,7 +1879,6 @@
         "chirurgie": {
           "bedsTotal": 219,
           "bedsOccupied": 161,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 44,
           "surgeActive": false,
           "staffOnDuty": 55,
@@ -2036,7 +1887,6 @@
         "innere": {
           "bedsTotal": 219,
           "bedsOccupied": 170,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 44,
           "surgeActive": false,
           "staffOnDuty": 55,
@@ -2045,7 +1895,6 @@
         "paediatrie": {
           "bedsTotal": 109,
           "bedsOccupied": 85,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -2079,7 +1928,6 @@
         "its": {
           "bedsTotal": 20,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -2088,7 +1936,6 @@
         "notaufnahme": {
           "bedsTotal": 24,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -2097,7 +1944,6 @@
         "chirurgie": {
           "bedsTotal": 142,
           "bedsOccupied": 107,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 28,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -2106,7 +1952,6 @@
         "innere": {
           "bedsTotal": 142,
           "bedsOccupied": 94,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 28,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -2115,7 +1960,6 @@
         "paediatrie": {
           "bedsTotal": 71,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -2149,7 +1993,6 @@
         "its": {
           "bedsTotal": 94,
           "bedsOccupied": 74,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 19,
           "surgeActive": false,
           "staffOnDuty": 24,
@@ -2158,7 +2001,6 @@
         "notaufnahme": {
           "bedsTotal": 67,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -2167,7 +2009,6 @@
         "chirurgie": {
           "bedsTotal": 405,
           "bedsOccupied": 294,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 81,
           "surgeActive": false,
           "staffOnDuty": 101,
@@ -2176,7 +2017,6 @@
         "innere": {
           "bedsTotal": 405,
           "bedsOccupied": 302,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 81,
           "surgeActive": false,
           "staffOnDuty": 101,
@@ -2185,7 +2025,6 @@
         "neurochir": {
           "bedsTotal": 135,
           "bedsOccupied": 93,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 34,
@@ -2194,7 +2033,6 @@
         "paediatrie": {
           "bedsTotal": 202,
           "bedsOccupied": 148,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 40,
           "surgeActive": false,
           "staffOnDuty": 51,
@@ -2228,7 +2066,6 @@
         "its": {
           "bedsTotal": 51,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -2237,7 +2074,6 @@
         "notaufnahme": {
           "bedsTotal": 74,
           "bedsOccupied": 55,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -2246,7 +2082,6 @@
         "chirurgie": {
           "bedsTotal": 444,
           "bedsOccupied": 328,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 89,
           "surgeActive": false,
           "staffOnDuty": 111,
@@ -2255,7 +2090,6 @@
         "innere": {
           "bedsTotal": 444,
           "bedsOccupied": 339,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 89,
           "surgeActive": false,
           "staffOnDuty": 111,
@@ -2264,7 +2098,6 @@
         "neurochir": {
           "bedsTotal": 148,
           "bedsOccupied": 106,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -2298,7 +2131,6 @@
         "its": {
           "bedsTotal": 46,
           "bedsOccupied": 32,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -2307,7 +2139,6 @@
         "notaufnahme": {
           "bedsTotal": 37,
           "bedsOccupied": 25,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -2316,7 +2147,6 @@
         "chirurgie": {
           "bedsTotal": 224,
           "bedsOccupied": 154,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 45,
           "surgeActive": false,
           "staffOnDuty": 56,
@@ -2325,7 +2155,6 @@
         "innere": {
           "bedsTotal": 223,
           "bedsOccupied": 170,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 45,
           "surgeActive": false,
           "staffOnDuty": 56,
@@ -2334,7 +2163,6 @@
         "neurochir": {
           "bedsTotal": 75,
           "bedsOccupied": 58,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -2343,7 +2171,6 @@
         "verbrennung": {
           "bedsTotal": 75,
           "bedsOccupied": 54,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -2377,7 +2204,6 @@
         "its": {
           "bedsTotal": 40,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -2386,7 +2212,6 @@
         "notaufnahme": {
           "bedsTotal": 110,
           "bedsOccupied": 77,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 28,
@@ -2395,7 +2220,6 @@
         "innere": {
           "bedsTotal": 659,
           "bedsOccupied": 460,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 132,
           "surgeActive": false,
           "staffOnDuty": 165,
@@ -2429,7 +2253,6 @@
         "its": {
           "bedsTotal": 37,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -2438,7 +2261,6 @@
         "notaufnahme": {
           "bedsTotal": 54,
           "bedsOccupied": 42,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -2447,7 +2269,6 @@
         "chirurgie": {
           "bedsTotal": 324,
           "bedsOccupied": 250,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 65,
           "surgeActive": false,
           "staffOnDuty": 81,
@@ -2456,7 +2277,6 @@
         "innere": {
           "bedsTotal": 323,
           "bedsOccupied": 224,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 65,
           "surgeActive": false,
           "staffOnDuty": 81,
@@ -2490,7 +2310,6 @@
         "its": {
           "bedsTotal": 24,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -2499,7 +2318,6 @@
         "notaufnahme": {
           "bedsTotal": 28,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -2508,7 +2326,6 @@
         "chirurgie": {
           "bedsTotal": 167,
           "bedsOccupied": 118,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 33,
           "surgeActive": false,
           "staffOnDuty": 42,
@@ -2517,7 +2334,6 @@
         "innere": {
           "bedsTotal": 167,
           "bedsOccupied": 110,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 33,
           "surgeActive": false,
           "staffOnDuty": 42,
@@ -2526,7 +2342,6 @@
         "paediatrie": {
           "bedsTotal": 84,
           "bedsOccupied": 59,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 21,
@@ -2560,7 +2375,6 @@
         "its": {
           "bedsTotal": 15,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -2569,7 +2383,6 @@
         "notaufnahme": {
           "bedsTotal": 25,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -2578,7 +2391,6 @@
         "chirurgie": {
           "bedsTotal": 149,
           "bedsOccupied": 109,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -2587,7 +2399,6 @@
         "innere": {
           "bedsTotal": 148,
           "bedsOccupied": 102,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -2596,7 +2407,6 @@
         "neurochir": {
           "bedsTotal": 50,
           "bedsOccupied": 36,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -2605,7 +2415,6 @@
         "paediatrie": {
           "bedsTotal": 75,
           "bedsOccupied": 51,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -2639,7 +2448,6 @@
         "its": {
           "bedsTotal": 36,
           "bedsOccupied": 28,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -2648,7 +2456,6 @@
         "notaufnahme": {
           "bedsTotal": 31,
           "bedsOccupied": 23,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -2657,7 +2464,6 @@
         "chirurgie": {
           "bedsTotal": 188,
           "bedsOccupied": 126,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 38,
           "surgeActive": false,
           "staffOnDuty": 47,
@@ -2666,7 +2472,6 @@
         "innere": {
           "bedsTotal": 189,
           "bedsOccupied": 126,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 38,
           "surgeActive": false,
           "staffOnDuty": 47,
@@ -2675,7 +2480,6 @@
         "paediatrie": {
           "bedsTotal": 94,
           "bedsOccupied": 75,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 19,
           "surgeActive": false,
           "staffOnDuty": 24,
@@ -2709,7 +2513,6 @@
         "its": {
           "bedsTotal": 21,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -2718,7 +2521,6 @@
         "notaufnahme": {
           "bedsTotal": 32,
           "bedsOccupied": 21,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -2727,7 +2529,6 @@
         "chirurgie": {
           "bedsTotal": 190,
           "bedsOccupied": 145,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 38,
           "surgeActive": false,
           "staffOnDuty": 48,
@@ -2736,7 +2537,6 @@
         "innere": {
           "bedsTotal": 189,
           "bedsOccupied": 138,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 38,
           "surgeActive": false,
           "staffOnDuty": 47,
@@ -2770,7 +2570,6 @@
         "its": {
           "bedsTotal": 22,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -2779,7 +2578,6 @@
         "notaufnahme": {
           "bedsTotal": 32,
           "bedsOccupied": 24,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -2788,7 +2586,6 @@
         "chirurgie": {
           "bedsTotal": 191,
           "bedsOccupied": 133,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 38,
           "surgeActive": false,
           "staffOnDuty": 48,
@@ -2797,7 +2594,6 @@
         "innere": {
           "bedsTotal": 190,
           "bedsOccupied": 144,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 38,
           "surgeActive": false,
           "staffOnDuty": 48,
@@ -2831,7 +2627,6 @@
         "its": {
           "bedsTotal": 11,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -2840,7 +2635,6 @@
         "notaufnahme": {
           "bedsTotal": 14,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -2849,7 +2643,6 @@
         "chirurgie": {
           "bedsTotal": 81,
           "bedsOccupied": 64,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -2858,7 +2651,6 @@
         "innere": {
           "bedsTotal": 81,
           "bedsOccupied": 57,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -2867,7 +2659,6 @@
         "paediatrie": {
           "bedsTotal": 41,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -2901,7 +2692,6 @@
         "its": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -2910,7 +2700,6 @@
         "notaufnahme": {
           "bedsTotal": 14,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -2919,7 +2708,6 @@
         "chirurgie": {
           "bedsTotal": 84,
           "bedsOccupied": 56,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 21,
@@ -2928,7 +2716,6 @@
         "innere": {
           "bedsTotal": 84,
           "bedsOccupied": 63,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 21,
@@ -2962,7 +2749,6 @@
         "its": {
           "bedsTotal": 21,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -2971,7 +2757,6 @@
         "notaufnahme": {
           "bedsTotal": 30,
           "bedsOccupied": 23,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -2980,7 +2765,6 @@
         "chirurgie": {
           "bedsTotal": 180,
           "bedsOccupied": 137,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 36,
           "surgeActive": false,
           "staffOnDuty": 45,
@@ -2989,7 +2773,6 @@
         "innere": {
           "bedsTotal": 181,
           "bedsOccupied": 139,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 36,
           "surgeActive": false,
           "staffOnDuty": 45,
@@ -3023,7 +2806,6 @@
         "notaufnahme": {
           "bedsTotal": 27,
           "bedsOccupied": 18,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -3032,7 +2814,6 @@
         "chirurgie": {
           "bedsTotal": 162,
           "bedsOccupied": 118,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 32,
           "surgeActive": false,
           "staffOnDuty": 41,
@@ -3041,7 +2822,6 @@
         "innere": {
           "bedsTotal": 162,
           "bedsOccupied": 124,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 32,
           "surgeActive": false,
           "staffOnDuty": 41,
@@ -3050,7 +2830,6 @@
         "neurochir": {
           "bedsTotal": 54,
           "bedsOccupied": 36,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -3084,7 +2863,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -3093,7 +2871,6 @@
         "notaufnahme": {
           "bedsTotal": 11,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -3102,7 +2879,6 @@
         "chirurgie": {
           "bedsTotal": 66,
           "bedsOccupied": 49,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -3111,7 +2887,6 @@
         "innere": {
           "bedsTotal": 65,
           "bedsOccupied": 46,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -3145,7 +2920,6 @@
         "its": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -3154,7 +2928,6 @@
         "notaufnahme": {
           "bedsTotal": 19,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -3163,7 +2936,6 @@
         "innere": {
           "bedsTotal": 114,
           "bedsOccupied": 75,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 29,
@@ -3197,7 +2969,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -3206,7 +2977,6 @@
         "notaufnahme": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -3215,7 +2985,6 @@
         "chirurgie": {
           "bedsTotal": 48,
           "bedsOccupied": 33,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -3224,7 +2993,6 @@
         "innere": {
           "bedsTotal": 48,
           "bedsOccupied": 38,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -3258,7 +3026,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -3267,7 +3034,6 @@
         "notaufnahme": {
           "bedsTotal": 21,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -3276,7 +3042,6 @@
         "chirurgie": {
           "bedsTotal": 126,
           "bedsOccupied": 95,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -3310,7 +3075,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -3319,7 +3083,6 @@
         "notaufnahme": {
           "bedsTotal": 15,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -3328,7 +3091,6 @@
         "innere": {
           "bedsTotal": 89,
           "bedsOccupied": 70,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 22,
@@ -3362,7 +3124,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -3371,7 +3132,6 @@
         "notaufnahme": {
           "bedsTotal": 17,
           "bedsOccupied": 12,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -3380,7 +3140,6 @@
         "innere": {
           "bedsTotal": 99,
           "bedsOccupied": 71,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 20,
           "surgeActive": false,
           "staffOnDuty": 25,
@@ -3414,7 +3173,6 @@
         "its": {
           "bedsTotal": 4,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -3423,7 +3181,6 @@
         "notaufnahme": {
           "bedsTotal": 6,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -3432,7 +3189,6 @@
         "chirurgie": {
           "bedsTotal": 38,
           "bedsOccupied": 29,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -3441,7 +3197,6 @@
         "innere": {
           "bedsTotal": 39,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -3475,7 +3230,6 @@
         "its": {
           "bedsTotal": 3,
           "bedsOccupied": 2,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -3484,7 +3238,6 @@
         "notaufnahme": {
           "bedsTotal": 12,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -3493,7 +3246,6 @@
         "chirurgie": {
           "bedsTotal": 70,
           "bedsOccupied": 46,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -3527,7 +3279,6 @@
         "its": {
           "bedsTotal": 88,
           "bedsOccupied": 63,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 22,
@@ -3536,7 +3287,6 @@
         "notaufnahme": {
           "bedsTotal": 80,
           "bedsOccupied": 53,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -3545,7 +3295,6 @@
         "chirurgie": {
           "bedsTotal": 481,
           "bedsOccupied": 374,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 96,
           "surgeActive": false,
           "staffOnDuty": 120,
@@ -3554,7 +3303,6 @@
         "innere": {
           "bedsTotal": 481,
           "bedsOccupied": 385,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 96,
           "surgeActive": false,
           "staffOnDuty": 120,
@@ -3563,7 +3311,6 @@
         "neurochir": {
           "bedsTotal": 160,
           "bedsOccupied": 115,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 32,
           "surgeActive": false,
           "staffOnDuty": 40,
@@ -3572,7 +3319,6 @@
         "paediatrie": {
           "bedsTotal": 241,
           "bedsOccupied": 190,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 48,
           "surgeActive": false,
           "staffOnDuty": 60,
@@ -3606,7 +3352,6 @@
         "its": {
           "bedsTotal": 32,
           "bedsOccupied": 25,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -3615,7 +3360,6 @@
         "notaufnahme": {
           "bedsTotal": 74,
           "bedsOccupied": 53,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -3624,7 +3368,6 @@
         "chirurgie": {
           "bedsTotal": 441,
           "bedsOccupied": 309,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 88,
           "surgeActive": false,
           "staffOnDuty": 110,
@@ -3633,7 +3376,6 @@
         "innere": {
           "bedsTotal": 440,
           "bedsOccupied": 306,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 88,
           "surgeActive": false,
           "staffOnDuty": 110,
@@ -3642,7 +3384,6 @@
         "neurochir": {
           "bedsTotal": 147,
           "bedsOccupied": 103,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -3651,7 +3392,6 @@
         "paediatrie": {
           "bedsTotal": 221,
           "bedsOccupied": 161,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 44,
           "surgeActive": false,
           "staffOnDuty": 55,
@@ -3685,7 +3425,6 @@
         "its": {
           "bedsTotal": 31,
           "bedsOccupied": 21,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -3694,7 +3433,6 @@
         "notaufnahme": {
           "bedsTotal": 73,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -3703,7 +3441,6 @@
         "chirurgie": {
           "bedsTotal": 435,
           "bedsOccupied": 305,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 87,
           "surgeActive": false,
           "staffOnDuty": 109,
@@ -3712,7 +3449,6 @@
         "innere": {
           "bedsTotal": 434,
           "bedsOccupied": 323,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 87,
           "surgeActive": false,
           "staffOnDuty": 109,
@@ -3721,7 +3457,6 @@
         "neurochir": {
           "bedsTotal": 145,
           "bedsOccupied": 116,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -3730,7 +3465,6 @@
         "paediatrie": {
           "bedsTotal": 218,
           "bedsOccupied": 171,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 44,
           "surgeActive": false,
           "staffOnDuty": 55,
@@ -3764,7 +3498,6 @@
         "its": {
           "bedsTotal": 61,
           "bedsOccupied": 40,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -3773,7 +3506,6 @@
         "notaufnahme": {
           "bedsTotal": 68,
           "bedsOccupied": 47,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -3782,7 +3514,6 @@
         "chirurgie": {
           "bedsTotal": 409,
           "bedsOccupied": 310,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 82,
           "surgeActive": false,
           "staffOnDuty": 102,
@@ -3791,7 +3522,6 @@
         "innere": {
           "bedsTotal": 410,
           "bedsOccupied": 276,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 82,
           "surgeActive": false,
           "staffOnDuty": 103,
@@ -3800,7 +3530,6 @@
         "neurochir": {
           "bedsTotal": 136,
           "bedsOccupied": 89,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 34,
@@ -3809,7 +3538,6 @@
         "verbrennung": {
           "bedsTotal": 136,
           "bedsOccupied": 99,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 34,
@@ -3843,7 +3571,6 @@
         "its": {
           "bedsTotal": 57,
           "bedsOccupied": 41,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -3852,7 +3579,6 @@
         "notaufnahme": {
           "bedsTotal": 60,
           "bedsOccupied": 47,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -3861,7 +3587,6 @@
         "chirurgie": {
           "bedsTotal": 360,
           "bedsOccupied": 245,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 72,
           "surgeActive": false,
           "staffOnDuty": 90,
@@ -3870,7 +3595,6 @@
         "innere": {
           "bedsTotal": 359,
           "bedsOccupied": 248,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 72,
           "surgeActive": false,
           "staffOnDuty": 90,
@@ -3879,7 +3603,6 @@
         "neurochir": {
           "bedsTotal": 120,
           "bedsOccupied": 81,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 30,
@@ -3888,7 +3611,6 @@
         "paediatrie": {
           "bedsTotal": 180,
           "bedsOccupied": 138,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 36,
           "surgeActive": false,
           "staffOnDuty": 45,
@@ -3922,7 +3644,6 @@
         "its": {
           "bedsTotal": 24,
           "bedsOccupied": 18,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -3931,7 +3652,6 @@
         "notaufnahme": {
           "bedsTotal": 70,
           "bedsOccupied": 46,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -3940,7 +3660,6 @@
         "chirurgie": {
           "bedsTotal": 422,
           "bedsOccupied": 327,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 84,
           "surgeActive": false,
           "staffOnDuty": 106,
@@ -3949,7 +3668,6 @@
         "innere": {
           "bedsTotal": 422,
           "bedsOccupied": 332,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 84,
           "surgeActive": false,
           "staffOnDuty": 106,
@@ -3958,7 +3676,6 @@
         "neurochir": {
           "bedsTotal": 141,
           "bedsOccupied": 96,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 28,
           "surgeActive": false,
           "staffOnDuty": 35,
@@ -3992,7 +3709,6 @@
         "its": {
           "bedsTotal": 45,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -4001,7 +3717,6 @@
         "notaufnahme": {
           "bedsTotal": 57,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -4010,7 +3725,6 @@
         "chirurgie": {
           "bedsTotal": 344,
           "bedsOccupied": 239,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 69,
           "surgeActive": false,
           "staffOnDuty": 86,
@@ -4019,7 +3733,6 @@
         "innere": {
           "bedsTotal": 344,
           "bedsOccupied": 226,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 69,
           "surgeActive": false,
           "staffOnDuty": 86,
@@ -4028,7 +3741,6 @@
         "neurochir": {
           "bedsTotal": 115,
           "bedsOccupied": 91,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 29,
@@ -4062,7 +3774,6 @@
         "its": {
           "bedsTotal": 28,
           "bedsOccupied": 21,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -4071,7 +3782,6 @@
         "notaufnahme": {
           "bedsTotal": 44,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -4080,7 +3790,6 @@
         "chirurgie": {
           "bedsTotal": 263,
           "bedsOccupied": 204,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 53,
           "surgeActive": false,
           "staffOnDuty": 66,
@@ -4089,7 +3798,6 @@
         "innere": {
           "bedsTotal": 262,
           "bedsOccupied": 186,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 52,
           "surgeActive": false,
           "staffOnDuty": 66,
@@ -4098,7 +3806,6 @@
         "neurochir": {
           "bedsTotal": 88,
           "bedsOccupied": 61,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 22,
@@ -4107,7 +3814,6 @@
         "paediatrie": {
           "bedsTotal": 132,
           "bedsOccupied": 92,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -4141,7 +3847,6 @@
         "its": {
           "bedsTotal": 38,
           "bedsOccupied": 29,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -4150,7 +3855,6 @@
         "notaufnahme": {
           "bedsTotal": 48,
           "bedsOccupied": 33,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -4159,7 +3863,6 @@
         "chirurgie": {
           "bedsTotal": 288,
           "bedsOccupied": 197,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 58,
           "surgeActive": false,
           "staffOnDuty": 72,
@@ -4168,7 +3871,6 @@
         "innere": {
           "bedsTotal": 288,
           "bedsOccupied": 204,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 58,
           "surgeActive": false,
           "staffOnDuty": 72,
@@ -4177,7 +3879,6 @@
         "neurochir": {
           "bedsTotal": 96,
           "bedsOccupied": 66,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 19,
           "surgeActive": false,
           "staffOnDuty": 24,
@@ -4211,7 +3912,6 @@
         "its": {
           "bedsTotal": 39,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -4220,7 +3920,6 @@
         "notaufnahme": {
           "bedsTotal": 41,
           "bedsOccupied": 32,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -4229,7 +3928,6 @@
         "chirurgie": {
           "bedsTotal": 244,
           "bedsOccupied": 169,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 49,
           "surgeActive": false,
           "staffOnDuty": 61,
@@ -4238,7 +3936,6 @@
         "innere": {
           "bedsTotal": 244,
           "bedsOccupied": 159,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 49,
           "surgeActive": false,
           "staffOnDuty": 61,
@@ -4247,7 +3944,6 @@
         "neurochir": {
           "bedsTotal": 81,
           "bedsOccupied": 61,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -4256,7 +3952,6 @@
         "paediatrie": {
           "bedsTotal": 122,
           "bedsOccupied": 91,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 31,
@@ -4290,7 +3985,6 @@
         "its": {
           "bedsTotal": 36,
           "bedsOccupied": 24,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -4299,7 +3993,6 @@
         "notaufnahme": {
           "bedsTotal": 42,
           "bedsOccupied": 28,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -4308,7 +4001,6 @@
         "chirurgie": {
           "bedsTotal": 254,
           "bedsOccupied": 190,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 51,
           "surgeActive": false,
           "staffOnDuty": 64,
@@ -4317,7 +4009,6 @@
         "innere": {
           "bedsTotal": 253,
           "bedsOccupied": 177,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 51,
           "surgeActive": false,
           "staffOnDuty": 63,
@@ -4326,7 +4017,6 @@
         "paediatrie": {
           "bedsTotal": 127,
           "bedsOccupied": 101,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -4360,7 +4050,6 @@
         "its": {
           "bedsTotal": 16,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -4369,7 +4058,6 @@
         "notaufnahme": {
           "bedsTotal": 20,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -4378,7 +4066,6 @@
         "chirurgie": {
           "bedsTotal": 122,
           "bedsOccupied": 94,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 31,
@@ -4387,7 +4074,6 @@
         "innere": {
           "bedsTotal": 121,
           "bedsOccupied": 95,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 30,
@@ -4396,7 +4082,6 @@
         "neurochir": {
           "bedsTotal": 41,
           "bedsOccupied": 28,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -4430,7 +4115,6 @@
         "its": {
           "bedsTotal": 38,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -4439,7 +4123,6 @@
         "notaufnahme": {
           "bedsTotal": 37,
           "bedsOccupied": 28,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -4448,7 +4131,6 @@
         "chirurgie": {
           "bedsTotal": 224,
           "bedsOccupied": 169,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 45,
           "surgeActive": false,
           "staffOnDuty": 56,
@@ -4457,7 +4139,6 @@
         "innere": {
           "bedsTotal": 223,
           "bedsOccupied": 170,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 45,
           "surgeActive": false,
           "staffOnDuty": 56,
@@ -4466,7 +4147,6 @@
         "neurochir": {
           "bedsTotal": 75,
           "bedsOccupied": 57,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -4475,7 +4155,6 @@
         "paediatrie": {
           "bedsTotal": 112,
           "bedsOccupied": 77,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 28,
@@ -4509,7 +4188,6 @@
         "its": {
           "bedsTotal": 34,
           "bedsOccupied": 25,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -4518,7 +4196,6 @@
         "notaufnahme": {
           "bedsTotal": 40,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -4527,7 +4204,6 @@
         "chirurgie": {
           "bedsTotal": 240,
           "bedsOccupied": 183,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 48,
           "surgeActive": false,
           "staffOnDuty": 60,
@@ -4536,7 +4212,6 @@
         "innere": {
           "bedsTotal": 241,
           "bedsOccupied": 188,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 48,
           "surgeActive": false,
           "staffOnDuty": 60,
@@ -4545,7 +4220,6 @@
         "paediatrie": {
           "bedsTotal": 120,
           "bedsOccupied": 83,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 30,
@@ -4579,7 +4253,6 @@
         "its": {
           "bedsTotal": 24,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -4588,7 +4261,6 @@
         "notaufnahme": {
           "bedsTotal": 36,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -4597,7 +4269,6 @@
         "chirurgie": {
           "bedsTotal": 215,
           "bedsOccupied": 154,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 43,
           "surgeActive": false,
           "staffOnDuty": 54,
@@ -4606,7 +4277,6 @@
         "innere": {
           "bedsTotal": 214,
           "bedsOccupied": 162,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 43,
           "surgeActive": false,
           "staffOnDuty": 54,
@@ -4615,7 +4285,6 @@
         "neurochir": {
           "bedsTotal": 72,
           "bedsOccupied": 51,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -4624,7 +4293,6 @@
         "paediatrie": {
           "bedsTotal": 107,
           "bedsOccupied": 75,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 21,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -4658,7 +4326,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -4667,7 +4334,6 @@
         "notaufnahme": {
           "bedsTotal": 11,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -4676,7 +4342,6 @@
         "chirurgie": {
           "bedsTotal": 66,
           "bedsOccupied": 48,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -4685,7 +4350,6 @@
         "innere": {
           "bedsTotal": 66,
           "bedsOccupied": 50,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -4719,7 +4383,6 @@
         "its": {
           "bedsTotal": 14,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -4728,7 +4391,6 @@
         "notaufnahme": {
           "bedsTotal": 42,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -4737,7 +4399,6 @@
         "chirurgie": {
           "bedsTotal": 253,
           "bedsOccupied": 189,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 51,
           "surgeActive": false,
           "staffOnDuty": 63,
@@ -4746,7 +4407,6 @@
         "innere": {
           "bedsTotal": 253,
           "bedsOccupied": 192,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 51,
           "surgeActive": false,
           "staffOnDuty": 63,
@@ -4755,7 +4415,6 @@
         "neurochir": {
           "bedsTotal": 84,
           "bedsOccupied": 58,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 21,
@@ -4789,7 +4448,6 @@
         "its": {
           "bedsTotal": 21,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -4798,7 +4456,6 @@
         "notaufnahme": {
           "bedsTotal": 33,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -4807,7 +4464,6 @@
         "chirurgie": {
           "bedsTotal": 200,
           "bedsOccupied": 154,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 40,
           "surgeActive": false,
           "staffOnDuty": 50,
@@ -4816,7 +4472,6 @@
         "innere": {
           "bedsTotal": 201,
           "bedsOccupied": 140,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 40,
           "surgeActive": false,
           "staffOnDuty": 50,
@@ -4825,7 +4480,6 @@
         "neurochir": {
           "bedsTotal": 67,
           "bedsOccupied": 53,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -4834,7 +4488,6 @@
         "paediatrie": {
           "bedsTotal": 100,
           "bedsOccupied": 68,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 20,
           "surgeActive": false,
           "staffOnDuty": 25,
@@ -4868,7 +4521,6 @@
         "its": {
           "bedsTotal": 30,
           "bedsOccupied": 20,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -4877,7 +4529,6 @@
         "notaufnahme": {
           "bedsTotal": 36,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -4886,7 +4537,6 @@
         "chirurgie": {
           "bedsTotal": 216,
           "bedsOccupied": 148,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 43,
           "surgeActive": false,
           "staffOnDuty": 54,
@@ -4895,7 +4545,6 @@
         "innere": {
           "bedsTotal": 216,
           "bedsOccupied": 164,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 43,
           "surgeActive": false,
           "staffOnDuty": 54,
@@ -4904,7 +4553,6 @@
         "paediatrie": {
           "bedsTotal": 108,
           "bedsOccupied": 72,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -4938,7 +4586,6 @@
         "its": {
           "bedsTotal": 43,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -4947,7 +4594,6 @@
         "notaufnahme": {
           "bedsTotal": 30,
           "bedsOccupied": 20,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -4956,7 +4602,6 @@
         "chirurgie": {
           "bedsTotal": 181,
           "bedsOccupied": 125,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 36,
           "surgeActive": false,
           "staffOnDuty": 45,
@@ -4965,7 +4610,6 @@
         "innere": {
           "bedsTotal": 182,
           "bedsOccupied": 142,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 36,
           "surgeActive": false,
           "staffOnDuty": 46,
@@ -4974,7 +4618,6 @@
         "neurochir": {
           "bedsTotal": 60,
           "bedsOccupied": 39,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -4983,7 +4626,6 @@
         "verbrennung": {
           "bedsTotal": 60,
           "bedsOccupied": 43,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -5017,7 +4659,6 @@
         "its": {
           "bedsTotal": 25,
           "bedsOccupied": 18,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -5026,7 +4667,6 @@
         "notaufnahme": {
           "bedsTotal": 31,
           "bedsOccupied": 22,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -5035,7 +4675,6 @@
         "chirurgie": {
           "bedsTotal": 184,
           "bedsOccupied": 141,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 37,
           "surgeActive": false,
           "staffOnDuty": 46,
@@ -5044,7 +4683,6 @@
         "innere": {
           "bedsTotal": 185,
           "bedsOccupied": 140,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 37,
           "surgeActive": false,
           "staffOnDuty": 46,
@@ -5053,7 +4691,6 @@
         "neurochir": {
           "bedsTotal": 61,
           "bedsOccupied": 43,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -5062,7 +4699,6 @@
         "paediatrie": {
           "bedsTotal": 92,
           "bedsOccupied": 62,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -5096,7 +4732,6 @@
         "its": {
           "bedsTotal": 27,
           "bedsOccupied": 18,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -5105,7 +4740,6 @@
         "notaufnahme": {
           "bedsTotal": 34,
           "bedsOccupied": 25,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -5114,7 +4748,6 @@
         "chirurgie": {
           "bedsTotal": 205,
           "bedsOccupied": 145,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 41,
           "surgeActive": false,
           "staffOnDuty": 51,
@@ -5123,7 +4756,6 @@
         "innere": {
           "bedsTotal": 206,
           "bedsOccupied": 157,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 41,
           "surgeActive": false,
           "staffOnDuty": 52,
@@ -5132,7 +4764,6 @@
         "neurochir": {
           "bedsTotal": 68,
           "bedsOccupied": 46,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -5166,7 +4797,6 @@
         "its": {
           "bedsTotal": 18,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -5175,7 +4805,6 @@
         "notaufnahme": {
           "bedsTotal": 17,
           "bedsOccupied": 12,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -5184,7 +4813,6 @@
         "chirurgie": {
           "bedsTotal": 100,
           "bedsOccupied": 78,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 20,
           "surgeActive": false,
           "staffOnDuty": 25,
@@ -5193,7 +4821,6 @@
         "innere": {
           "bedsTotal": 101,
           "bedsOccupied": 69,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 20,
           "surgeActive": false,
           "staffOnDuty": 25,
@@ -5202,7 +4829,6 @@
         "neurochir": {
           "bedsTotal": 33,
           "bedsOccupied": 22,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -5211,7 +4837,6 @@
         "paediatrie": {
           "bedsTotal": 50,
           "bedsOccupied": 39,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -5245,7 +4870,6 @@
         "its": {
           "bedsTotal": 22,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -5254,7 +4878,6 @@
         "notaufnahme": {
           "bedsTotal": 28,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -5263,7 +4886,6 @@
         "chirurgie": {
           "bedsTotal": 165,
           "bedsOccupied": 125,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 33,
           "surgeActive": false,
           "staffOnDuty": 41,
@@ -5272,7 +4894,6 @@
         "innere": {
           "bedsTotal": 165,
           "bedsOccupied": 114,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 33,
           "surgeActive": false,
           "staffOnDuty": 41,
@@ -5281,7 +4902,6 @@
         "neurochir": {
           "bedsTotal": 55,
           "bedsOccupied": 41,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -5315,7 +4935,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -5324,7 +4943,6 @@
         "notaufnahme": {
           "bedsTotal": 19,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -5333,7 +4951,6 @@
         "chirurgie": {
           "bedsTotal": 117,
           "bedsOccupied": 91,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 29,
@@ -5342,7 +4959,6 @@
         "innere": {
           "bedsTotal": 117,
           "bedsOccupied": 77,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 29,
@@ -5376,7 +4992,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -5385,7 +5000,6 @@
         "notaufnahme": {
           "bedsTotal": 18,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -5394,7 +5008,6 @@
         "chirurgie": {
           "bedsTotal": 107,
           "bedsOccupied": 84,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 21,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -5403,7 +5016,6 @@
         "innere": {
           "bedsTotal": 106,
           "bedsOccupied": 84,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 21,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -5412,7 +5024,6 @@
         "paediatrie": {
           "bedsTotal": 53,
           "bedsOccupied": 38,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -5446,7 +5057,6 @@
         "its": {
           "bedsTotal": 16,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -5455,7 +5065,6 @@
         "notaufnahme": {
           "bedsTotal": 21,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -5464,7 +5073,6 @@
         "chirurgie": {
           "bedsTotal": 128,
           "bedsOccupied": 97,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -5473,7 +5081,6 @@
         "innere": {
           "bedsTotal": 129,
           "bedsOccupied": 85,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -5482,7 +5089,6 @@
         "neurochir": {
           "bedsTotal": 43,
           "bedsOccupied": 29,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -5516,7 +5122,6 @@
         "its": {
           "bedsTotal": 16,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -5525,7 +5130,6 @@
         "notaufnahme": {
           "bedsTotal": 24,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -5534,7 +5138,6 @@
         "chirurgie": {
           "bedsTotal": 144,
           "bedsOccupied": 106,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -5543,7 +5146,6 @@
         "innere": {
           "bedsTotal": 144,
           "bedsOccupied": 113,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -5577,7 +5179,6 @@
         "its": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -5586,7 +5187,6 @@
         "notaufnahme": {
           "bedsTotal": 25,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -5595,7 +5195,6 @@
         "chirurgie": {
           "bedsTotal": 148,
           "bedsOccupied": 113,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -5604,7 +5203,6 @@
         "innere": {
           "bedsTotal": 147,
           "bedsOccupied": 107,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -5638,7 +5236,6 @@
         "its": {
           "bedsTotal": 18,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -5647,7 +5244,6 @@
         "notaufnahme": {
           "bedsTotal": 22,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -5656,7 +5252,6 @@
         "chirurgie": {
           "bedsTotal": 133,
           "bedsOccupied": 90,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -5665,7 +5260,6 @@
         "innere": {
           "bedsTotal": 133,
           "bedsOccupied": 94,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -5674,7 +5268,6 @@
         "neurochir": {
           "bedsTotal": 44,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -5708,7 +5301,6 @@
         "its": {
           "bedsTotal": 13,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -5717,7 +5309,6 @@
         "notaufnahme": {
           "bedsTotal": 18,
           "bedsOccupied": 12,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -5726,7 +5317,6 @@
         "chirurgie": {
           "bedsTotal": 109,
           "bedsOccupied": 82,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -5735,7 +5325,6 @@
         "innere": {
           "bedsTotal": 110,
           "bedsOccupied": 80,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 28,
@@ -5769,7 +5358,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -5778,7 +5366,6 @@
         "notaufnahme": {
           "bedsTotal": 12,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -5787,7 +5374,6 @@
         "chirurgie": {
           "bedsTotal": 70,
           "bedsOccupied": 49,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -5796,7 +5382,6 @@
         "innere": {
           "bedsTotal": 70,
           "bedsOccupied": 54,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -5830,7 +5415,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -5839,7 +5423,6 @@
         "notaufnahme": {
           "bedsTotal": 12,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -5848,7 +5431,6 @@
         "chirurgie": {
           "bedsTotal": 70,
           "bedsOccupied": 49,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -5857,7 +5439,6 @@
         "innere": {
           "bedsTotal": 70,
           "bedsOccupied": 55,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -5891,7 +5472,6 @@
         "its": {
           "bedsTotal": 11,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -5900,7 +5480,6 @@
         "notaufnahme": {
           "bedsTotal": 13,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -5909,7 +5488,6 @@
         "chirurgie": {
           "bedsTotal": 78,
           "bedsOccupied": 56,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -5918,7 +5496,6 @@
         "innere": {
           "bedsTotal": 77,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -5927,7 +5504,6 @@
         "paediatrie": {
           "bedsTotal": 39,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -5961,7 +5537,6 @@
         "its": {
           "bedsTotal": 12,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -5970,7 +5545,6 @@
         "notaufnahme": {
           "bedsTotal": 22,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -5979,7 +5553,6 @@
         "chirurgie": {
           "bedsTotal": 132,
           "bedsOccupied": 93,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -5988,7 +5561,6 @@
         "innere": {
           "bedsTotal": 131,
           "bedsOccupied": 95,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -5997,7 +5569,6 @@
         "neurochir": {
           "bedsTotal": 44,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -6006,7 +5577,6 @@
         "paediatrie": {
           "bedsTotal": 66,
           "bedsOccupied": 45,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -6040,7 +5610,6 @@
         "its": {
           "bedsTotal": 22,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -6049,7 +5618,6 @@
         "notaufnahme": {
           "bedsTotal": 29,
           "bedsOccupied": 22,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -6058,7 +5626,6 @@
         "chirurgie": {
           "bedsTotal": 175,
           "bedsOccupied": 125,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 35,
           "surgeActive": false,
           "staffOnDuty": 44,
@@ -6067,7 +5634,6 @@
         "innere": {
           "bedsTotal": 176,
           "bedsOccupied": 115,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 35,
           "surgeActive": false,
           "staffOnDuty": 44,
@@ -6076,7 +5642,6 @@
         "neurochir": {
           "bedsTotal": 58,
           "bedsOccupied": 39,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -6085,7 +5650,6 @@
         "paediatrie": {
           "bedsTotal": 88,
           "bedsOccupied": 64,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 22,
@@ -6119,7 +5683,6 @@
         "its": {
           "bedsTotal": 20,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -6128,7 +5691,6 @@
         "notaufnahme": {
           "bedsTotal": 24,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -6137,7 +5699,6 @@
         "chirurgie": {
           "bedsTotal": 143,
           "bedsOccupied": 109,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -6146,7 +5707,6 @@
         "innere": {
           "bedsTotal": 142,
           "bedsOccupied": 108,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 28,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -6155,7 +5715,6 @@
         "paediatrie": {
           "bedsTotal": 71,
           "bedsOccupied": 57,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -6189,7 +5748,6 @@
         "its": {
           "bedsTotal": 24,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -6198,7 +5756,6 @@
         "notaufnahme": {
           "bedsTotal": 35,
           "bedsOccupied": 25,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -6207,7 +5764,6 @@
         "chirurgie": {
           "bedsTotal": 212,
           "bedsOccupied": 139,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 42,
           "surgeActive": false,
           "staffOnDuty": 53,
@@ -6216,7 +5772,6 @@
         "innere": {
           "bedsTotal": 213,
           "bedsOccupied": 147,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 43,
           "surgeActive": false,
           "staffOnDuty": 53,
@@ -6250,7 +5805,6 @@
         "its": {
           "bedsTotal": 11,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -6259,7 +5813,6 @@
         "notaufnahme": {
           "bedsTotal": 14,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -6268,7 +5821,6 @@
         "chirurgie": {
           "bedsTotal": 86,
           "bedsOccupied": 58,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 22,
@@ -6277,7 +5829,6 @@
         "innere": {
           "bedsTotal": 86,
           "bedsOccupied": 60,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 22,
@@ -6286,7 +5837,6 @@
         "paediatrie": {
           "bedsTotal": 43,
           "bedsOccupied": 32,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -6320,7 +5870,6 @@
         "its": {
           "bedsTotal": 12,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -6329,7 +5878,6 @@
         "notaufnahme": {
           "bedsTotal": 32,
           "bedsOccupied": 25,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -6338,7 +5886,6 @@
         "chirurgie": {
           "bedsTotal": 194,
           "bedsOccupied": 151,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 39,
           "surgeActive": false,
           "staffOnDuty": 49,
@@ -6347,7 +5894,6 @@
         "innere": {
           "bedsTotal": 193,
           "bedsOccupied": 127,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 39,
           "surgeActive": false,
           "staffOnDuty": 48,
@@ -6356,7 +5902,6 @@
         "neurochir": {
           "bedsTotal": 65,
           "bedsOccupied": 45,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -6390,7 +5935,6 @@
         "its": {
           "bedsTotal": 38,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -6399,7 +5943,6 @@
         "notaufnahme": {
           "bedsTotal": 48,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -6408,7 +5951,6 @@
         "chirurgie": {
           "bedsTotal": 286,
           "bedsOccupied": 208,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 57,
           "surgeActive": false,
           "staffOnDuty": 72,
@@ -6417,7 +5959,6 @@
         "innere": {
           "bedsTotal": 285,
           "bedsOccupied": 194,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 57,
           "surgeActive": false,
           "staffOnDuty": 71,
@@ -6426,7 +5967,6 @@
         "neurochir": {
           "bedsTotal": 95,
           "bedsOccupied": 63,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 19,
           "surgeActive": false,
           "staffOnDuty": 24,
@@ -6460,7 +6000,6 @@
         "its": {
           "bedsTotal": 12,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -6469,7 +6008,6 @@
         "notaufnahme": {
           "bedsTotal": 18,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -6478,7 +6016,6 @@
         "chirurgie": {
           "bedsTotal": 108,
           "bedsOccupied": 77,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -6487,7 +6024,6 @@
         "innere": {
           "bedsTotal": 108,
           "bedsOccupied": 85,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -6496,7 +6032,6 @@
         "paediatrie": {
           "bedsTotal": 54,
           "bedsOccupied": 35,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -6530,7 +6065,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -6539,7 +6073,6 @@
         "notaufnahme": {
           "bedsTotal": 28,
           "bedsOccupied": 21,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -6548,7 +6081,6 @@
         "chirurgie": {
           "bedsTotal": 168,
           "bedsOccupied": 125,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 34,
           "surgeActive": false,
           "staffOnDuty": 42,
@@ -6557,7 +6089,6 @@
         "innere": {
           "bedsTotal": 168,
           "bedsOccupied": 113,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 34,
           "surgeActive": false,
           "staffOnDuty": 42,
@@ -6566,7 +6097,6 @@
         "paediatrie": {
           "bedsTotal": 84,
           "bedsOccupied": 59,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 21,
@@ -6600,7 +6130,6 @@
         "its": {
           "bedsTotal": 46,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -6609,7 +6138,6 @@
         "notaufnahme": {
           "bedsTotal": 67,
           "bedsOccupied": 53,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -6618,7 +6146,6 @@
         "chirurgie": {
           "bedsTotal": 402,
           "bedsOccupied": 310,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 80,
           "surgeActive": false,
           "staffOnDuty": 101,
@@ -6627,7 +6154,6 @@
         "innere": {
           "bedsTotal": 403,
           "bedsOccupied": 287,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 81,
           "surgeActive": false,
           "staffOnDuty": 101,
@@ -6661,7 +6187,6 @@
         "its": {
           "bedsTotal": 45,
           "bedsOccupied": 36,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -6670,7 +6195,6 @@
         "notaufnahme": {
           "bedsTotal": 53,
           "bedsOccupied": 38,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -6679,7 +6203,6 @@
         "chirurgie": {
           "bedsTotal": 318,
           "bedsOccupied": 248,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 64,
           "surgeActive": false,
           "staffOnDuty": 80,
@@ -6688,7 +6211,6 @@
         "innere": {
           "bedsTotal": 317,
           "bedsOccupied": 234,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 63,
           "surgeActive": false,
           "staffOnDuty": 79,
@@ -6697,7 +6219,6 @@
         "paediatrie": {
           "bedsTotal": 159,
           "bedsOccupied": 122,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 32,
           "surgeActive": false,
           "staffOnDuty": 40,
@@ -6731,7 +6252,6 @@
         "its": {
           "bedsTotal": 62,
           "bedsOccupied": 43,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -6740,7 +6260,6 @@
         "notaufnahme": {
           "bedsTotal": 65,
           "bedsOccupied": 47,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -6749,7 +6268,6 @@
         "chirurgie": {
           "bedsTotal": 389,
           "bedsOccupied": 276,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 78,
           "surgeActive": false,
           "staffOnDuty": 97,
@@ -6758,7 +6276,6 @@
         "innere": {
           "bedsTotal": 389,
           "bedsOccupied": 259,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 78,
           "surgeActive": false,
           "staffOnDuty": 97,
@@ -6767,7 +6284,6 @@
         "neurochir": {
           "bedsTotal": 130,
           "bedsOccupied": 85,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -6776,7 +6292,6 @@
         "paediatrie": {
           "bedsTotal": 195,
           "bedsOccupied": 135,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 39,
           "surgeActive": false,
           "staffOnDuty": 49,
@@ -6810,7 +6325,6 @@
         "its": {
           "bedsTotal": 70,
           "bedsOccupied": 54,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -6819,7 +6333,6 @@
         "notaufnahme": {
           "bedsTotal": 67,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -6828,7 +6341,6 @@
         "chirurgie": {
           "bedsTotal": 399,
           "bedsOccupied": 275,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 80,
           "surgeActive": false,
           "staffOnDuty": 100,
@@ -6837,7 +6349,6 @@
         "innere": {
           "bedsTotal": 398,
           "bedsOccupied": 307,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 80,
           "surgeActive": false,
           "staffOnDuty": 100,
@@ -6846,7 +6357,6 @@
         "neurochir": {
           "bedsTotal": 133,
           "bedsOccupied": 88,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -6855,7 +6365,6 @@
         "verbrennung": {
           "bedsTotal": 133,
           "bedsOccupied": 105,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -6864,7 +6373,6 @@
         "paediatrie": {
           "bedsTotal": 200,
           "bedsOccupied": 157,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 40,
           "surgeActive": false,
           "staffOnDuty": 50,
@@ -6898,7 +6406,6 @@
         "its": {
           "bedsTotal": 19,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -6907,7 +6414,6 @@
         "notaufnahme": {
           "bedsTotal": 13,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -6916,7 +6422,6 @@
         "chirurgie": {
           "bedsTotal": 77,
           "bedsOccupied": 53,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -6925,7 +6430,6 @@
         "innere": {
           "bedsTotal": 76,
           "bedsOccupied": 55,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -6934,7 +6438,6 @@
         "neurochir": {
           "bedsTotal": 26,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -6943,7 +6446,6 @@
         "verbrennung": {
           "bedsTotal": 26,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -6977,7 +6479,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -6986,7 +6487,6 @@
         "chirurgie": {
           "bedsTotal": 9,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -6995,7 +6495,6 @@
         "innere": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -7029,7 +6528,6 @@
         "notaufnahme": {
           "bedsTotal": 425,
           "bedsOccupied": 307,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 85,
           "surgeActive": false,
           "staffOnDuty": 106,
@@ -7063,7 +6561,6 @@
         "notaufnahme": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -7072,7 +6569,6 @@
         "chirurgie": {
           "bedsTotal": 47,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -7081,7 +6577,6 @@
         "innere": {
           "bedsTotal": 47,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -7090,7 +6585,6 @@
         "paediatrie": {
           "bedsTotal": 23,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -7124,7 +6618,6 @@
         "notaufnahme": {
           "bedsTotal": 35,
           "bedsOccupied": 23,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -7158,7 +6651,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -7167,7 +6659,6 @@
         "notaufnahme": {
           "bedsTotal": 9,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -7176,7 +6667,6 @@
         "chirurgie": {
           "bedsTotal": 54,
           "bedsOccupied": 38,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -7185,7 +6675,6 @@
         "innere": {
           "bedsTotal": 55,
           "bedsOccupied": 42,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -7219,7 +6708,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -7228,7 +6716,6 @@
         "chirurgie": {
           "bedsTotal": 24,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -7237,7 +6724,6 @@
         "innere": {
           "bedsTotal": 24,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -7271,7 +6757,6 @@
         "notaufnahme": {
           "bedsTotal": 12,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -7305,7 +6790,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -7314,7 +6798,6 @@
         "notaufnahme": {
           "bedsTotal": 11,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -7323,7 +6806,6 @@
         "chirurgie": {
           "bedsTotal": 66,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -7332,7 +6814,6 @@
         "innere": {
           "bedsTotal": 65,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -7366,7 +6847,6 @@
         "notaufnahme": {
           "bedsTotal": 200,
           "bedsOccupied": 131,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 40,
           "surgeActive": false,
           "staffOnDuty": 50,
@@ -7400,7 +6880,6 @@
         "its": {
           "bedsTotal": 25,
           "bedsOccupied": 18,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -7409,7 +6888,6 @@
         "notaufnahme": {
           "bedsTotal": 36,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 9,
@@ -7418,7 +6896,6 @@
         "chirurgie": {
           "bedsTotal": 215,
           "bedsOccupied": 148,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 43,
           "surgeActive": false,
           "staffOnDuty": 54,
@@ -7427,7 +6904,6 @@
         "innere": {
           "bedsTotal": 214,
           "bedsOccupied": 160,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 43,
           "surgeActive": false,
           "staffOnDuty": 54,
@@ -7461,7 +6937,6 @@
         "its": {
           "bedsTotal": 17,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -7470,7 +6945,6 @@
         "notaufnahme": {
           "bedsTotal": 21,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -7479,7 +6953,6 @@
         "chirurgie": {
           "bedsTotal": 127,
           "bedsOccupied": 101,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -7488,7 +6961,6 @@
         "innere": {
           "bedsTotal": 127,
           "bedsOccupied": 100,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -7497,7 +6969,6 @@
         "neurochir": {
           "bedsTotal": 42,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -7531,7 +7002,6 @@
         "notaufnahme": {
           "bedsTotal": 8,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -7540,7 +7010,6 @@
         "chirurgie": {
           "bedsTotal": 50,
           "bedsOccupied": 36,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -7549,7 +7018,6 @@
         "innere": {
           "bedsTotal": 50,
           "bedsOccupied": 33,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -7583,7 +7051,6 @@
         "its": {
           "bedsTotal": 24,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -7592,7 +7059,6 @@
         "notaufnahme": {
           "bedsTotal": 25,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -7601,7 +7067,6 @@
         "chirurgie": {
           "bedsTotal": 150,
           "bedsOccupied": 103,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 38,
@@ -7610,7 +7075,6 @@
         "innere": {
           "bedsTotal": 151,
           "bedsOccupied": 99,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 38,
@@ -7619,7 +7083,6 @@
         "neurochir": {
           "bedsTotal": 50,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -7653,7 +7116,6 @@
         "notaufnahme": {
           "bedsTotal": 175,
           "bedsOccupied": 123,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 35,
           "surgeActive": false,
           "staffOnDuty": 44,
@@ -7687,7 +7149,6 @@
         "its": {
           "bedsTotal": 15,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -7696,7 +7157,6 @@
         "notaufnahme": {
           "bedsTotal": 21,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -7705,7 +7165,6 @@
         "chirurgie": {
           "bedsTotal": 127,
           "bedsOccupied": 83,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 25,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -7714,7 +7173,6 @@
         "innere": {
           "bedsTotal": 128,
           "bedsOccupied": 92,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 32,
@@ -7748,7 +7206,6 @@
         "its": {
           "bedsTotal": 13,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -7757,7 +7214,6 @@
         "notaufnahme": {
           "bedsTotal": 15,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -7766,7 +7222,6 @@
         "chirurgie": {
           "bedsTotal": 92,
           "bedsOccupied": 62,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -7775,7 +7230,6 @@
         "innere": {
           "bedsTotal": 91,
           "bedsOccupied": 65,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -7784,7 +7238,6 @@
         "paediatrie": {
           "bedsTotal": 46,
           "bedsOccupied": 32,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -7818,7 +7271,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -7827,7 +7279,6 @@
         "notaufnahme": {
           "bedsTotal": 11,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -7836,7 +7287,6 @@
         "chirurgie": {
           "bedsTotal": 67,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -7845,7 +7295,6 @@
         "innere": {
           "bedsTotal": 67,
           "bedsOccupied": 45,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -7879,7 +7328,6 @@
         "notaufnahme": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -7888,7 +7336,6 @@
         "chirurgie": {
           "bedsTotal": 47,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -7897,7 +7344,6 @@
         "innere": {
           "bedsTotal": 47,
           "bedsOccupied": 35,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -7906,7 +7352,6 @@
         "paediatrie": {
           "bedsTotal": 23,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -7940,7 +7385,6 @@
         "notaufnahme": {
           "bedsTotal": 50,
           "bedsOccupied": 38,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -7949,7 +7393,6 @@
         "innere": {
           "bedsTotal": 297,
           "bedsOccupied": 226,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 59,
           "surgeActive": false,
           "staffOnDuty": 74,
@@ -7983,7 +7426,6 @@
         "its": {
           "bedsTotal": 15,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -7992,7 +7434,6 @@
         "notaufnahme": {
           "bedsTotal": 18,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -8001,7 +7442,6 @@
         "chirurgie": {
           "bedsTotal": 108,
           "bedsOccupied": 76,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -8010,7 +7450,6 @@
         "innere": {
           "bedsTotal": 108,
           "bedsOccupied": 80,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -8044,7 +7483,6 @@
         "its": {
           "bedsTotal": 38,
           "bedsOccupied": 28,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -8053,7 +7491,6 @@
         "notaufnahme": {
           "bedsTotal": 39,
           "bedsOccupied": 26,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -8062,7 +7499,6 @@
         "chirurgie": {
           "bedsTotal": 233,
           "bedsOccupied": 173,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 47,
           "surgeActive": false,
           "staffOnDuty": 58,
@@ -8071,7 +7507,6 @@
         "innere": {
           "bedsTotal": 232,
           "bedsOccupied": 171,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 46,
           "surgeActive": false,
           "staffOnDuty": 58,
@@ -8080,7 +7515,6 @@
         "paediatrie": {
           "bedsTotal": 116,
           "bedsOccupied": 82,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 29,
@@ -8114,7 +7548,6 @@
         "its": {
           "bedsTotal": 13,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -8123,7 +7556,6 @@
         "notaufnahme": {
           "bedsTotal": 20,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -8132,7 +7564,6 @@
         "chirurgie": {
           "bedsTotal": 121,
           "bedsOccupied": 84,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 30,
@@ -8141,7 +7572,6 @@
         "innere": {
           "bedsTotal": 122,
           "bedsOccupied": 97,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 31,
@@ -8175,7 +7605,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -8184,7 +7613,6 @@
         "notaufnahme": {
           "bedsTotal": 11,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -8193,7 +7621,6 @@
         "chirurgie": {
           "bedsTotal": 65,
           "bedsOccupied": 50,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -8202,7 +7629,6 @@
         "innere": {
           "bedsTotal": 65,
           "bedsOccupied": 48,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -8236,7 +7662,6 @@
         "notaufnahme": {
           "bedsTotal": 427,
           "bedsOccupied": 283,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 85,
           "surgeActive": false,
           "staffOnDuty": 107,
@@ -8270,7 +7695,6 @@
         "its": {
           "bedsTotal": 14,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -8279,7 +7703,6 @@
         "notaufnahme": {
           "bedsTotal": 15,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -8288,7 +7711,6 @@
         "chirurgie": {
           "bedsTotal": 93,
           "bedsOccupied": 67,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 19,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -8297,7 +7719,6 @@
         "innere": {
           "bedsTotal": 93,
           "bedsOccupied": 64,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 19,
           "surgeActive": false,
           "staffOnDuty": 23,
@@ -8306,7 +7727,6 @@
         "neurochir": {
           "bedsTotal": 31,
           "bedsOccupied": 23,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -8315,7 +7735,6 @@
         "paediatrie": {
           "bedsTotal": 46,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -8349,7 +7768,6 @@
         "its": {
           "bedsTotal": 12,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -8358,7 +7776,6 @@
         "notaufnahme": {
           "bedsTotal": 18,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -8367,7 +7784,6 @@
         "chirurgie": {
           "bedsTotal": 105,
           "bedsOccupied": 78,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 21,
           "surgeActive": false,
           "staffOnDuty": 26,
@@ -8376,7 +7792,6 @@
         "innere": {
           "bedsTotal": 105,
           "bedsOccupied": 74,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 21,
           "surgeActive": false,
           "staffOnDuty": 26,
@@ -8410,7 +7825,6 @@
         "its": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -8419,7 +7833,6 @@
         "notaufnahme": {
           "bedsTotal": 18,
           "bedsOccupied": 12,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -8428,7 +7841,6 @@
         "innere": {
           "bedsTotal": 109,
           "bedsOccupied": 81,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -8462,7 +7874,6 @@
         "notaufnahme": {
           "bedsTotal": 203,
           "bedsOccupied": 157,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 41,
           "surgeActive": false,
           "staffOnDuty": 51,
@@ -8496,7 +7907,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -8505,7 +7915,6 @@
         "chirurgie": {
           "bedsTotal": 25,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -8514,7 +7923,6 @@
         "innere": {
           "bedsTotal": 25,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -8548,7 +7956,6 @@
         "notaufnahme": {
           "bedsTotal": 38,
           "bedsOccupied": 28,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -8582,7 +7989,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -8591,7 +7997,6 @@
         "notaufnahme": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -8600,7 +8005,6 @@
         "chirurgie": {
           "bedsTotal": 58,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -8609,7 +8013,6 @@
         "innere": {
           "bedsTotal": 58,
           "bedsOccupied": 46,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -8618,7 +8021,6 @@
         "paediatrie": {
           "bedsTotal": 29,
           "bedsOccupied": 21,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -8652,7 +8054,6 @@
         "notaufnahme": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -8661,7 +8062,6 @@
         "paediatrie": {
           "bedsTotal": 20,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -8695,7 +8095,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -8704,7 +8103,6 @@
         "chirurgie": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -8713,7 +8111,6 @@
         "neurochir": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -8747,7 +8144,6 @@
         "notaufnahme": {
           "bedsTotal": 9,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -8756,7 +8152,6 @@
         "chirurgie": {
           "bedsTotal": 51,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -8790,7 +8185,6 @@
         "notaufnahme": {
           "bedsTotal": 11,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -8799,7 +8193,6 @@
         "chirurgie": {
           "bedsTotal": 63,
           "bedsOccupied": 45,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -8833,7 +8226,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -8842,7 +8234,6 @@
         "chirurgie": {
           "bedsTotal": 18,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -8851,7 +8242,6 @@
         "innere": {
           "bedsTotal": 17,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -8885,7 +8275,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -8894,7 +8283,6 @@
         "chirurgie": {
           "bedsTotal": 19,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -8928,7 +8316,6 @@
         "notaufnahme": {
           "bedsTotal": 47,
           "bedsOccupied": 32,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -8962,7 +8349,6 @@
         "notaufnahme": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -8971,7 +8357,6 @@
         "chirurgie": {
           "bedsTotal": 43,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -9005,7 +8390,6 @@
         "notaufnahme": {
           "bedsTotal": 6,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -9014,7 +8398,6 @@
         "chirurgie": {
           "bedsTotal": 39,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -9048,7 +8431,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9082,7 +8464,6 @@
         "notaufnahme": {
           "bedsTotal": 22,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -9091,7 +8472,6 @@
         "paediatrie": {
           "bedsTotal": 65,
           "bedsOccupied": 43,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -9125,7 +8505,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9134,7 +8513,6 @@
         "chirurgie": {
           "bedsTotal": 19,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -9168,7 +8546,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9177,7 +8554,6 @@
         "chirurgie": {
           "bedsTotal": 17,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -9211,7 +8587,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9220,7 +8595,6 @@
         "chirurgie": {
           "bedsTotal": 18,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -9254,7 +8628,6 @@
         "notaufnahme": {
           "bedsTotal": 78,
           "bedsOccupied": 60,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -9288,7 +8661,6 @@
         "notaufnahme": {
           "bedsTotal": 14,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -9322,7 +8694,6 @@
         "notaufnahme": {
           "bedsTotal": 105,
           "bedsOccupied": 82,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 21,
           "surgeActive": false,
           "staffOnDuty": 26,
@@ -9356,7 +8727,6 @@
         "notaufnahme": {
           "bedsTotal": 62,
           "bedsOccupied": 45,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -9390,7 +8760,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9399,7 +8768,6 @@
         "chirurgie": {
           "bedsTotal": 32,
           "bedsOccupied": 21,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -9408,7 +8776,6 @@
         "innere": {
           "bedsTotal": 33,
           "bedsOccupied": 22,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 7,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -9442,7 +8809,6 @@
         "notaufnahme": {
           "bedsTotal": 73,
           "bedsOccupied": 49,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -9476,7 +8842,6 @@
         "its": {
           "bedsTotal": 3,
           "bedsOccupied": 2,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9485,7 +8850,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9494,7 +8858,6 @@
         "chirurgie": {
           "bedsTotal": 20,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -9503,7 +8866,6 @@
         "innere": {
           "bedsTotal": 17,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -9512,7 +8874,6 @@
         "neurochir": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -9546,7 +8907,6 @@
         "notaufnahme": {
           "bedsTotal": 120,
           "bedsOccupied": 94,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 24,
           "surgeActive": false,
           "staffOnDuty": 30,
@@ -9580,7 +8940,6 @@
         "notaufnahme": {
           "bedsTotal": 160,
           "bedsOccupied": 121,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 32,
           "surgeActive": false,
           "staffOnDuty": 40,
@@ -9614,7 +8973,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9623,7 +8981,6 @@
         "chirurgie": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -9657,7 +9014,6 @@
         "notaufnahme": {
           "bedsTotal": 9,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -9666,7 +9022,6 @@
         "chirurgie": {
           "bedsTotal": 51,
           "bedsOccupied": 33,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -9700,7 +9055,6 @@
         "notaufnahme": {
           "bedsTotal": 29,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -9709,7 +9063,6 @@
         "chirurgie": {
           "bedsTotal": 171,
           "bedsOccupied": 125,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 34,
           "surgeActive": false,
           "staffOnDuty": 43,
@@ -9743,7 +9096,6 @@
         "its": {
           "bedsTotal": 10,
           "bedsOccupied": 8,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -9752,7 +9104,6 @@
         "notaufnahme": {
           "bedsTotal": 25,
           "bedsOccupied": 19,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -9761,7 +9112,6 @@
         "chirurgie": {
           "bedsTotal": 147,
           "bedsOccupied": 100,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 37,
@@ -9795,7 +9145,6 @@
         "notaufnahme": {
           "bedsTotal": 24,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -9804,7 +9153,6 @@
         "innere": {
           "bedsTotal": 143,
           "bedsOccupied": 99,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 29,
           "surgeActive": false,
           "staffOnDuty": 36,
@@ -9838,7 +9186,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9847,7 +9194,6 @@
         "innere": {
           "bedsTotal": 30,
           "bedsOccupied": 20,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -9881,7 +9227,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -9890,7 +9235,6 @@
         "chirurgie": {
           "bedsTotal": 15,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -9924,7 +9268,6 @@
         "notaufnahme": {
           "bedsTotal": 87,
           "bedsOccupied": 61,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 17,
           "surgeActive": false,
           "staffOnDuty": 22,
@@ -9958,7 +9301,6 @@
         "notaufnahme": {
           "bedsTotal": 74,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 15,
           "surgeActive": false,
           "staffOnDuty": 19,
@@ -9992,7 +9334,6 @@
         "its": {
           "bedsTotal": 13,
           "bedsOccupied": 10,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -10001,7 +9342,6 @@
         "notaufnahme": {
           "bedsTotal": 18,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -10010,7 +9350,6 @@
         "chirurgie": {
           "bedsTotal": 109,
           "bedsOccupied": 82,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 27,
@@ -10019,7 +9358,6 @@
         "innere": {
           "bedsTotal": 110,
           "bedsOccupied": 79,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 22,
           "surgeActive": false,
           "staffOnDuty": 28,
@@ -10053,7 +9391,6 @@
         "notaufnahme": {
           "bedsTotal": 130,
           "bedsOccupied": 87,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 26,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -10087,7 +9424,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10096,7 +9432,6 @@
         "notaufnahme": {
           "bedsTotal": 11,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -10105,7 +9440,6 @@
         "chirurgie": {
           "bedsTotal": 63,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -10114,7 +9448,6 @@
         "innere": {
           "bedsTotal": 63,
           "bedsOccupied": 46,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -10123,7 +9456,6 @@
         "neurochir": {
           "bedsTotal": 21,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -10157,7 +9489,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10166,7 +9497,6 @@
         "notaufnahme": {
           "bedsTotal": 9,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10175,7 +9505,6 @@
         "chirurgie": {
           "bedsTotal": 53,
           "bedsOccupied": 35,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -10184,7 +9513,6 @@
         "innere": {
           "bedsTotal": 52,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -10218,7 +9546,6 @@
         "its": {
           "bedsTotal": 20,
           "bedsOccupied": 15,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -10227,7 +9554,6 @@
         "notaufnahme": {
           "bedsTotal": 19,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -10236,7 +9562,6 @@
         "chirurgie": {
           "bedsTotal": 113,
           "bedsOccupied": 84,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 28,
@@ -10245,7 +9570,6 @@
         "innere": {
           "bedsTotal": 113,
           "bedsOccupied": 88,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 28,
@@ -10254,7 +9578,6 @@
         "neurochir": {
           "bedsTotal": 38,
           "bedsOccupied": 29,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -10263,7 +9586,6 @@
         "paediatrie": {
           "bedsTotal": 57,
           "bedsOccupied": 37,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -10297,7 +9619,6 @@
         "notaufnahme": {
           "bedsTotal": 54,
           "bedsOccupied": 39,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 11,
           "surgeActive": false,
           "staffOnDuty": 14,
@@ -10306,7 +9627,6 @@
         "innere": {
           "bedsTotal": 323,
           "bedsOccupied": 257,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 65,
           "surgeActive": false,
           "staffOnDuty": 81,
@@ -10340,7 +9660,6 @@
         "its": {
           "bedsTotal": 4,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -10349,7 +9668,6 @@
         "notaufnahme": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -10358,7 +9676,6 @@
         "innere": {
           "bedsTotal": 61,
           "bedsOccupied": 41,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -10392,7 +9709,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -10401,7 +9717,6 @@
         "chirurgie": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10410,7 +9725,6 @@
         "paediatrie": {
           "bedsTotal": 5,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -10444,7 +9758,6 @@
         "notaufnahme": {
           "bedsTotal": 11,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -10453,7 +9766,6 @@
         "innere": {
           "bedsTotal": 68,
           "bedsOccupied": 49,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 17,
@@ -10487,7 +9799,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -10496,7 +9807,6 @@
         "chirurgie": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -10505,7 +9815,6 @@
         "neurochir": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -10539,7 +9848,6 @@
         "notaufnahme": {
           "bedsTotal": 15,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -10573,7 +9881,6 @@
         "notaufnahme": {
           "bedsTotal": 23,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -10582,7 +9889,6 @@
         "chirurgie": {
           "bedsTotal": 137,
           "bedsOccupied": 108,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 34,
@@ -10616,7 +9922,6 @@
         "notaufnahme": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10625,7 +9930,6 @@
         "chirurgie": {
           "bedsTotal": 46,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -10634,7 +9938,6 @@
         "innere": {
           "bedsTotal": 46,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -10668,7 +9971,6 @@
         "notaufnahme": {
           "bedsTotal": 42,
           "bedsOccupied": 28,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -10702,7 +10004,6 @@
         "its": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -10711,7 +10012,6 @@
         "notaufnahme": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10720,7 +10020,6 @@
         "chirurgie": {
           "bedsTotal": 44,
           "bedsOccupied": 32,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -10729,7 +10028,6 @@
         "innere": {
           "bedsTotal": 44,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -10763,7 +10061,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -10772,7 +10069,6 @@
         "innere": {
           "bedsTotal": 15,
           "bedsOccupied": 11,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -10806,7 +10102,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 4,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10815,7 +10110,6 @@
         "notaufnahme": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10824,7 +10118,6 @@
         "chirurgie": {
           "bedsTotal": 49,
           "bedsOccupied": 33,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 12,
@@ -10833,7 +10126,6 @@
         "innere": {
           "bedsTotal": 50,
           "bedsOccupied": 38,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 10,
           "surgeActive": false,
           "staffOnDuty": 13,
@@ -10867,7 +10159,6 @@
         "notaufnahme": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10876,7 +10167,6 @@
         "chirurgie": {
           "bedsTotal": 41,
           "bedsOccupied": 29,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -10885,7 +10175,6 @@
         "innere": {
           "bedsTotal": 41,
           "bedsOccupied": 29,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -10919,7 +10208,6 @@
         "its": {
           "bedsTotal": 6,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10928,7 +10216,6 @@
         "notaufnahme": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -10937,7 +10224,6 @@
         "chirurgie": {
           "bedsTotal": 40,
           "bedsOccupied": 28,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -10946,7 +10232,6 @@
         "innere": {
           "bedsTotal": 39,
           "bedsOccupied": 30,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -10955,7 +10240,6 @@
         "paediatrie": {
           "bedsTotal": 20,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -10989,7 +10273,6 @@
         "its": {
           "bedsTotal": 22,
           "bedsOccupied": 16,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -10998,7 +10281,6 @@
         "notaufnahme": {
           "bedsTotal": 27,
           "bedsOccupied": 21,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 7,
@@ -11007,7 +10289,6 @@
         "chirurgie": {
           "bedsTotal": 160,
           "bedsOccupied": 122,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 32,
           "surgeActive": false,
           "staffOnDuty": 40,
@@ -11016,7 +10297,6 @@
         "innere": {
           "bedsTotal": 160,
           "bedsOccupied": 118,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 32,
           "surgeActive": false,
           "staffOnDuty": 40,
@@ -11025,7 +10305,6 @@
         "paediatrie": {
           "bedsTotal": 80,
           "bedsOccupied": 62,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -11059,7 +10338,6 @@
         "its": {
           "bedsTotal": 17,
           "bedsOccupied": 13,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -11068,7 +10346,6 @@
         "notaufnahme": {
           "bedsTotal": 25,
           "bedsOccupied": 20,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 5,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -11077,7 +10354,6 @@
         "chirurgie": {
           "bedsTotal": 151,
           "bedsOccupied": 110,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 38,
@@ -11086,7 +10362,6 @@
         "innere": {
           "bedsTotal": 152,
           "bedsOccupied": 111,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 30,
           "surgeActive": false,
           "staffOnDuty": 38,
@@ -11120,7 +10395,6 @@
         "its": {
           "bedsTotal": 32,
           "bedsOccupied": 22,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -11129,7 +10403,6 @@
         "notaufnahme": {
           "bedsTotal": 45,
           "bedsOccupied": 34,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -11138,7 +10411,6 @@
         "chirurgie": {
           "bedsTotal": 267,
           "bedsOccupied": 209,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 53,
           "surgeActive": false,
           "staffOnDuty": 67,
@@ -11147,7 +10419,6 @@
         "innere": {
           "bedsTotal": 267,
           "bedsOccupied": 206,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 53,
           "surgeActive": false,
           "staffOnDuty": 67,
@@ -11156,7 +10427,6 @@
         "neurochir": {
           "bedsTotal": 89,
           "bedsOccupied": 59,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 18,
           "surgeActive": false,
           "staffOnDuty": 22,
@@ -11165,7 +10435,6 @@
         "paediatrie": {
           "bedsTotal": 134,
           "bedsOccupied": 104,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 34,
@@ -11199,7 +10468,6 @@
         "its": {
           "bedsTotal": 8,
           "bedsOccupied": 6,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -11208,7 +10476,6 @@
         "notaufnahme": {
           "bedsTotal": 12,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -11217,7 +10484,6 @@
         "chirurgie": {
           "bedsTotal": 72,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -11226,7 +10492,6 @@
         "innere": {
           "bedsTotal": 71,
           "bedsOccupied": 48,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 14,
           "surgeActive": false,
           "staffOnDuty": 18,
@@ -11260,7 +10525,6 @@
         "its": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -11269,7 +10533,6 @@
         "notaufnahme": {
           "bedsTotal": 14,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -11278,7 +10541,6 @@
         "chirurgie": {
           "bedsTotal": 81,
           "bedsOccupied": 63,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -11287,7 +10549,6 @@
         "innere": {
           "bedsTotal": 80,
           "bedsOccupied": 56,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -11296,7 +10557,6 @@
         "paediatrie": {
           "bedsTotal": 41,
           "bedsOccupied": 31,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 8,
           "surgeActive": false,
           "staffOnDuty": 10,
@@ -11330,7 +10590,6 @@
         "its": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -11339,7 +10598,6 @@
         "notaufnahme": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -11348,7 +10606,6 @@
         "chirurgie": {
           "bedsTotal": 62,
           "bedsOccupied": 49,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 16,
@@ -11357,7 +10614,6 @@
         "innere": {
           "bedsTotal": 61,
           "bedsOccupied": 40,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -11366,7 +10622,6 @@
         "paediatrie": {
           "bedsTotal": 31,
           "bedsOccupied": 23,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -11400,7 +10655,6 @@
         "its": {
           "bedsTotal": 3,
           "bedsOccupied": 2,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -11409,7 +10663,6 @@
         "notaufnahme": {
           "bedsTotal": 5,
           "bedsOccupied": 3,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 1,
@@ -11418,7 +10671,6 @@
         "chirurgie": {
           "bedsTotal": 19,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -11427,7 +10679,6 @@
         "innere": {
           "bedsTotal": 17,
           "bedsOccupied": 12,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 4,
@@ -11436,7 +10687,6 @@
         "neurochir": {
           "bedsTotal": 6,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -11445,7 +10695,6 @@
         "paediatrie": {
           "bedsTotal": 9,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -11479,7 +10728,6 @@
         "its": {
           "bedsTotal": 13,
           "bedsOccupied": 9,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 3,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -11488,7 +10736,6 @@
         "notaufnahme": {
           "bedsTotal": 19,
           "bedsOccupied": 14,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 5,
@@ -11497,7 +10744,6 @@
         "chirurgie": {
           "bedsTotal": 114,
           "bedsOccupied": 79,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 29,
@@ -11506,7 +10752,6 @@
         "innere": {
           "bedsTotal": 113,
           "bedsOccupied": 85,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 23,
           "surgeActive": false,
           "staffOnDuty": 28,
@@ -11540,7 +10785,6 @@
         "its": {
           "bedsTotal": 7,
           "bedsOccupied": 5,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 1,
           "surgeActive": false,
           "staffOnDuty": 2,
@@ -11549,7 +10793,6 @@
         "notaufnahme": {
           "bedsTotal": 10,
           "bedsOccupied": 7,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 2,
           "surgeActive": false,
           "staffOnDuty": 3,
@@ -11558,7 +10801,6 @@
         "chirurgie": {
           "bedsTotal": 61,
           "bedsOccupied": 47,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -11567,7 +10809,6 @@
         "innere": {
           "bedsTotal": 61,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 12,
           "surgeActive": false,
           "staffOnDuty": 15,
@@ -11576,7 +10817,6 @@
         "paediatrie": {
           "bedsTotal": 31,
           "bedsOccupied": 24,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 6,
           "surgeActive": false,
           "staffOnDuty": 8,
@@ -11610,7 +10850,6 @@
         "notaufnahme": {
           "bedsTotal": 78,
           "bedsOccupied": 52,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 16,
           "surgeActive": false,
           "staffOnDuty": 20,
@@ -11644,7 +10883,6 @@
         "its": {
           "bedsTotal": 44,
           "bedsOccupied": 32,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 9,
           "surgeActive": false,
           "staffOnDuty": 11,
@@ -11653,7 +10891,6 @@
         "notaufnahme": {
           "bedsTotal": 22,
           "bedsOccupied": 17,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 4,
           "surgeActive": false,
           "staffOnDuty": 6,
@@ -11662,7 +10899,6 @@
         "chirurgie": {
           "bedsTotal": 134,
           "bedsOccupied": 99,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 34,
@@ -11671,7 +10907,6 @@
         "innere": {
           "bedsTotal": 133,
           "bedsOccupied": 88,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 27,
           "surgeActive": false,
           "staffOnDuty": 33,
@@ -11680,7 +10915,6 @@
         "paediatrie": {
           "bedsTotal": 67,
           "bedsOccupied": 44,
-          "bedsReservedMANV": 0,
           "surgeCapacity": 13,
           "surgeActive": false,
           "staffOnDuty": 17,

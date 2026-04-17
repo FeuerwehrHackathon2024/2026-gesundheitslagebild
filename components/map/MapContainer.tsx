@@ -26,7 +26,6 @@ type SimFeatureProps = {
   betten: number;
   bettenFrei: number;
   bettenBelegt: number;
-  reserviert: number;
   passes: number; // 1 = passt Filter, 0 = ausgefiltert
   city: string;
 };
@@ -67,25 +66,22 @@ function totalBeds(h: Hospital): number {
 
 function sumDisciplines(
   h: Hospital,
-): { total: number; occupied: number; reserved: number; free: number } {
+): { total: number; occupied: number; free: number } {
   let total = 0;
   let occupied = 0;
-  let reserved = 0;
   for (const e of Object.values(h.disciplines)) {
     if (!e) continue;
     total += e.bedsTotal;
     occupied += e.bedsOccupied;
-    reserved += e.bedsReservedMANV;
   }
-  const free = Math.max(0, total - occupied - reserved);
-  return { total, occupied, reserved, free };
+  const free = Math.max(0, total - occupied);
+  return { total, occupied, free };
 }
 
 function hospitalPassesFilter(h: Hospital, filters: Filters): boolean {
-  const { free, occupied, reserved } = sumDisciplines(h);
+  const { free, occupied } = sumDisciplines(h);
   if (filters.freeMin > 0 && free < filters.freeMin) return false;
   if (filters.occupiedMax > 0 && occupied > filters.occupiedMax) return false;
-  if (filters.reservedMin > 0 && reserved < filters.reservedMin) return false;
   if (filters.emergencyMin > 0 && h.emergencyBeds < filters.emergencyMin)
     return false;
   return true;
@@ -113,7 +109,6 @@ function simFC(
           betten: totalBeds(h),
           bettenFrei: s.free,
           bettenBelegt: s.occupied,
-          reserviert: s.reserved,
           passes: passes ? 1 : 0,
           city: h.address.city,
         },
@@ -495,8 +490,7 @@ function SimTooltip({ id }: { id: string }) {
       </div>
       <div className="text-text-1 num">
         frei <span className="text-accent-green">{s.free}</span> · belegt{' '}
-        <span className="text-text-0">{s.occupied}</span> · reserv.{' '}
-        <span className="text-accent-cyan">{s.reserved}</span>
+        <span className="text-text-0">{s.occupied}</span>
       </div>
       <div className="text-text-1 num">
         Notfallbetten:{' '}

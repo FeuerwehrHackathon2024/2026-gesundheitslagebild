@@ -28,14 +28,11 @@ const DISTANCE_CUTOFF_KM: Record<TriageCategory, number> = {
 function hospitalHasFreeBed(
   h: Hospital,
   disciplines: Discipline[],
-  honorReserve: boolean,
 ): boolean {
   for (const d of disciplines) {
     const cap = h.disciplines[d];
     if (!cap) continue;
-    const reserve = honorReserve ? cap.bedsReservedMANV : 0;
-    const free = cap.bedsTotal - cap.bedsOccupied - reserve;
-    if (free > 0) return true;
+    if (cap.bedsTotal - cap.bedsOccupied > 0) return true;
   }
   return false;
 }
@@ -46,7 +43,7 @@ function overallLoad(h: Hospital): number {
   for (const cap of Object.values(h.disciplines)) {
     if (!cap) continue;
     total += cap.bedsTotal;
-    occ += cap.bedsOccupied + cap.bedsReservedMANV;
+    occ += cap.bedsOccupied;
   }
   return total > 0 ? occ / total : 0;
 }
@@ -59,10 +56,7 @@ function freeBedFractionMin(h: Hospital, disciplines: Discipline[]): number {
   for (const d of disciplines) {
     const cap = h.disciplines[d];
     if (!cap || cap.bedsTotal === 0) continue;
-    const free = Math.max(
-      0,
-      cap.bedsTotal - cap.bedsOccupied - cap.bedsReservedMANV,
-    );
+    const free = Math.max(0, cap.bedsTotal - cap.bedsOccupied);
     const frac = free / cap.bedsTotal;
     if (frac < min) min = frac;
   }
@@ -99,8 +93,6 @@ export interface RouteOptions {
   pzc: PZC;
   /** Alle simulierten Krankenhaeuser. */
   hospitals: Hospital[];
-  /** Wenn Region im MANV-Modus, darf MANV-Reserve genutzt werden. */
-  manvMode?: boolean;
   /** Wenn Kind: paediatrie in required + stufe +1. */
   isChild?: boolean;
   /** Patient-ID fuer deterministischen Score-Jitter. */
@@ -108,14 +100,7 @@ export interface RouteOptions {
 }
 
 export function routePatient(opts: RouteOptions): RouteResult | null {
-  const {
-    from,
-    pzc,
-    hospitals,
-    manvMode = false,
-    isChild = false,
-    patientId,
-  } = opts;
+  const { from, pzc, hospitals, isChild = false, patientId } = opts;
 
   const required: Discipline[] = [...pzc.requiredDisciplines];
   if (isChild && !required.includes('paediatrie')) {
@@ -142,7 +127,7 @@ export function routePatient(opts: RouteOptions): RouteResult | null {
     if (stufeIndex(h.versorgungsstufe) < stufeIndex(minStufe)) continue;
 
     // Freies Bett in einer required Discipline
-    if (!hospitalHasFreeBed(h, required, !manvMode)) continue;
+    if (!hospitalHasFreeBed(h, required)) continue;
 
     // Burn-Center-Anforderung
     if (pzc.requiresBurnCenter && !h.disciplines['verbrennung']) continue;

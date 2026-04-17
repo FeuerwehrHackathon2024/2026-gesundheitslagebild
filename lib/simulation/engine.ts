@@ -134,20 +134,6 @@ function freeBed(h: Hospital, d: Discipline): void {
   cap.bedsOccupied = Math.max(0, cap.bedsOccupied - 1);
 }
 
-/** MANV-Reserve fuer einen zugewiesenen Patienten aufbauen. */
-function reserveBed(h: Hospital, d: Discipline): void {
-  const cap = h.disciplines[d];
-  if (!cap) return;
-  cap.bedsReservedMANV += 1;
-}
-
-/** Reservierung zuruecknehmen (Patient kommt an oder storniert). */
-function releaseReservation(h: Hospital, d: Discipline): void {
-  const cap = h.disciplines[d];
-  if (!cap) return;
-  cap.bedsReservedMANV = Math.max(0, cap.bedsReservedMANV - 1);
-}
-
 /** Weist unassigned onScene-Patienten Krankenhaeuser zu. */
 function assignPatients(state: SimState): void {
   const hospitals = Object.values(state.hospitals);
@@ -173,10 +159,6 @@ function assignPatients(state: SimState): void {
       continue;
     }
 
-    // Bett auf der Primaerdiscipline reservieren (bleibt bis zur Ankunft).
-    reserveBed(res.hospital, pzc.primaryDiscipline);
-    p.reservedDiscipline = pzc.primaryDiscipline;
-
     p.assignedHospitalId = res.hospital.id;
     p.status = 'transport';
     p.arrivedAt = state.simTime + etaMinutes(res.distanceKm, pzc);
@@ -185,7 +167,7 @@ function assignPatients(state: SimState): void {
   }
 }
 
-/** Transport -> inTreatment wenn arrivedAt erreicht; Reserve -> Belegung. */
+/** Transport -> inTreatment wenn arrivedAt erreicht; belegt Bett. */
 function advanceTransport(state: SimState): void {
   for (const p of state.patients) {
     if (p.status !== 'transport') continue;
@@ -195,16 +177,8 @@ function advanceTransport(state: SimState): void {
       ? state.hospitals[p.assignedHospitalId]
       : undefined;
     if (!pzc || !hospital) {
-      if (hospital && p.reservedDiscipline) {
-        releaseReservation(hospital, p.reservedDiscipline);
-      }
       p.status = 'deceased';
       continue;
-    }
-
-    // Zuerst die Reservierung aufloesen, dann Bett belegen.
-    if (p.reservedDiscipline) {
-      releaseReservation(hospital, p.reservedDiscipline);
     }
 
     // Versuche primaere Discipline, dann andere required (Fallback).
@@ -219,16 +193,8 @@ function advanceTransport(state: SimState): void {
       }
     }
     if (!assigned) {
-      // Alles voll: Patient verharrt in transport (re-retry naechsten Tick).
-      // Reserve wieder aufbauen, damit beim naechsten Versuch nicht doppelt belegt wird.
-      if (p.reservedDiscipline) {
-        reserveBed(hospital, p.reservedDiscipline);
-      }
-      // Abbruch-Kriterium gegen Endlosschleife: nach 300 min verstorben.
+      // Alles voll: re-retry naechsten Tick. Abbruch nach 300 min.
       if (state.simTime - (p.spawnedAt ?? state.simTime) > 300) {
-        if (p.reservedDiscipline) {
-          releaseReservation(hospital, p.reservedDiscipline);
-        }
         p.status = 'deceased';
       }
     }

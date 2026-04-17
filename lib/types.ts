@@ -28,7 +28,6 @@ export interface PZC {
 export interface DisciplineCapacity {
   bedsTotal: number;
   bedsOccupied: number;
-  bedsReservedMANV: number;
   surgeCapacity: number;
   surgeActive: boolean;
   staffOnDuty: number;
@@ -116,8 +115,6 @@ export interface Patient {
   spawnedAt: number;
   arrivedAt?: number;
   assignedHospitalId?: string;
-  /** Discipline, auf der bei Zuweisung ein Bett reserviert wurde. */
-  reservedDiscipline?: import('@/lib/data/disciplines').Discipline;
   status: PatientStatus;
   dischargeAt?: number;
 }
