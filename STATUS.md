@@ -20,6 +20,14 @@
 - CLAUDE.md existierte bereits mit vollstaendiger Spec (Next.js / TS / MapLibre / OSRM / Zustand / shadcn)
 - doc/Krankenhaeuser_Muenchen.xlsx und doc/START_HERE.md bereits vorhanden
 - Leere Verzeichnisse `src/`, `docs/`, `tests/` vorhanden
+- **00:27** — Loop-Infrastruktur ergaenzt: `/next-phase`-Command (Gate-respektierend) und Stop-Hook (`.claude/hooks/on-stop.sh`) der STATUS.md-Datum aktualisiert und `.claude/session.log` fortschreibt
+
+## Loop-Betrieb
+
+Fuer autonomes Weiterarbeiten:
+- `/loop /next-phase` (dynamisch, Claude pacet selbst) — arbeitet Phase fuer Phase, respektiert Gates
+- Stop-Hook pflegt "Letztes Update" in STATUS.md und `.claude/session.log`
+- Gate erreicht oder Blocker → Loop meldet und stoppt, wartet auf Freigabe
 
 ## Offene Aktionen
 - [ ] `doc/START_HERE.md` lesen und autonomen Ablauf starten
