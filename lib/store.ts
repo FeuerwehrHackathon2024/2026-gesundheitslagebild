@@ -1,0 +1,180 @@
+/**
+ * Globaler Sim-Store (Zustand). Enthaelt Clock, Hospitals (mutable),
+ * Incidents, Patients. Engine tickt aus useEffect im HomePage.
+ */
+import { create } from 'zustand';
+import { subscribeWithSelector } from 'zustand/middleware';
+
+import { HOSPITALS } from '@/lib/data/hospitalsLoader';
+import type { Hospital, Incident } from '@/lib/types';
+import {
+  seededRng,
+  stateSummary,
+  tick as engineTick,
+  type SimState,
+} from '@/lib/simulation/engine';
+import {
+  SCENARIOS_BY_ID,
+  scenarioToIncident,
+} from '@/lib/simulation/scenarios';
+
+interface Store extends SimState {
+  // clock
+  isPaused: boolean;
+  speed: number;
+
+  // rng shared across ticks (seeded per reset/launch)
+  _rng: () => number;
+  _seed: number;
+
+  // actions
+  togglePause: () => void;
+  setSpeed: (speed: number) => void;
+  stepForward: (minutes: number) => void;
+  launchScenario: (scenarioId: string) => void;
+  reset: () => void;
+  runTick: () => void;
+
+  // derived: counters for UI
+  patientsByStatus: () => Record<string, number>;
+}
+
+function cloneHospitals(): Record<string, Hospital> {
+  const out: Record<string, Hospital> = {};
+  for (const h of HOSPITALS.simulated) {
+    out[h.id] = {
+      ...h,
+      disciplines: Object.fromEntries(
+        Object.entries(h.disciplines).map(([k, v]) => [
+          k,
+          v ? { ...v } : v,
+        ]),
+      ) as Hospital['disciplines'],
+      opSlots: { ...h.opSlots },
+      address: { ...h.address },
+    };
+  }
+  return out;
+}
+
+const INITIAL_SEED = 20260417;
+
+function initialState(): SimState & { _rng: () => number; _seed: number } {
+  const seed = INITIAL_SEED;
+  return {
+    simTime: 0,
+    incidents: [] as Incident[],
+    patients: [],
+    hospitals: cloneHospitals(),
+    childFlags: {},
+    unassigned: [],
+    tickLog: [],
+    _rng: seededRng(seed),
+    _seed: seed,
+  };
+}
+
+export const useSimStore = create<Store>()(
+  subscribeWithSelector((set, get) => ({
+    ...initialState(),
+    isPaused: true,
+    speed: 1,
+
+    togglePause: () => set({ isPaused: !get().isPaused }),
+
+    setSpeed: (speed) => set({ speed: Math.max(0.5, Math.min(10, speed)) }),
+
+    stepForward: (minutes) => {
+      const s = get();
+      const steps = Math.max(1, Math.round(minutes));
+      const next: SimState = {
+        simTime: s.simTime,
+        incidents: s.incidents,
+        patients: s.patients,
+        hospitals: s.hospitals,
+        childFlags: s.childFlags,
+        unassigned: s.unassigned,
+        tickLog: s.tickLog,
+      };
+      for (let i = 0; i < steps; i++) {
+        engineTick(next, s._rng);
+      }
+      set({
+        simTime: next.simTime,
+        patients: [...next.patients],
+        incidents: [...next.incidents],
+        hospitals: { ...next.hospitals },
+        unassigned: [...next.unassigned],
+      });
+    },
+
+    launchScenario: (scenarioId) => {
+      const scenario = SCENARIOS_BY_ID[scenarioId];
+      if (!scenario) return;
+      const s = get();
+      const inc = scenarioToIncident(scenario, s.simTime);
+      set({
+        incidents: [...s.incidents, inc],
+        isPaused: false,
+      });
+      if (typeof window !== 'undefined') {
+        console.log(`[sim] launched: ${inc.label} @T+${s.simTime}min`);
+      }
+    },
+
+    reset: () => {
+      const fresh = initialState();
+      set({
+        simTime: fresh.simTime,
+        incidents: fresh.incidents,
+        patients: fresh.patients,
+        hospitals: fresh.hospitals,
+        childFlags: fresh.childFlags,
+        unassigned: fresh.unassigned,
+        tickLog: fresh.tickLog,
+        _rng: fresh._rng,
+        _seed: fresh._seed,
+        isPaused: true,
+      });
+    },
+
+    runTick: () => {
+      const s = get();
+      if (s.isPaused) return;
+      const next: SimState = {
+        simTime: s.simTime,
+        incidents: s.incidents,
+        patients: s.patients,
+        hospitals: s.hospitals,
+        childFlags: s.childFlags,
+        unassigned: s.unassigned,
+        tickLog: s.tickLog,
+      };
+      engineTick(next, s._rng);
+      if (next.simTime % 10 === 0) {
+        console.log(`[sim] ${stateSummary(next)}`);
+      }
+      set({
+        simTime: next.simTime,
+        patients: [...next.patients],
+        unassigned: [...next.unassigned],
+        hospitals: { ...next.hospitals },
+        incidents: [...next.incidents],
+      });
+    },
+
+    patientsByStatus: () => {
+      const counts: Record<string, number> = {
+        onScene: 0,
+        transport: 0,
+        inTreatment: 0,
+        discharged: 0,
+        deceased: 0,
+      };
+      for (const p of get().patients) {
+        counts[p.status] = (counts[p.status] ?? 0) + 1;
+      }
+      return counts;
+    },
+  })),
+);
