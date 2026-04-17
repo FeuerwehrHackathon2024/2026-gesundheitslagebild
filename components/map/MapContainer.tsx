@@ -45,17 +45,18 @@ type IncFeatureProps = {
 };
 
 /**
- * Sensibelster Indikator: die am staerksten belastete Discipline. So sieht
- * man auch kleine Zuwaechse, wenn sie in der ITS oder Neurochir ankommen.
+ * Gesamt-Auslastung: Summe belegt / Summe gesamt ueber alle Disciplines.
+ * Konsistent mit frei/belegt in der Tooltip-Anzeige.
  */
-function maxOccupancy(h: Hospital): number {
-  let max = 0;
+function overallOccupancy(h: Hospital): number {
+  let total = 0;
+  let occ = 0;
   for (const e of Object.values(h.disciplines)) {
-    if (!e || e.bedsTotal === 0) continue;
-    const occ = e.bedsOccupied / e.bedsTotal;
-    if (occ > max) max = occ;
+    if (!e) continue;
+    total += e.bedsTotal;
+    occ += e.bedsOccupied;
   }
-  return max;
+  return total > 0 ? occ / total : 0;
 }
 
 function totalBeds(h: Hospital): number {
@@ -104,7 +105,7 @@ function simFC(
           id: h.id,
           name: h.name,
           stufe: h.versorgungsstufe,
-          occupancy: maxOccupancy(h),
+          occupancy: overallOccupancy(h),
           incoming: inflow[h.id] ?? 0,
           betten: totalBeds(h),
           bettenFrei: s.free,
@@ -579,11 +580,20 @@ export function MapContainer() {
  */
 function SimTooltip({ id }: { id: string }) {
   const hospital = useSimStore((s) => s.hospitals[id]);
-  const incoming = useSimStore((s) => {
+  const inTransitCount = useSimStore((s) => {
     let n = 0;
     for (const p of s.patients) {
       if (p.assignedHospitalId !== id) continue;
-      if (p.status !== 'transport' && p.status !== 'inTreatment') continue;
+      if (p.status !== 'transport') continue;
+      n += 1;
+    }
+    return n;
+  });
+  const inTreatmentCount = useSimStore((s) => {
+    let n = 0;
+    for (const p of s.patients) {
+      if (p.assignedHospitalId !== id) continue;
+      if (p.status !== 'inTreatment') continue;
       n += 1;
     }
     return n;
@@ -591,7 +601,12 @@ function SimTooltip({ id }: { id: string }) {
   if (!hospital) return null;
 
   const s = sumDisciplines(hospital);
-  const maxOcc = Math.round(maxOccupancy(hospital) * 100);
+  const totalOcc = s.total > 0 ? (s.occupied / s.total) * 100 : 0;
+  const effective =
+    s.total > 0
+      ? Math.min(100, ((s.occupied + inTransitCount) / s.total) * 100)
+      : 0;
+  const incoming = inTransitCount + inTreatmentCount;
 
   return (
     <>
@@ -604,6 +619,15 @@ function SimTooltip({ id }: { id: string }) {
         <span className="text-text-0">{s.occupied}</span>
       </div>
       <div className="text-text-1 num">
+        Auslastung: <span className="text-text-0">{totalOcc.toFixed(0)} %</span>
+        {inTransitCount > 0 && (
+          <span className="text-accent-cyan">
+            {' '}
+            → mit Zulauf {effective.toFixed(0)} %
+          </span>
+        )}
+      </div>
+      <div className="text-text-1 num">
         Notfallbetten:{' '}
         <span
           className={
@@ -613,9 +637,10 @@ function SimTooltip({ id }: { id: string }) {
           {hospital.emergencyBeds}
         </span>
       </div>
-      <div className="text-text-1 num">Max-Auslastung: {maxOcc} %</div>
       {incoming > 0 && (
-        <div className="text-accent-cyan num">MANV-Zulauf: +{incoming}</div>
+        <div className="text-accent-cyan num">
+          Zulauf: +{inTransitCount} · In Behandlung: {inTreatmentCount}
+        </div>
       )}
       {hospital.address.city && (
         <div className="text-text-2 num">{hospital.address.city}</div>

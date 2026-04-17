@@ -37,7 +37,7 @@ function hospitalHasFreeBed(
   return false;
 }
 
-function overallLoad(h: Hospital): number {
+function overallLoad(h: Hospital, inTransit: number): number {
   let total = 0;
   let occ = 0;
   for (const cap of Object.values(h.disciplines)) {
@@ -45,7 +45,10 @@ function overallLoad(h: Hospital): number {
     total += cap.bedsTotal;
     occ += cap.bedsOccupied;
   }
-  return total > 0 ? occ / total : 0;
+  // Patienten, die bereits zugewiesen aber noch nicht angekommen sind,
+  // zaehlen als effektive Belegung. Das spreizt den Zulauf.
+  occ += inTransit;
+  return total > 0 ? Math.min(1, occ / total) : 0;
 }
 
 /**
@@ -97,10 +100,19 @@ export interface RouteOptions {
   isChild?: boolean;
   /** Patient-ID fuer deterministischen Score-Jitter. */
   patientId?: string;
+  /** Pro Krankenhaus: Patienten in transport/inTreatment = effektive Last. */
+  inTransit?: Record<string, number>;
 }
 
 export function routePatient(opts: RouteOptions): RouteResult | null {
-  const { from, pzc, hospitals, isChild = false, patientId } = opts;
+  const {
+    from,
+    pzc,
+    hospitals,
+    isChild = false,
+    patientId,
+    inTransit = {},
+  } = opts;
 
   const required: Discipline[] = [...pzc.requiredDisciplines];
   if (isChild && !required.includes('paediatrie')) {
@@ -148,11 +160,17 @@ export function routePatient(opts: RouteOptions): RouteResult | null {
 
   let best: RouteResult | null = null;
   for (const { h, km } of candidates) {
-    const wDistance = 0.25 * (1 - km / maxKm);
-    const wCapacity = 0.35 * freeBedFractionMin(h, required);
+    const transit = inTransit[h.id] ?? 0;
+    const effLoad = overallLoad(h, transit);
+    // Haeuser mit >=95 % effektiver Last grundsaetzlich meiden.
+    if (effLoad >= 0.99) continue;
+
+    const wDistance = 0.2 * (1 - km / maxKm);
+    const wCapacity = 0.3 * freeBedFractionMin(h, required);
     const overshoot = Math.max(0, stufeIndex(h.versorgungsstufe) - idealStufe);
-    const wStufe = 0.15 * (1 / (1 + overshoot));
-    const wLoad = 0.3 * overallLoad(h);
+    const wStufe = 0.1 * (1 / (1 + overshoot));
+    // Quadratischer Load-Penalty: Haeuser nahe am Limit werden stark abgestraft.
+    const wLoad = 0.6 * effLoad * effLoad;
     const raw = wDistance + wCapacity + wStufe - wLoad;
     const score = raw * (1 + jitter);
 

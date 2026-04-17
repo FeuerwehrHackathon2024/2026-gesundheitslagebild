@@ -144,6 +144,18 @@ function freeBed(h: Hospital, d: Discipline): void {
 /** Weist unassigned onScene-Patienten Krankenhaeuser zu. */
 function assignPatients(state: SimState): void {
   const hospitals = Object.values(state.hospitals);
+
+  // Einmal pro Tick die in-Transit + inTreatment-Zaehler pro Haus aufbauen.
+  // Wird im Laufe des Tick-Durchgangs bei jeder Zuweisung hochgezaehlt, damit
+  // mehrere Patienten im selben Tick nicht alle auf dasselbe Haus laufen.
+  const inTransit: Record<string, number> = {};
+  for (const p of state.patients) {
+    if (!p.assignedHospitalId) continue;
+    if (p.status !== 'transport' && p.status !== 'inTreatment') continue;
+    inTransit[p.assignedHospitalId] =
+      (inTransit[p.assignedHospitalId] ?? 0) + 1;
+  }
+
   for (const p of state.patients) {
     if (p.status !== 'onScene') continue;
     if (p.assignedHospitalId) continue;
@@ -160,6 +172,7 @@ function assignPatients(state: SimState): void {
       hospitals,
       isChild: p.isChild,
       patientId: p.id,
+      inTransit,
     });
     if (!res) {
       if (!state.unassigned.includes(p.id)) state.unassigned.push(p.id);
@@ -169,6 +182,9 @@ function assignPatients(state: SimState): void {
     p.assignedHospitalId = res.hospital.id;
     p.status = 'transport';
     p.arrivedAt = state.simTime + etaMinutes(res.distanceKm, pzc);
+    // im gleichen Tick: Inkrement, damit der naechste Patient dieses Haus
+    // als effektiv voller sieht.
+    inTransit[res.hospital.id] = (inTransit[res.hospital.id] ?? 0) + 1;
     // aus unassigned austragen
     state.unassigned = state.unassigned.filter((x) => x !== p.id);
   }
