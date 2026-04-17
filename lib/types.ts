@@ -51,6 +51,12 @@ export interface Hospital {
   address: HospitalAddress;
   disciplines: Partial<Record<Discipline, DisciplineCapacity>>;
   opSlots: { total: number; inUse: number };
+  /**
+   * Statisch vorgehaltene Notfallbetten (~10 % der Gesamtbetten).
+   * Nur gesetzt bei Haeusern mit echter Notaufnahme-Abteilung aus der Quelldatei;
+   * reine Fachkliniken haben 0.
+   */
+  emergencyBeds: number;
   escalationLevel: EscalationLevel;
   canEscalateTo: EscalationLevel;
 }

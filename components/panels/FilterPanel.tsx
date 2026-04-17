@@ -20,6 +20,7 @@ export function FilterPanel() {
     filters.freeMin > 0 ||
     filters.occupiedMax > 0 ||
     filters.reservedMin > 0 ||
+    filters.emergencyMin > 0 ||
     SK_KEYS.some((k) => !filters.sk[k]);
 
   return (
@@ -56,6 +57,12 @@ export function FilterPanel() {
           relation="≥"
           value={filters.reservedMin}
           onChange={(v) => setFilter('reservedMin', v)}
+        />
+        <FilterInput
+          label="Notfallbetten"
+          relation="≥"
+          value={filters.emergencyMin}
+          onChange={(v) => setFilter('emergencyMin', v)}
         />
       </div>
 

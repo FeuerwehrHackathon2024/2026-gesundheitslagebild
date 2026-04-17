@@ -26,6 +26,8 @@ export interface Filters {
   occupiedMax: number;
   /** Mindestens N MANV-reservierte Betten (gesamt). 0 = aus. */
   reservedMin: number;
+  /** Mindestens N Notfallbetten (statisch). 0 = aus. */
+  emergencyMin: number;
   /** SK-Checkboxen - jede aktiv heisst: wird in Zaehlern/Halos beruecksichtigt. */
   sk: Record<Exclude<TriageCategory, 'T4'>, boolean>;
 }
@@ -34,6 +36,7 @@ export const DEFAULT_FILTERS: Filters = {
   freeMin: 0,
   occupiedMax: 0,
   reservedMin: 0,
+  emergencyMin: 0,
   sk: { T1: true, T2: true, T3: true },
 };
 

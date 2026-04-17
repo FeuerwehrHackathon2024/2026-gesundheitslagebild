@@ -289,7 +289,11 @@ async function main() {
     }
 
     const disciplines = extractDisciplines(r.abteilungen!);
-    // Jedes Haus hat mindestens Notaufnahme (Akutkrankenhaus-Basis).
+    // Hatte das Haus urspruenglich explizit "Notaufnahme" in den
+    // Excel-Abteilungen? -> bekommt 10 % Notfallbetten. Reine Fachkliniken
+    // ohne Notaufnahme bekommen 0.
+    const hasRealEmergencyDept = disciplines.has('notaufnahme');
+    // Jedes Haus hat als Basis eine notaufnahme-Discipline fuer das Routing.
     disciplines.add('notaufnahme');
 
     const rng = seededRng(hashStr(id));
@@ -309,6 +313,10 @@ async function main() {
       inUse: op ? Math.round(op * (0.3 + rng() * 0.3)) : 0,
     };
 
+    const emergencyBeds = hasRealEmergencyDept
+      ? Math.max(2, Math.round(r.betten! * 0.1))
+      : 0;
+
     simulated.push({
       id,
       name: r.name,
@@ -323,6 +331,7 @@ async function main() {
       },
       disciplines: map,
       opSlots,
+      emergencyBeds,
       escalationLevel: 'normal',
       canEscalateTo: 'katastrophe',
     });
@@ -347,6 +356,12 @@ async function main() {
     }
   }
   console.log('[gen-hospitals] Disciplines:', discCount);
+
+  const withEmergency = simulated.filter((h) => h.emergencyBeds > 0);
+  const emergencySum = withEmergency.reduce((s, h) => s + h.emergencyBeds, 0);
+  console.log(
+    `[gen-hospitals] Notfallbetten: ${withEmergency.length}/${simulated.length} Haeuser, Summe ${emergencySum}`,
+  );
 
   const payload: HospitalsPayload = {
     generatedAt: new Date().toISOString(),

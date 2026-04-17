@@ -86,6 +86,8 @@ function hospitalPassesFilter(h: Hospital, filters: Filters): boolean {
   if (filters.freeMin > 0 && free < filters.freeMin) return false;
   if (filters.occupiedMax > 0 && occupied > filters.occupiedMax) return false;
   if (filters.reservedMin > 0 && reserved < filters.reservedMin) return false;
+  if (filters.emergencyMin > 0 && h.emergencyBeds < filters.emergencyMin)
+    return false;
   return true;
 }
 
@@ -495,6 +497,16 @@ function SimTooltip({ id }: { id: string }) {
         frei <span className="text-accent-green">{s.free}</span> · belegt{' '}
         <span className="text-text-0">{s.occupied}</span> · reserv.{' '}
         <span className="text-accent-cyan">{s.reserved}</span>
+      </div>
+      <div className="text-text-1 num">
+        Notfallbetten:{' '}
+        <span
+          className={
+            hospital.emergencyBeds > 0 ? 'text-accent-amber' : 'text-text-2'
+          }
+        >
+          {hospital.emergencyBeds}
+        </span>
       </div>
       <div className="text-text-1 num">Max-Auslastung: {maxOcc} %</div>
       {incoming > 0 && (
