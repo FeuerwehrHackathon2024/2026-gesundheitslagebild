@@ -89,6 +89,7 @@ interface Store extends SimState {
   setSelection: (sel: Selection) => void;
   executeRecommendation: (rec: Recommendation) => void;
   escalateHospital: (hospitalId: string) => void;
+  toggleHospitalExclusion: (hospitalId: string) => void;
 
   // derived: counters for UI
   patientsByStatus: () => Record<string, number>;
@@ -202,6 +203,21 @@ export const useSimStore = create<Store>()(
         hospitals: {
           ...s.hospitals,
           [hospitalId]: { ...h, escalationLevel: next! },
+        },
+      });
+    },
+
+    toggleHospitalExclusion: (hospitalId) => {
+      const s = get();
+      const h = s.hospitals[hospitalId];
+      if (!h) return;
+      set({
+        hospitals: {
+          ...s.hospitals,
+          [hospitalId]: {
+            ...h,
+            excludedFromAllocation: !h.excludedFromAllocation,
+          },
         },
       });
     },

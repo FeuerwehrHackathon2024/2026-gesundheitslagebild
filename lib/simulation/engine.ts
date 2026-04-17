@@ -6,7 +6,7 @@
 import type { Discipline } from '@/lib/data/disciplines';
 import { PZC_BY_CODE } from '@/lib/data/pzc';
 import { haversineKm } from '@/lib/geo';
-import { etaMinutes, routePatient } from '@/lib/simulation/router';
+import { allocateBatch } from '@/lib/simulation/allocation';
 import type { Hospital, Incident, Patient } from '@/lib/types';
 
 export interface OccupancySnapshot {
@@ -141,52 +141,69 @@ function freeBed(h: Hospital, d: Discipline): void {
   cap.bedsOccupied = Math.max(0, cap.bedsOccupied - 1);
 }
 
-/** Weist unassigned onScene-Patienten Krankenhaeuser zu. */
+/**
+ * Weist alle onScene-Patienten dieses Ticks Krankenhaeusern zu.
+ * Delegiert an allocateBatch() — Triage-First Water-Filling mit Tick-Caps.
+ */
 function assignPatients(state: SimState): void {
-  const hospitals = Object.values(state.hospitals);
-
-  // Einmal pro Tick die in-Transit + inTreatment-Zaehler pro Haus aufbauen.
-  // Wird im Laufe des Tick-Durchgangs bei jeder Zuweisung hochgezaehlt, damit
-  // mehrere Patienten im selben Tick nicht alle auf dasselbe Haus laufen.
-  const inTransit: Record<string, number> = {};
-  for (const p of state.patients) {
-    if (!p.assignedHospitalId) continue;
-    if (p.status !== 'transport' && p.status !== 'inTreatment') continue;
-    inTransit[p.assignedHospitalId] =
-      (inTransit[p.assignedHospitalId] ?? 0) + 1;
-  }
-
+  const pending: Patient[] = [];
+  const pendingIds = new Set<string>();
   for (const p of state.patients) {
     if (p.status !== 'onScene') continue;
     if (p.assignedHospitalId) continue;
+    pending.push(p);
+    pendingIds.add(p.id);
+  }
+  if (pending.length === 0) {
+    // Alte unassigned-Eintraege behalten — sie werden im naechsten Tick mit
+    // re-spawned oder bleiben wenn wirklich kein Haus verfuegbar ist.
+    return;
+  }
 
-    const pzc = PZC_BY_CODE[p.pzc];
-    if (!pzc) continue;
+  const { results, unassignedIds, summary } = allocateBatch(state, pending);
+  const resultById: Record<string, (typeof results)[number]> = {};
+  for (const r of results) resultById[r.patientId] = r;
 
-    const inc = state.incidents.find((i) => i.id === p.incidentId);
-    if (!inc) continue;
-
-    const res = routePatient({
-      from: inc.location,
-      pzc,
-      hospitals,
-      isChild: p.isChild,
-      patientId: p.id,
-      inTransit,
-    });
-    if (!res) {
-      if (!state.unassigned.includes(p.id)) state.unassigned.push(p.id);
-      continue;
-    }
-
-    p.assignedHospitalId = res.hospital.id;
+  for (const p of state.patients) {
+    if (!pendingIds.has(p.id)) continue;
+    const r = resultById[p.id];
+    if (!r) continue;
+    p.assignedHospitalId = r.hospitalId;
     p.status = 'transport';
-    p.arrivedAt = state.simTime + etaMinutes(res.distanceKm, pzc);
-    // im gleichen Tick: Inkrement, damit der naechste Patient dieses Haus
-    // als effektiv voller sieht.
-    inTransit[res.hospital.id] = (inTransit[res.hospital.id] ?? 0) + 1;
-    // aus unassigned austragen
-    state.unassigned = state.unassigned.filter((x) => x !== p.id);
+    p.arrivedAt = state.simTime + r.etaMin;
+  }
+
+  // Unassigned-Liste: pending ohne Allocation-Result landen drin,
+  // bereits vorhandene unassigned bleiben solange sie nicht jetzt allokiert.
+  const stillUnassigned = new Set<string>(state.unassigned);
+  for (const id of pendingIds) {
+    if (resultById[id]) {
+      stillUnassigned.delete(id);
+    } else if (unassignedIds.includes(id)) {
+      stillUnassigned.add(id);
+    }
+  }
+  state.unassigned = Array.from(stillUnassigned);
+
+  if (summary.byTriage.T1.assigned + summary.byTriage.T2.assigned + summary.byTriage.T3.assigned + summary.byTriage.T4.assigned > 0) {
+    const total =
+      summary.byTriage.T1.assigned +
+      summary.byTriage.T2.assigned +
+      summary.byTriage.T3.assigned +
+      summary.byTriage.T4.assigned;
+    const unAll =
+      summary.byTriage.T1.unassigned +
+      summary.byTriage.T2.unassigned +
+      summary.byTriage.T3.unassigned +
+      summary.byTriage.T4.unassigned;
+    state.tickLog.push(
+      `[alloc T+${state.simTime}min] ` +
+        `T1:${summary.byTriage.T1.assigned} T2:${summary.byTriage.T2.assigned} ` +
+        `T3:${summary.byTriage.T3.assigned} T4:${summary.byTriage.T4.assigned} ` +
+        `→ ${summary.hospitalsTouched} Haeuser · cascade=${summary.cascadeUsed} ` +
+        `unassigned=${unAll}/${total + unAll}`,
+    );
+    if (state.tickLog.length > 200) state.tickLog.splice(0, state.tickLog.length - 200);
   }
 }
 

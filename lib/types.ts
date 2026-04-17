@@ -56,6 +56,12 @@ export interface Hospital {
    * reine Fachkliniken haben 0.
    */
   emergencyBeds: number;
+  /**
+   * Operator-Toggle: wenn true, wird das Haus vom Allokator als Ziel
+   * ausgeschlossen (kein neuer Zulauf). Bereits zugewiesene Transporte
+   * laufen weiter. Default false.
+   */
+  excludedFromAllocation: boolean;
   escalationLevel: EscalationLevel;
   canEscalateTo: EscalationLevel;
 }

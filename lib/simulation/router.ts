@@ -1,31 +1,36 @@
 /**
  * Patient-Router nach SPEC §4.3.
- * Hard constraints filtern, Score waehlt das beste Haus aus.
+ *
+ * Die schwere Verteil-Logik sitzt in `lib/simulation/allocation.ts`. Dieser
+ * Router wird nur noch fuer Ein-Patient-Pfade genutzt (z. B. Reroute-
+ * Recommendation). Die Konstanten (Distanz-Cutoffs, Stufe-Ordnung) und
+ * Helfer (findCandidates, scoreCandidate, effectiveLoad, jitterFromId)
+ * werden re-exportiert, damit der Allokator sie wiederverwendet.
  */
 import type { Discipline } from '@/lib/data/disciplines';
 import { haversineKm } from '@/lib/geo';
 import type { Hospital, PZC, TriageCategory, Versorgungsstufe } from '@/lib/types';
 
-const STUFE_ORDER: Versorgungsstufe[] = [
+export const STUFE_ORDER: Versorgungsstufe[] = [
   'grund',
   'regel',
   'schwerpunkt',
   'maximal',
 ];
 
-function stufeIndex(s: Versorgungsstufe): number {
+export function stufeIndex(s: Versorgungsstufe): number {
   return STUFE_ORDER.indexOf(s);
 }
 
 /** Hartes Distanz-Cutoff je Triage-Kategorie (SPEC §4.3). */
-const DISTANCE_CUTOFF_KM: Record<TriageCategory, number> = {
+export const DISTANCE_CUTOFF_KM: Record<TriageCategory, number> = {
   T1: 150,
   T2: 80,
   T3: 40,
   T4: 20,
 };
 
-function hospitalHasFreeBed(
+export function hospitalHasFreeBed(
   h: Hospital,
   disciplines: Discipline[],
 ): boolean {
@@ -37,7 +42,7 @@ function hospitalHasFreeBed(
   return false;
 }
 
-function overallLoad(h: Hospital, inTransit: number): number {
+export function effectiveLoad(h: Hospital, inTransit: number): number {
   let total = 0;
   let occ = 0;
   for (const cap of Object.values(h.disciplines)) {
@@ -45,8 +50,6 @@ function overallLoad(h: Hospital, inTransit: number): number {
     total += cap.bedsTotal;
     occ += cap.bedsOccupied;
   }
-  // Patienten, die bereits zugewiesen aber noch nicht angekommen sind,
-  // zaehlen als effektive Belegung. Das spreizt den Zulauf.
   occ += inTransit;
   return total > 0 ? Math.min(1, occ / total) : 0;
 }
@@ -54,7 +57,10 @@ function overallLoad(h: Hospital, inTransit: number): number {
 /**
  * Freies Bett-Anteil auf der engsten required Discipline (Flaschenhals).
  */
-function freeBedFractionMin(h: Hospital, disciplines: Discipline[]): number {
+export function freeBedFractionMin(
+  h: Hospital,
+  disciplines: Discipline[],
+): number {
   let min = 1;
   for (const d of disciplines) {
     const cap = h.disciplines[d];
@@ -66,53 +72,48 @@ function freeBedFractionMin(h: Hospital, disciplines: Discipline[]): number {
   return min;
 }
 
+/** Freie Betten (absolut) in der Primaerdiscipline. */
+export function freeBedsPrimary(h: Hospital, primary: Discipline): number {
+  const cap = h.disciplines[primary];
+  if (!cap) return 0;
+  return Math.max(0, cap.bedsTotal - cap.bedsOccupied);
+}
+
 /**
- * Deterministischer Jitter (+/- 1.5 %) aus Patient-ID-Hash.
+ * Deterministischer Jitter (+/- 1.5 %) aus String-Hash.
  * Bricht Monopol-Bildung bei sehr nahen Score-Ergebnissen, bleibt
  * reproduzierbar (gleicher Seed -> gleiche Ergebnisse).
  */
-function jitterFromId(id: string): number {
+export function jitterFromId(id: string): number {
   let h = 2166136261;
   for (let i = 0; i < id.length; i++) {
     h ^= id.charCodeAt(i);
     h = Math.imul(h, 16777619);
   }
-  const norm = ((h >>> 0) / 0xffffffff) * 2 - 1; // in [-1, 1]
+  const norm = ((h >>> 0) / 0xffffffff) * 2 - 1;
   return norm * 0.015;
 }
 
-export interface RouteResult {
-  hospital: Hospital;
-  distanceKm: number;
-  score: number;
+export interface Candidate {
+  h: Hospital;
+  km: number;
 }
 
-export interface RouteOptions {
-  /**
-   * Incident-Location fuer Distanz-Berechnung (Patientenstandort naeherungsweise).
-   */
+export interface FindCandidatesOptions {
   from: [number, number];
-  /** PZC des Patienten. */
   pzc: PZC;
-  /** Alle simulierten Krankenhaeuser. */
   hospitals: Hospital[];
-  /** Wenn Kind: paediatrie in required + stufe +1. */
   isChild?: boolean;
-  /** Patient-ID fuer deterministischen Score-Jitter. */
-  patientId?: string;
-  /** Pro Krankenhaus: Patienten in transport/inTreatment = effektive Last. */
-  inTransit?: Record<string, number>;
+  /** Ueberschreibt das Default-Cutoff fuer Cascade-Stufen im Allokator. */
+  distanceCutoffKm?: number;
 }
 
-export function routePatient(opts: RouteOptions): RouteResult | null {
-  const {
-    from,
-    pzc,
-    hospitals,
-    isChild = false,
-    patientId,
-    inTransit = {},
-  } = opts;
+/**
+ * Pruefen der Hard-Constraints (SPEC §4.3) und Distanz-Cutoff.
+ * Liefert alle Kandidaten-Haeuser plus Distanz.
+ */
+export function findCandidates(opts: FindCandidatesOptions): Candidate[] {
+  const { from, pzc, hospitals, isChild = false } = opts;
 
   const required: Discipline[] = [...pzc.requiredDisciplines];
   if (isChild && !required.includes('paediatrie')) {
@@ -125,12 +126,13 @@ export function routePatient(opts: RouteOptions): RouteResult | null {
     minStufe = STUFE_ORDER[idx] ?? minStufe;
   }
 
-  const cutoff = DISTANCE_CUTOFF_KM[pzc.triage];
+  const cutoff = opts.distanceCutoffKm ?? DISTANCE_CUTOFF_KM[pzc.triage];
 
-  // Hard-Constraint-Filter
-  type Candidate = { h: Hospital; km: number };
-  const candidates: Candidate[] = [];
+  const out: Candidate[] = [];
   for (const h of hospitals) {
+    if (h.excludedFromAllocation) continue;
+    if (h.escalationLevel === 'katastrophe') continue;
+
     // Discipline-Abdeckung
     const offersAll = required.every((d) => h.disciplines[d] !== undefined);
     if (!offersAll) continue;
@@ -147,13 +149,47 @@ export function routePatient(opts: RouteOptions): RouteResult | null {
     const km = haversineKm(from, h.coords);
     if (km > cutoff) continue;
 
-    candidates.push({ h, km });
+    out.push({ h, km });
   }
+  return out;
+}
 
+/**
+ * Extrahiert die required-Discipline-Liste fuer einen PZC (inkl. Kind).
+ * Wird vom Allokator gebraucht fuer Kapazitaets-Rechnungen.
+ */
+export function resolveRequiredDisciplines(
+  pzc: PZC,
+  isChild: boolean,
+): Discipline[] {
+  const required: Discipline[] = [...pzc.requiredDisciplines];
+  if (isChild && !required.includes('paediatrie')) {
+    required.unshift('paediatrie');
+  }
+  return required;
+}
+
+export interface RouteResult {
+  hospital: Hospital;
+  distanceKm: number;
+  score: number;
+}
+
+export interface RouteOptions extends FindCandidatesOptions {
+  patientId?: string;
+  inTransit?: Record<string, number>;
+}
+
+/**
+ * Ein-Patient-Router. Wird nur noch fuer Reroute-Recommendations genutzt.
+ * Die MANV-Batch-Verteilung laeuft ueber `allocateBatch` in allocation.ts.
+ */
+export function routePatient(opts: RouteOptions): RouteResult | null {
+  const { pzc, inTransit = {}, patientId, isChild = false } = opts;
+  const candidates = findCandidates(opts);
   if (candidates.length === 0) return null;
 
-  // Score — Gewichte auf gleichmaessigere Verteilung ausgelegt:
-  // Distanz weniger dominant, Lastpenalty deutlich staerker.
+  const required = resolveRequiredDisciplines(pzc, isChild);
   const maxKm = Math.max(...candidates.map((c) => c.km), 1);
   const idealStufe = stufeIndex(pzc.minVersorgungsstufe);
   const jitter = patientId ? jitterFromId(patientId) : 0;
@@ -161,15 +197,13 @@ export function routePatient(opts: RouteOptions): RouteResult | null {
   let best: RouteResult | null = null;
   for (const { h, km } of candidates) {
     const transit = inTransit[h.id] ?? 0;
-    const effLoad = overallLoad(h, transit);
-    // Haeuser mit >=95 % effektiver Last grundsaetzlich meiden.
+    const effLoad = effectiveLoad(h, transit);
     if (effLoad >= 0.99) continue;
 
     const wDistance = 0.2 * (1 - km / maxKm);
     const wCapacity = 0.3 * freeBedFractionMin(h, required);
     const overshoot = Math.max(0, stufeIndex(h.versorgungsstufe) - idealStufe);
     const wStufe = 0.1 * (1 / (1 + overshoot));
-    // Quadratischer Load-Penalty: Haeuser nahe am Limit werden stark abgestraft.
     const wLoad = 0.6 * effLoad * effLoad;
     const raw = wDistance + wCapacity + wStufe - wLoad;
     const score = raw * (1 + jitter);

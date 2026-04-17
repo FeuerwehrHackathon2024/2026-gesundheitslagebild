@@ -51,6 +51,7 @@ export function HospitalDetailPanel({ id }: { id: string }) {
   const simTime = useSimStore((s) => s.simTime);
   const setSelection = useSimStore((s) => s.setSelection);
   const escalateHospital = useSimStore((s) => s.escalateHospital);
+  const toggleExclusion = useSimStore((s) => s.toggleHospitalExclusion);
 
   if (!hospital) return null;
 
@@ -113,14 +114,35 @@ export function HospitalDetailPanel({ id }: { id: string }) {
           );
         })}
       </div>
-      <button
-        type="button"
-        className="w-full num text-[11px] px-2 py-1 border border-border-1 text-text-1 hover:text-text-0 hover:bg-bg-2 disabled:opacity-30"
-        onClick={() => escalateHospital(hospital.id)}
-        disabled={hospital.escalationLevel === 'katastrophe'}
-      >
-        Stufe erhoehen
-      </button>
+      <div className="flex gap-1">
+        <button
+          type="button"
+          className="flex-1 num text-[11px] px-2 py-1 border border-border-1 text-text-1 hover:text-text-0 hover:bg-bg-2 disabled:opacity-30"
+          onClick={() => escalateHospital(hospital.id)}
+          disabled={hospital.escalationLevel === 'katastrophe'}
+        >
+          Stufe erhoehen
+        </button>
+        <button
+          type="button"
+          className={clsx(
+            'flex-1 num text-[11px] px-2 py-1 border',
+            hospital.excludedFromAllocation
+              ? 'border-accent-red text-accent-red bg-accent-red/10 hover:bg-accent-red/20'
+              : 'border-border-1 text-text-1 hover:text-text-0 hover:bg-bg-2',
+          )}
+          onClick={() => toggleExclusion(hospital.id)}
+        >
+          {hospital.excludedFromAllocation
+            ? 'Wieder aufnehmen'
+            : 'Aus Zuteilung nehmen'}
+        </button>
+      </div>
+      {hospital.excludedFromAllocation && (
+        <div className="num text-[10px] text-accent-red mt-1">
+          Kein neuer MANV-Zulauf — bereits unterwegs laeuft weiter.
+        </div>
+      )}
 
       {/* Disciplines */}
       <div className="section-label mt-4 mb-2">Disciplinen</div>

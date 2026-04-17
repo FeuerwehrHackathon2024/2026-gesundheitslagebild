@@ -21,12 +21,13 @@ type SimFeatureProps = {
   id: string;
   name: string;
   stufe: Hospital['versorgungsstufe'];
-  occupancy: number; // max discipline occupancy
-  incoming: number; // aktuelle Anfahrten + inTreatment
+  occupancy: number;
+  incoming: number;
   betten: number;
   bettenFrei: number;
   bettenBelegt: number;
-  passes: number; // 1 = passt Filter, 0 = ausgefiltert
+  passes: number;
+  excluded: number; // 1 = Operator-Exclude
   city: string;
 };
 
@@ -111,6 +112,7 @@ function simFC(
           bettenFrei: s.free,
           bettenBelegt: s.occupied,
           passes: passes ? 1 : 0,
+          excluded: h.excludedFromAllocation ? 1 : 0,
           city: h.address.city,
         },
       };
@@ -385,6 +387,34 @@ export function MapContainer() {
         },
       });
 
+      // Operator-Exclude Overlay: roter durchgestrichener Kreis
+      map.addLayer({
+        id: 'hospitals-sim-excluded',
+        type: 'circle',
+        source: 'hospitals-sim',
+        filter: ['==', ['get', 'excluded'], 1],
+        paint: {
+          'circle-radius': [
+            'match',
+            ['get', 'stufe'],
+            'maximal',
+            14,
+            'schwerpunkt',
+            12,
+            'regel',
+            10,
+            'grund',
+            9,
+            9,
+          ],
+          'circle-color': '#e5484d',
+          'circle-opacity': 0.15,
+          'circle-stroke-color': '#e5484d',
+          'circle-stroke-width': 2,
+          'circle-stroke-opacity': 0.9,
+        },
+      });
+
       // Incident: Ring mit Radius (Pseudo-Ausbreitungsgebiet)
       map.addLayer({
         id: 'incidents-ring',
@@ -580,23 +610,16 @@ export function MapContainer() {
  */
 function SimTooltip({ id }: { id: string }) {
   const hospital = useSimStore((s) => s.hospitals[id]);
-  const inTransitCount = useSimStore((s) => {
-    let n = 0;
+  const counts = useSimStore((s) => {
+    const c = { planned: 0, transport: 0, inTreatment: 0, done: 0 };
     for (const p of s.patients) {
       if (p.assignedHospitalId !== id) continue;
-      if (p.status !== 'transport') continue;
-      n += 1;
+      if (p.status === 'onScene') c.planned += 1;
+      else if (p.status === 'transport') c.transport += 1;
+      else if (p.status === 'inTreatment') c.inTreatment += 1;
+      else if (p.status === 'discharged' || p.status === 'deceased') c.done += 1;
     }
-    return n;
-  });
-  const inTreatmentCount = useSimStore((s) => {
-    let n = 0;
-    for (const p of s.patients) {
-      if (p.assignedHospitalId !== id) continue;
-      if (p.status !== 'inTreatment') continue;
-      n += 1;
-    }
-    return n;
+    return c;
   });
   if (!hospital) return null;
 
@@ -604,13 +627,17 @@ function SimTooltip({ id }: { id: string }) {
   const totalOcc = s.total > 0 ? (s.occupied / s.total) * 100 : 0;
   const effective =
     s.total > 0
-      ? Math.min(100, ((s.occupied + inTransitCount) / s.total) * 100)
+      ? Math.min(100, ((s.occupied + counts.transport) / s.total) * 100)
       : 0;
-  const incoming = inTransitCount + inTreatmentCount;
 
   return (
     <>
       <div className="text-text-0 font-medium">{hospital.name}</div>
+      {hospital.excludedFromAllocation && (
+        <div className="text-accent-red num text-[10px] mt-0.5">
+          ◯ Aus Zuteilung genommen
+        </div>
+      )}
       <div className="text-text-1 num mt-0.5">
         Stufe: {hospital.versorgungsstufe} · Betten: {s.total}
       </div>
@@ -620,7 +647,7 @@ function SimTooltip({ id }: { id: string }) {
       </div>
       <div className="text-text-1 num">
         Auslastung: <span className="text-text-0">{totalOcc.toFixed(0)} %</span>
-        {inTransitCount > 0 && (
+        {counts.transport > 0 && (
           <span className="text-accent-cyan">
             {' '}
             → mit Zulauf {effective.toFixed(0)} %
@@ -637,9 +664,19 @@ function SimTooltip({ id }: { id: string }) {
           {hospital.emergencyBeds}
         </span>
       </div>
-      {incoming > 0 && (
-        <div className="text-accent-cyan num">
-          Zulauf: +{inTransitCount} · In Behandlung: {inTreatmentCount}
+      {(counts.planned > 0 ||
+        counts.transport > 0 ||
+        counts.inTreatment > 0 ||
+        counts.done > 0) && (
+        <div className="mt-1 num text-[11px]">
+          <span className="text-text-2">Geplant </span>
+          <span className="text-text-0">{counts.planned}</span>
+          <span className="text-text-2"> · Zulauf </span>
+          <span className="text-accent-cyan">{counts.transport}</span>
+          <span className="text-text-2"> · Behandlung </span>
+          <span className="text-text-0">{counts.inTreatment}</span>
+          <span className="text-text-2"> · Abgeschlossen </span>
+          <span className="text-text-2">{counts.done}</span>
         </div>
       )}
       {hospital.address.city && (

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { IncidentAllocationTable } from '@/components/panels/IncidentAllocationTable';
 import { useSimStore } from '@/lib/store';
 import { SCENARIOS } from '@/lib/simulation/scenarios';
 
@@ -37,7 +38,7 @@ export function IncidentLauncher() {
       {incidents.length > 0 && (
         <div className="mt-3">
           <div className="section-label mb-1">Aktive Lagen</div>
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-2">
             {incidents.map((inc) => (
               <li
                 key={inc.id}
@@ -47,6 +48,7 @@ export function IncidentLauncher() {
                 <div className="text-text-2 num">
                   {inc.estimatedCasualties} Patienten · ab T+{inc.startedAt}min
                 </div>
+                <IncidentAllocationTable incident={inc} />
               </li>
             ))}
           </ul>

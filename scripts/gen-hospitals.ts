@@ -329,6 +329,7 @@ async function main() {
       disciplines: map,
       opSlots,
       emergencyBeds,
+      excludedFromAllocation: false,
       escalationLevel: 'normal',
       canEscalateTo: 'katastrophe',
     });

@@ -12,7 +12,8 @@ export function LeftPanel() {
   // T4 bleibt immer drin, da SK-Filter nur T1-T3 umfasst (T4 = palliativ).
   const counts = useSimStore((s) => {
     const out: Record<string, number> = {
-      onScene: 0,
+      onSceneUnassigned: 0, // noch kein Ziel
+      onScenePlanned: 0, // Ziel zugeteilt, aber noch nicht los
       transport: 0,
       inTreatment: 0,
       discharged: 0,
@@ -24,7 +25,14 @@ export function LeftPanel() {
       if (pzc.triage !== 'T4') {
         if (!filters.sk[pzc.triage as 'T1' | 'T2' | 'T3']) continue;
       }
-      out[p.status] = (out[p.status] ?? 0) + 1;
+      if (p.status === 'onScene') {
+        const key = p.assignedHospitalId
+          ? 'onScenePlanned'
+          : 'onSceneUnassigned';
+        out[key] = (out[key] ?? 0) + 1;
+      } else {
+        out[p.status] = (out[p.status] ?? 0) + 1;
+      }
     }
     return out;
   });
@@ -66,7 +74,10 @@ export function LeftPanel() {
       <section className="p-3 border-b border-border-1">
         <div className="section-label mb-2">Patienten</div>
         <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[12px]">
-          <PatientRow label="Vor Ort" value={counts['onScene'] ?? 0} />
+          <PatientRow
+            label="Geplant"
+            value={counts['onScenePlanned'] ?? 0}
+          />
           <PatientRow label="Transport" value={counts['transport'] ?? 0} />
           <PatientRow label="Behandlung" value={counts['inTreatment'] ?? 0} />
           <PatientRow label="Entlassen" value={counts['discharged'] ?? 0} />

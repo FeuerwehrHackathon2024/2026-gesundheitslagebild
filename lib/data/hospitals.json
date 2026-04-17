@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T18:40:14.432Z",
+  "generatedAt": "2026-04-17T19:40:06.601Z",
   "simulated": [
     {
       "id": "H-DE-00001",
@@ -63,6 +63,7 @@
         "inUse": 16
       },
       "emergencyBeds": 125,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -136,6 +137,7 @@
         "inUse": 11
       },
       "emergencyBeds": 95,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -209,6 +211,7 @@
         "inUse": 12
       },
       "emergencyBeds": 112,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -282,6 +285,7 @@
         "inUse": 9
       },
       "emergencyBeds": 110,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -347,6 +351,7 @@
         "inUse": 2
       },
       "emergencyBeds": 14,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -412,6 +417,7 @@
         "inUse": 1
       },
       "emergencyBeds": 15,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -477,6 +483,7 @@
         "inUse": 2
       },
       "emergencyBeds": 17,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -558,6 +565,7 @@
         "inUse": 16
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -631,6 +639,7 @@
         "inUse": 18
       },
       "emergencyBeds": 119,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -704,6 +713,7 @@
         "inUse": 13
       },
       "emergencyBeds": 91,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -769,6 +779,7 @@
         "inUse": 3
       },
       "emergencyBeds": 40,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -826,6 +837,7 @@
         "inUse": 4
       },
       "emergencyBeds": 44,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -899,6 +911,7 @@
         "inUse": 3
       },
       "emergencyBeds": 24,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -956,6 +969,7 @@
         "inUse": 2
       },
       "emergencyBeds": 21,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1029,6 +1043,7 @@
         "inUse": 10
       },
       "emergencyBeds": 88,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1102,6 +1117,7 @@
         "inUse": 6
       },
       "emergencyBeds": 52,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1175,6 +1191,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1248,6 +1265,7 @@
         "inUse": 12
       },
       "emergencyBeds": 79,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1313,6 +1331,7 @@
         "inUse": 13
       },
       "emergencyBeds": 151,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1378,6 +1397,7 @@
         "inUse": 6
       },
       "emergencyBeds": 72,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1435,6 +1455,7 @@
         "inUse": 2
       },
       "emergencyBeds": 25,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1492,6 +1513,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1557,6 +1579,7 @@
         "inUse": 5
       },
       "emergencyBeds": 35,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1630,6 +1653,7 @@
         "inUse": 16
       },
       "emergencyBeds": 120,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1703,6 +1727,7 @@
         "inUse": 12
       },
       "emergencyBeds": 91,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1768,6 +1793,7 @@
         "inUse": 3
       },
       "emergencyBeds": 22,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1841,6 +1867,7 @@
         "inUse": 4
       },
       "emergencyBeds": 40,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1906,6 +1933,7 @@
         "inUse": 6
       },
       "emergencyBeds": 61,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -1971,6 +1999,7 @@
         "inUse": 6
       },
       "emergencyBeds": 40,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2044,6 +2073,7 @@
         "inUse": 13
       },
       "emergencyBeds": 131,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2109,6 +2139,7 @@
         "inUse": 13
       },
       "emergencyBeds": 116,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2182,6 +2213,7 @@
         "inUse": 10
       },
       "emergencyBeds": 68,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2231,6 +2263,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2288,6 +2321,7 @@
         "inUse": 10
       },
       "emergencyBeds": 74,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2353,6 +2387,7 @@
         "inUse": 4
       },
       "emergencyBeds": 47,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2426,6 +2461,7 @@
         "inUse": 7
       },
       "emergencyBeds": 46,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2491,6 +2527,7 @@
         "inUse": 4
       },
       "emergencyBeds": 54,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2548,6 +2585,7 @@
         "inUse": 6
       },
       "emergencyBeds": 43,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2605,6 +2643,7 @@
         "inUse": 6
       },
       "emergencyBeds": 44,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2670,6 +2709,7 @@
         "inUse": 2
       },
       "emergencyBeds": 23,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2727,6 +2767,7 @@
         "inUse": 2
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2784,6 +2825,7 @@
         "inUse": 4
       },
       "emergencyBeds": 41,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2841,6 +2883,7 @@
         "inUse": 5
       },
       "emergencyBeds": 41,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2898,6 +2941,7 @@
         "inUse": 2
       },
       "emergencyBeds": 15,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -2947,6 +2991,7 @@
         "inUse": 1
       },
       "emergencyBeds": 14,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3004,6 +3049,7 @@
         "inUse": 1
       },
       "emergencyBeds": 11,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3053,6 +3099,7 @@
         "inUse": 2
       },
       "emergencyBeds": 16,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3102,6 +3149,7 @@
         "inUse": 0
       },
       "emergencyBeds": 11,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3151,6 +3199,7 @@
         "inUse": 1
       },
       "emergencyBeds": 12,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3208,6 +3257,7 @@
         "inUse": 1
       },
       "emergencyBeds": 9,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3257,6 +3307,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3330,6 +3381,7 @@
         "inUse": 18
       },
       "emergencyBeds": 153,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3403,6 +3455,7 @@
         "inUse": 14
       },
       "emergencyBeds": 136,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3476,6 +3529,7 @@
         "inUse": 17
       },
       "emergencyBeds": 134,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3549,6 +3603,7 @@
         "inUse": 17
       },
       "emergencyBeds": 122,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3622,6 +3677,7 @@
         "inUse": 16
       },
       "emergencyBeds": 114,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3687,6 +3743,7 @@
         "inUse": 11
       },
       "emergencyBeds": 108,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3752,6 +3809,7 @@
         "inUse": 11
       },
       "emergencyBeds": 91,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3825,6 +3883,7 @@
         "inUse": 11
       },
       "emergencyBeds": 82,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3890,6 +3949,7 @@
         "inUse": 11
       },
       "emergencyBeds": 76,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -3963,6 +4023,7 @@
         "inUse": 11
       },
       "emergencyBeds": 77,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4028,6 +4089,7 @@
         "inUse": 9
       },
       "emergencyBeds": 71,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4093,6 +4155,7 @@
         "inUse": 3
       },
       "emergencyBeds": 32,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4166,6 +4229,7 @@
         "inUse": 11
       },
       "emergencyBeds": 71,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4231,6 +4295,7 @@
         "inUse": 7
       },
       "emergencyBeds": 68,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4304,6 +4369,7 @@
         "inUse": 6
       },
       "emergencyBeds": 67,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4361,6 +4427,7 @@
         "inUse": 1
       },
       "emergencyBeds": 15,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4426,6 +4493,7 @@
         "inUse": 5
       },
       "emergencyBeds": 65,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4499,6 +4567,7 @@
         "inUse": 7
       },
       "emergencyBeds": 62,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4564,6 +4633,7 @@
         "inUse": 8
       },
       "emergencyBeds": 61,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4637,6 +4707,7 @@
         "inUse": 5
       },
       "emergencyBeds": 56,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4710,6 +4781,7 @@
         "inUse": 5
       },
       "emergencyBeds": 58,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4775,6 +4847,7 @@
         "inUse": 6
       },
       "emergencyBeds": 54,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4848,6 +4921,7 @@
         "inUse": 3
       },
       "emergencyBeds": 32,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4913,6 +4987,7 @@
         "inUse": 5
       },
       "emergencyBeds": 44,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -4970,6 +5045,7 @@
         "inUse": 3
       },
       "emergencyBeds": 26,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5035,6 +5111,7 @@
         "inUse": 4
       },
       "emergencyBeds": 29,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5100,6 +5177,7 @@
         "inUse": 4
       },
       "emergencyBeds": 34,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5157,6 +5235,7 @@
         "inUse": 4
       },
       "emergencyBeds": 33,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5214,6 +5293,7 @@
         "inUse": 4
       },
       "emergencyBeds": 33,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5279,6 +5359,7 @@
         "inUse": 5
       },
       "emergencyBeds": 35,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5336,6 +5417,7 @@
         "inUse": 3
       },
       "emergencyBeds": 25,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5393,6 +5475,7 @@
         "inUse": 1
       },
       "emergencyBeds": 16,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5450,6 +5533,7 @@
         "inUse": 2
       },
       "emergencyBeds": 16,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5515,6 +5599,7 @@
         "inUse": 3
       },
       "emergencyBeds": 22,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5588,6 +5673,7 @@
         "inUse": 4
       },
       "emergencyBeds": 41,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5661,6 +5747,7 @@
         "inUse": 7
       },
       "emergencyBeds": 55,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5726,6 +5813,7 @@
         "inUse": 4
       },
       "emergencyBeds": 40,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5783,6 +5871,7 @@
         "inUse": 4
       },
       "emergencyBeds": 48,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5848,6 +5937,7 @@
         "inUse": 2
       },
       "emergencyBeds": 24,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5913,6 +6003,7 @@
         "inUse": 0
       },
       "emergencyBeds": 50,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -5978,6 +6069,7 @@
         "inUse": 11
       },
       "emergencyBeds": 75,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6043,6 +6135,7 @@
         "inUse": 5
       },
       "emergencyBeds": 30,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6108,6 +6201,7 @@
         "inUse": 6
       },
       "emergencyBeds": 45,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6165,6 +6259,7 @@
         "inUse": 8
       },
       "emergencyBeds": 92,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6230,6 +6325,7 @@
         "inUse": 8
       },
       "emergencyBeds": 89,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6303,6 +6399,7 @@
         "inUse": 17
       },
       "emergencyBeds": 123,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6384,6 +6481,7 @@
         "inUse": 12
       },
       "emergencyBeds": 140,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6457,6 +6555,7 @@
         "inUse": 3
       },
       "emergencyBeds": 24,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6506,6 +6605,7 @@
         "inUse": 0
       },
       "emergencyBeds": 2,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6539,6 +6639,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6596,6 +6697,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6629,6 +6731,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6686,6 +6789,7 @@
         "inUse": 2
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6735,6 +6839,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6768,6 +6873,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6825,6 +6931,7 @@
         "inUse": 1
       },
       "emergencyBeds": 15,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6858,6 +6965,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6915,6 +7023,7 @@
         "inUse": 5
       },
       "emergencyBeds": 49,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -6980,6 +7089,7 @@
         "inUse": 4
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7029,6 +7139,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7094,6 +7205,7 @@
         "inUse": 3
       },
       "emergencyBeds": 40,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7127,6 +7239,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7184,6 +7297,7 @@
         "inUse": 3
       },
       "emergencyBeds": 29,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7249,6 +7363,7 @@
         "inUse": 3
       },
       "emergencyBeds": 26,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7306,6 +7421,7 @@
         "inUse": 2
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7363,6 +7479,7 @@
         "inUse": 1
       },
       "emergencyBeds": 13,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7404,6 +7521,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7461,6 +7579,7 @@
         "inUse": 3
       },
       "emergencyBeds": 25,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7526,6 +7645,7 @@
         "inUse": 7
       },
       "emergencyBeds": 66,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7583,6 +7703,7 @@
         "inUse": 4
       },
       "emergencyBeds": 28,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7640,6 +7761,7 @@
         "inUse": 2
       },
       "emergencyBeds": 15,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7673,6 +7795,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7746,6 +7869,7 @@
         "inUse": 3
       },
       "emergencyBeds": 29,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7803,6 +7927,7 @@
         "inUse": 3
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7852,6 +7977,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7885,6 +8011,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7934,6 +8061,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -7967,6 +8095,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8032,6 +8161,7 @@
         "inUse": 2
       },
       "emergencyBeds": 16,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8073,6 +8203,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8122,6 +8253,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8163,6 +8295,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8204,6 +8337,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8253,6 +8387,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8294,6 +8429,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8327,6 +8463,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8368,6 +8505,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8409,6 +8547,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8442,6 +8581,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8483,6 +8623,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8524,6 +8665,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8565,6 +8707,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8606,6 +8749,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8639,6 +8783,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8672,6 +8817,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8705,6 +8851,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8738,6 +8885,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8787,6 +8935,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8820,6 +8969,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8885,6 +9035,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8918,6 +9069,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8951,6 +9103,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -8992,6 +9145,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9033,6 +9187,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9074,6 +9229,7 @@
         "inUse": 2
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9123,6 +9279,7 @@
         "inUse": 3
       },
       "emergencyBeds": 18,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9164,6 +9321,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9205,6 +9363,7 @@
         "inUse": 0
       },
       "emergencyBeds": 4,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9246,6 +9405,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9279,6 +9439,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9312,6 +9473,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9369,6 +9531,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9402,6 +9565,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9467,6 +9631,7 @@
         "inUse": 2
       },
       "emergencyBeds": 17,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9524,6 +9689,7 @@
         "inUse": 1
       },
       "emergencyBeds": 12,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9597,6 +9763,7 @@
         "inUse": 3
       },
       "emergencyBeds": 36,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9638,6 +9805,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9687,6 +9855,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9736,6 +9905,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9777,6 +9947,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9826,6 +9997,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9859,6 +10031,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9900,6 +10073,7 @@
         "inUse": 2
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9949,6 +10123,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -9982,6 +10157,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10039,6 +10215,7 @@
         "inUse": 2
       },
       "emergencyBeds": 10,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10080,6 +10257,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10137,6 +10315,7 @@
         "inUse": 0
       },
       "emergencyBeds": 11,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10186,6 +10365,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10251,6 +10431,7 @@
         "inUse": 1
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10316,6 +10497,7 @@
         "inUse": 7
       },
       "emergencyBeds": 45,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10373,6 +10555,7 @@
         "inUse": 3
       },
       "emergencyBeds": 35,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10446,6 +10629,7 @@
         "inUse": 7
       },
       "emergencyBeds": 83,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10503,6 +10687,7 @@
         "inUse": 2
       },
       "emergencyBeds": 16,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10568,6 +10753,7 @@
         "inUse": 2
       },
       "emergencyBeds": 23,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10633,6 +10819,7 @@
         "inUse": 2
       },
       "emergencyBeds": 17,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10706,6 +10893,7 @@
         "inUse": 1
       },
       "emergencyBeds": 6,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10763,6 +10951,7 @@
         "inUse": 3
       },
       "emergencyBeds": 26,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10828,6 +11017,7 @@
         "inUse": 2
       },
       "emergencyBeds": 17,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10861,6 +11051,7 @@
         "inUse": 0
       },
       "emergencyBeds": 0,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     },
@@ -10926,6 +11117,7 @@
         "inUse": 6
       },
       "emergencyBeds": 40,
+      "excludedFromAllocation": false,
       "escalationLevel": "normal",
       "canEscalateTo": "katastrophe"
     }
