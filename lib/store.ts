@@ -6,7 +6,14 @@ import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
 import { HOSPITALS } from '@/lib/data/hospitalsLoader';
-import type { Alert, Hospital, Incident, TriageCategory } from '@/lib/types';
+import { PZC_BY_CODE } from '@/lib/data/pzc';
+import type {
+  Alert,
+  Hospital,
+  Incident,
+  Recommendation,
+  TriageCategory,
+} from '@/lib/types';
 import {
   seededRng,
   stateSummary,
@@ -18,6 +25,10 @@ import {
   detectAll,
   type AlertCandidate,
 } from '@/lib/simulation/detection';
+import {
+  generateRecommendations,
+  mergeRecommendations,
+} from '@/lib/simulation/recommendations';
 import {
   SCENARIOS_BY_ID,
   scenarioToIncident,
@@ -56,6 +67,7 @@ interface Store extends SimState {
 
   // detection
   alerts: Alert[];
+  recommendations: Recommendation[];
 
   // UI selection (HospitalDetailPanel / IncidentPanel)
   selection: Selection;
@@ -75,6 +87,8 @@ interface Store extends SimState {
   toggleSK: (sk: keyof Filters['sk']) => void;
   resetFilters: () => void;
   setSelection: (sel: Selection) => void;
+  executeRecommendation: (rec: Recommendation) => void;
+  escalateHospital: (hospitalId: string) => void;
 
   // derived: counters for UI
   patientsByStatus: () => Record<string, number>;
@@ -171,10 +185,136 @@ export const useSimStore = create<Store>()(
     isPaused: true,
     speed: 1,
     alerts: [],
+    recommendations: [],
     selection: null,
     filters: { ...DEFAULT_FILTERS, sk: { ...DEFAULT_FILTERS.sk } },
 
     setSelection: (sel) => set({ selection: sel }),
+
+    escalateHospital: (hospitalId) => {
+      const s = get();
+      const h = s.hospitals[hospitalId];
+      if (!h) return;
+      const order = ['normal', 'erhoeht', 'manv-1', 'manv-2', 'katastrophe'] as const;
+      const idx = order.indexOf(h.escalationLevel);
+      const next = order[Math.min(order.length - 1, idx + 1)];
+      set({
+        hospitals: {
+          ...s.hospitals,
+          [hospitalId]: { ...h, escalationLevel: next! },
+        },
+      });
+    },
+
+    executeRecommendation: (rec) => {
+      const s = get();
+      const newHospitals: Record<string, Hospital> = { ...s.hospitals };
+      let newPatients = [...s.patients];
+
+      switch (rec.action) {
+        case 'activate-surge': {
+          const h = newHospitals[rec.targetHospitalIds[0] ?? ''];
+          if (h) {
+            const newDiscs = { ...h.disciplines };
+            for (const [d, cap] of Object.entries(newDiscs) as Array<
+              [keyof typeof newDiscs, (typeof newDiscs)[keyof typeof newDiscs]]
+            >) {
+              if (!cap || cap.surgeActive || cap.surgeCapacity <= 0) continue;
+              newDiscs[d] = {
+                ...cap,
+                surgeActive: true,
+                bedsTotal: cap.bedsTotal + cap.surgeCapacity,
+                surgeCapacity: 0,
+              };
+            }
+            newHospitals[h.id] = { ...h, disciplines: newDiscs };
+          }
+          break;
+        }
+        case 'alert-adjacent': {
+          for (const id of rec.targetHospitalIds) {
+            const h = newHospitals[id];
+            if (h && h.escalationLevel === 'normal') {
+              newHospitals[id] = { ...h, escalationLevel: 'erhoeht' };
+            }
+          }
+          break;
+        }
+        case 'reroute': {
+          const [targetId, sourceId] = rec.targetHospitalIds;
+          if (!targetId || !sourceId) break;
+          newPatients = newPatients.map((p) => {
+            if (p.assignedHospitalId !== sourceId) return p;
+            if (p.status !== 'transport') return p;
+            return {
+              ...p,
+              assignedHospitalId: targetId,
+              arrivedAt: s.simTime + 15,
+            };
+          });
+          break;
+        }
+        case 'transfer-stable': {
+          const [sourceId] = rec.targetHospitalIds;
+          if (!sourceId) break;
+          const source = newHospitals[sourceId];
+          if (!source) break;
+          const newDiscs = {
+            ...source.disciplines,
+          } as typeof source.disciplines;
+          let freed = 0;
+          const maxFree = rec.expectedImpact.bedsGained ?? 3;
+          newPatients = newPatients.map((p) => {
+            if (freed >= maxFree) return p;
+            if (p.assignedHospitalId !== sourceId) return p;
+            if (p.status !== 'inTreatment') return p;
+            const pzc = PZC_BY_CODE[p.pzc];
+            if (!pzc || pzc.triage === 'T1') return p;
+            const cap = newDiscs[pzc.primaryDiscipline];
+            if (cap) {
+              newDiscs[pzc.primaryDiscipline] = {
+                ...cap,
+                bedsOccupied: Math.max(0, cap.bedsOccupied - 1),
+              };
+            }
+            freed += 1;
+            return { ...p, status: 'discharged' as const };
+          });
+          newHospitals[sourceId] = { ...source, disciplines: newDiscs };
+          break;
+        }
+        case 'activate-kv-notdienst': {
+          const h = newHospitals[rec.targetHospitalIds[0] ?? ''];
+          if (h) {
+            const newDiscs = { ...h.disciplines };
+            const notCap = newDiscs['notaufnahme'];
+            if (notCap) {
+              const free = rec.expectedImpact.bedsGained ?? 4;
+              newDiscs['notaufnahme'] = {
+                ...notCap,
+                bedsOccupied: Math.max(0, notCap.bedsOccupied - free),
+              };
+              newHospitals[h.id] = { ...h, disciplines: newDiscs };
+            }
+          }
+          break;
+        }
+        case 'request-cross-region': {
+          // Informational only — no state mutation
+          break;
+        }
+      }
+
+      // Recommendation als ausgefuehrt markieren
+      const newRecs = s.recommendations.map((r) =>
+        r.id === rec.id ? { ...r, executable: false } : r,
+      );
+      set({
+        hospitals: newHospitals,
+        patients: newPatients,
+        recommendations: newRecs,
+      });
+    },
 
     togglePause: () => set({ isPaused: !get().isPaused }),
 
@@ -210,6 +350,11 @@ export const useSimStore = create<Store>()(
         engineTick(next, s._rng);
       }
       const newAlerts = mergeAlerts(s.alerts, detectAll(next), next.simTime);
+      const newRecs = mergeRecommendations(
+        s.recommendations,
+        generateRecommendations(next, newAlerts),
+        next.simTime,
+      );
       set({
         simTime: next.simTime,
         patients: [...next.patients],
@@ -218,6 +363,7 @@ export const useSimStore = create<Store>()(
         unassigned: [...next.unassigned],
         occupancyHistory: [...next.occupancyHistory],
         alerts: newAlerts,
+        recommendations: newRecs,
       });
     },
 
@@ -247,6 +393,7 @@ export const useSimStore = create<Store>()(
         tickLog: fresh.tickLog,
         occupancyHistory: fresh.occupancyHistory,
         alerts: [],
+        recommendations: [],
         selection: null,
         _rng: fresh._rng,
         _seed: fresh._seed,
@@ -272,6 +419,11 @@ export const useSimStore = create<Store>()(
         console.log(`[sim] ${stateSummary(next)}`);
       }
       const newAlerts = mergeAlerts(s.alerts, detectAll(next), next.simTime);
+      const newRecs = mergeRecommendations(
+        s.recommendations,
+        generateRecommendations(next, newAlerts),
+        next.simTime,
+      );
       set({
         simTime: next.simTime,
         patients: [...next.patients],
@@ -280,6 +432,7 @@ export const useSimStore = create<Store>()(
         incidents: [...next.incidents],
         occupancyHistory: [...next.occupancyHistory],
         alerts: newAlerts,
+        recommendations: newRecs,
       });
     },
 
