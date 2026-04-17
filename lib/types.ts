@@ -124,10 +124,13 @@ export type AlertScope = 'hospital' | 'region' | 'system';
 
 export interface Alert {
   id: string;
+  ruleName: string;
   severity: AlertSeverity;
   scope: AlertScope;
   scopeRef: string;
   firedAt: number;
+  /** Sim-Zeit, zu der die Rule nicht mehr ausgeloest wurde. Alert wird ausgeblendet. */
+  resolvedAt?: number;
   title: string;
   detail: string;
   linkedRecommendations: string[];

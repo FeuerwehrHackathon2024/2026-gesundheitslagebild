@@ -9,6 +9,11 @@ import { haversineKm } from '@/lib/geo';
 import { etaMinutes, routePatient } from '@/lib/simulation/router';
 import type { Hospital, Incident, Patient } from '@/lib/types';
 
+export interface OccupancySnapshot {
+  simTime: number;
+  occupancy: Record<string, number>; // hospitalId -> overall occupancy 0..1
+}
+
 export interface SimState {
   simTime: number; // Minuten seit T0
   incidents: Incident[];
@@ -17,6 +22,8 @@ export interface SimState {
   childFlags: Record<string, boolean>; // patient.id -> isChild (cache)
   unassigned: string[]; // patient-ids ohne Zuweisung
   tickLog: string[];
+  /** Rolling window (max 12 Eintraege = 60 min bei 5-min-Resolution). */
+  occupancyHistory: OccupancySnapshot[];
 }
 
 /**
@@ -224,6 +231,27 @@ export function tick(state: SimState, rng: () => number): void {
   advanceTransport(state);
   assignPatients(state);
   advanceTreatments(state);
+  // Rolling occupancy snapshot alle 5 sim-min fuer Trend-Detection.
+  if (state.simTime % 5 === 0) {
+    const snap: OccupancySnapshot = {
+      simTime: state.simTime,
+      occupancy: {},
+    };
+    for (const h of Object.values(state.hospitals)) {
+      let total = 0;
+      let occ = 0;
+      for (const cap of Object.values(h.disciplines)) {
+        if (!cap) continue;
+        total += cap.bedsTotal;
+        occ += cap.bedsOccupied;
+      }
+      snap.occupancy[h.id] = total > 0 ? occ / total : 0;
+    }
+    state.occupancyHistory.push(snap);
+    if (state.occupancyHistory.length > 12) {
+      state.occupancyHistory.shift();
+    }
+  }
 }
 
 /** Faengt Szenario an. Seed als PRNG-Quelle. */

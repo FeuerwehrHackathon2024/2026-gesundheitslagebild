@@ -6,7 +6,7 @@ import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 
 import { HOSPITALS } from '@/lib/data/hospitalsLoader';
-import type { Hospital, Incident } from '@/lib/types';
+import type { Alert, Hospital, Incident, TriageCategory } from '@/lib/types';
 import {
   seededRng,
   stateSummary,
@@ -14,10 +14,14 @@ import {
   type SimState,
 } from '@/lib/simulation/engine';
 import {
+  alertKey,
+  detectAll,
+  type AlertCandidate,
+} from '@/lib/simulation/detection';
+import {
   SCENARIOS_BY_ID,
   scenarioToIncident,
 } from '@/lib/simulation/scenarios';
-import type { TriageCategory } from '@/lib/types';
 
 export interface Filters {
   /** Mindestens N freie Betten (gesamt). 0 = aus. */
@@ -37,6 +41,11 @@ export const DEFAULT_FILTERS: Filters = {
   sk: { T1: true, T2: true, T3: true },
 };
 
+export type Selection =
+  | { kind: 'hospital'; id: string }
+  | { kind: 'incident'; id: string }
+  | null;
+
 interface Store extends SimState {
   // clock
   isPaused: boolean;
@@ -44,6 +53,12 @@ interface Store extends SimState {
 
   // filters
   filters: Filters;
+
+  // detection
+  alerts: Alert[];
+
+  // UI selection (HospitalDetailPanel / IncidentPanel)
+  selection: Selection;
 
   // rng shared across ticks (seeded per reset/launch)
   _rng: () => number;
@@ -59,6 +74,7 @@ interface Store extends SimState {
   setFilter: <K extends keyof Filters>(key: K, value: Filters[K]) => void;
   toggleSK: (sk: keyof Filters['sk']) => void;
   resetFilters: () => void;
+  setSelection: (sel: Selection) => void;
 
   // derived: counters for UI
   patientsByStatus: () => Record<string, number>;
@@ -94,9 +110,59 @@ function initialState(): SimState & { _rng: () => number; _seed: number } {
     childFlags: {},
     unassigned: [],
     tickLog: [],
+    occupancyHistory: [],
     _rng: seededRng(seed),
     _seed: seed,
   };
+}
+
+/**
+ * Mergt detektierte Alert-Kandidaten in die bestehende Alerts-Liste.
+ * - Ein aktiver Alert mit gleichem scope+scopeRef+rule wird nicht erneut
+ *   gefeuert, solange er noch nicht resolved ist.
+ * - Wenn ein bestehender Alert nicht mehr in den Kandidaten auftaucht und
+ *   noch nicht resolved ist, wird sein resolvedAt auf simTime gesetzt.
+ * - Resolvierte Alerts werden 30 min nach Resolve gepurged.
+ */
+function mergeAlerts(
+  existing: Alert[],
+  candidates: AlertCandidate[],
+  simTime: number,
+): Alert[] {
+  const byKey = new Map<string, Alert>();
+  for (const a of existing) byKey.set(alertKey(a), a);
+
+  const activeNow = new Set<string>();
+  for (const cand of candidates) {
+    const key = alertKey(cand);
+    activeNow.add(key);
+    const prev = byKey.get(key);
+    if (prev && prev.resolvedAt == null) {
+      // aktiv und nicht resolved -> Titel/Detail aktualisieren, aber firedAt halten
+      prev.title = cand.title;
+      prev.detail = cand.detail;
+      prev.severity = cand.severity;
+      continue;
+    }
+    // Neuer Alert (oder reaktiviert nach Resolve)
+    byKey.set(key, {
+      ...cand,
+      id: `A-${key}-${simTime}`,
+      firedAt: simTime,
+    });
+  }
+
+  // Resolve: alles was aktuell nicht mehr in activeNow aber noch nicht resolved ist
+  for (const [key, a] of byKey) {
+    if (!activeNow.has(key) && a.resolvedAt == null) {
+      a.resolvedAt = simTime;
+    }
+  }
+
+  // Purge: resolvierte Alerts aelter als 30 sim-min weg
+  return Array.from(byKey.values()).filter(
+    (a) => a.resolvedAt == null || simTime - a.resolvedAt < 30,
+  );
 }
 
 export const useSimStore = create<Store>()(
@@ -104,7 +170,11 @@ export const useSimStore = create<Store>()(
     ...initialState(),
     isPaused: true,
     speed: 1,
+    alerts: [],
+    selection: null,
     filters: { ...DEFAULT_FILTERS, sk: { ...DEFAULT_FILTERS.sk } },
+
+    setSelection: (sel) => set({ selection: sel }),
 
     togglePause: () => set({ isPaused: !get().isPaused }),
 
@@ -134,16 +204,20 @@ export const useSimStore = create<Store>()(
         childFlags: s.childFlags,
         unassigned: s.unassigned,
         tickLog: s.tickLog,
+        occupancyHistory: s.occupancyHistory,
       };
       for (let i = 0; i < steps; i++) {
         engineTick(next, s._rng);
       }
+      const newAlerts = mergeAlerts(s.alerts, detectAll(next), next.simTime);
       set({
         simTime: next.simTime,
         patients: [...next.patients],
         incidents: [...next.incidents],
         hospitals: { ...next.hospitals },
         unassigned: [...next.unassigned],
+        occupancyHistory: [...next.occupancyHistory],
+        alerts: newAlerts,
       });
     },
 
@@ -171,6 +245,9 @@ export const useSimStore = create<Store>()(
         childFlags: fresh.childFlags,
         unassigned: fresh.unassigned,
         tickLog: fresh.tickLog,
+        occupancyHistory: fresh.occupancyHistory,
+        alerts: [],
+        selection: null,
         _rng: fresh._rng,
         _seed: fresh._seed,
         isPaused: true,
@@ -188,17 +265,21 @@ export const useSimStore = create<Store>()(
         childFlags: s.childFlags,
         unassigned: s.unassigned,
         tickLog: s.tickLog,
+        occupancyHistory: s.occupancyHistory,
       };
       engineTick(next, s._rng);
       if (next.simTime % 10 === 0) {
         console.log(`[sim] ${stateSummary(next)}`);
       }
+      const newAlerts = mergeAlerts(s.alerts, detectAll(next), next.simTime);
       set({
         simTime: next.simTime,
         patients: [...next.patients],
         unassigned: [...next.unassigned],
         hospitals: { ...next.hospitals },
         incidents: [...next.incidents],
+        occupancyHistory: [...next.occupancyHistory],
+        alerts: newAlerts,
       });
     },
 
