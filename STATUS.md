@@ -5,11 +5,11 @@
 | Feld | Wert |
 |------|------|
 | Aktive Phase | Phase 0 — Repo-Bootstrap |
-| Aktueller Schritt | Schritt 0.4 erledigt (App-Shell: layout/page/globals.css mit allen CSS-Variablen aus DESIGN.md §1 + shadcn-HSL-Mapping, ESLint auf 8 zurueck, CSS-Module-Deklaration). `pnpm build/typecheck/lint` gruen. Als naechstes Schritt 0.5: Test-Runner-Setup (`vitest.config.ts` + `playwright.config.ts`) und Gate-Check |
+| Aktueller Schritt | Schritt 0.5 erledigt (vitest.config.ts + vitest.setup.ts + playwright.config.ts + `--passWithNoTests`). Phase-0-Gate **technisch** gruen: build ✓ typecheck ✓ lint ✓ test ✓. Offen fuer Phase-0-Komplettierung: manueller `pnpm dev`-UI-Check + shadcn-Init + README-Skelett |
 | Session | 1 |
 | Letztes Update | 2026-04-18 |
 | Blockiert durch | — |
-| Naechste Aktion | Schritt 0.5: `vitest.config.ts` + `playwright.config.ts` + `--passWithNoTests` im test-Script, dann Phase-0-Gate pruefen (build/typecheck/lint/test gruen) |
+| Naechste Aktion | Schritt 0.6: `pnpm dev`-Smoke-Check, `components.json` + shadcn-Init, `README.md`-Skelett; dann Phase-0 abgeschlossen → Commit `feat(phase-0): ...` und Phase 1 starten |
 
 ## Changelog
 
@@ -30,6 +30,7 @@
 - **00:50** — Phase 0, Schritt 0.2: `tsconfig.json` (strict, Pfad-Alias `@/*`), `next.config.mjs` (reactStrictMode), `postcss.config.mjs` (tailwind + autoprefixer), `.eslintrc.json` (`next/core-web-vitals`), leerer `next-env.d.ts`-Stub. `pnpm typecheck` gruen. `.gitignore` erweitert um `.claude/session.log` und `.claude/scheduled_tasks.lock` (Runtime-Artefakte).
 - **00:56** — Phase 0, Schritt 0.3: `tailwind.config.ts` mit allen Liquid-Glass-Tokens aus `doc/DESIGN.md` (Farben, Typografie-Skalen, Spacing, Radii, Shadows, Blur, Z-Indizes, Timing-Funktionen). Tokens als CSS-var-Bridges — die konkreten Werte kommen in Schritt 0.4 in `app/globals.css`. shadcn-kompatibles Token-Mapping vorbereitet. Typecheck gruen.
 - **01:02** — Phase 0, Schritt 0.4: App-Shell angelegt: `app/layout.tsx` (html lang=de, Metadata), `app/page.tsx` (Placeholder-Text, Liquid-Glass-konformes Styling via `text-caption` + CSS-var), `app/globals.css` (komplette DESIGN.md §1-Tokens + shadcn-HSL-Mapping + backdrop-filter-Fallback). Begleitende Fixes: ESLint-Downgrade auf 8 (Next 14 kompatibel), `globals.d.ts` mit `declare module '*.css'` fuer TS-6-side-effect-Import. Gate-Stand: `pnpm build`, `pnpm typecheck`, `pnpm lint` alle gruen; `pnpm test` faellt noch weil Testrunner nicht konfiguriert (Schritt 0.5).
+- **01:08** — Phase 0, Schritt 0.5: Testrunner-Setup. `vitest.config.ts` (jsdom, globals, `@`-Alias, include-Globs fuer tests/unit|integration + lib + components), `vitest.setup.ts` mit `@testing-library/jest-dom/vitest`, `playwright.config.ts` (chromium, webServer `pnpm dev`, 1920x1080, retries in CI). `package.json` test-Script auf `--passWithNoTests`. Phase-0-Gate technisch gruen (build/typecheck/lint/test alle ✓).
 
 ## Loop-Betrieb
 
