@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "Task",
+      "WebSearch",
+      "WebFetch",
+      "Bash(*)",
+      "mcp__claude_ai_Notion__*"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(rm -rf /)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '--- Project Status ---' && date && git status --short 2>/dev/null && echo '---' && head -30 STATUS.md 2>/dev/null || echo 'Kein STATUS.md'"
+          }
+        ]
+      }
+    ]
+  }
+}
