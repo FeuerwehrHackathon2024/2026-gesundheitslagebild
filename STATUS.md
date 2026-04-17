@@ -5,11 +5,11 @@
 | Feld | Wert |
 |------|------|
 | Aktive Phase | Phase 0 — Repo-Bootstrap |
-| Aktueller Schritt | Schritt 0.2 erledigt (tsconfig strict + next.config + postcss + .eslintrc; typecheck gruen). Als naechstes Schritt 0.3: tailwind.config.ts + app/globals.css + Liquid-Glass-Tokens aus DESIGN.md |
+| Aktueller Schritt | Schritt 0.3 erledigt (tailwind.config.ts mit Liquid-Glass-Tokens als CSS-var-Brueckenschicht; typecheck gruen). Als naechstes Schritt 0.4: `app/layout.tsx` + `app/page.tsx` + `app/globals.css` mit CSS-Variablen aus DESIGN.md §1 + shadcn-Token-Mapping |
 | Session | 1 |
 | Letztes Update | 2026-04-18 |
 | Blockiert durch | — |
-| Naechste Aktion | Schritt 0.3: `tailwind.config.ts` mit Liquid-Glass-Tokens (aus `doc/DESIGN.md`) + `app/globals.css` |
+| Naechste Aktion | Schritt 0.4: `app/layout.tsx`, `app/page.tsx`, `app/globals.css` (mit CSS-Variablen + shadcn-Token-Mapping) |
 
 ## Changelog
 
@@ -28,6 +28,7 @@
   - `doc/AUDIT.md`, `doc/TESTING.md`
 - **00:44** — Phase 0, Schritt 0.1: `pnpm init` + `package.json` mit allen Scripts (dev/build/start/lint/typecheck/test/test:e2e/format). SPEC-§2-Dependencies installiert: next@14, react@18, maplibre-gl, zustand, recharts, idb, exceljs (runtime); tailwind@3, typescript, vitest, @playwright/test, RTL-Toolkit, eslint@9 + eslint-config-next@14, tsx, prettier (dev). Peer-Pins gesetzt (eslint, @types/react, eslint-config-next) damit Gate gruenbar bleibt.
 - **00:50** — Phase 0, Schritt 0.2: `tsconfig.json` (strict, Pfad-Alias `@/*`), `next.config.mjs` (reactStrictMode), `postcss.config.mjs` (tailwind + autoprefixer), `.eslintrc.json` (`next/core-web-vitals`), leerer `next-env.d.ts`-Stub. `pnpm typecheck` gruen. `.gitignore` erweitert um `.claude/session.log` und `.claude/scheduled_tasks.lock` (Runtime-Artefakte).
+- **00:56** — Phase 0, Schritt 0.3: `tailwind.config.ts` mit allen Liquid-Glass-Tokens aus `doc/DESIGN.md` (Farben, Typografie-Skalen, Spacing, Radii, Shadows, Blur, Z-Indizes, Timing-Funktionen). Tokens als CSS-var-Bridges — die konkreten Werte kommen in Schritt 0.4 in `app/globals.css`. shadcn-kompatibles Token-Mapping vorbereitet. Typecheck gruen.
 
 ## Loop-Betrieb
 
