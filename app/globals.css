@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* === DESIGN.md §1 — Liquid-Glass-Tokens === */
+
+  /* Backgrounds */
+  --bg-base: #F5F6F8;
+  --bg-elevated: rgba(255, 255, 255, 0.72);
+  --bg-elevated-2: rgba(255, 255, 255, 0.88);
+  --bg-subtle: #ECEEF2;
+  --bg-hover: rgba(0, 0, 0, 0.035);
+  --bg-active: rgba(0, 0, 0, 0.06);
+
+  /* Hierarchy lines */
+  --border-1: rgba(0, 0, 0, 0.06);
+  --border-2: rgba(0, 0, 0, 0.12);
+  --border-strong: rgba(0, 0, 0, 0.22);
+
+  /* Text */
+  --text-primary: #1D1D1F;
+  --text-secondary: #3C3C43CC;
+  --text-tertiary: #6E6E73;
+  --text-disabled: #AEAEB2;
+  --text-on-color: #FFFFFF;
+
+  /* Accents (Apple System Colors) */
+  --accent-blue: #007AFF;
+  --accent-blue-soft: #007AFF1A;
+  --accent-indigo: #5856D6;
+  --accent-purple: #AF52DE;
+  --accent-teal: #30B0C7;
+  --accent-green: #34C759;
+  --accent-yellow: #FFCC00;
+  --accent-orange: #FF9500;
+  --accent-red: #FF3B30;
+  --accent-pink: #FF2D55;
+
+  /* Semantic */
+  --status-ok: var(--accent-green);
+  --status-notice: var(--accent-blue);
+  --status-warn: var(--accent-orange);
+  --status-critical: var(--accent-red);
+
+  /* Charts */
+  --chart-1: #007AFF;
+  --chart-2: #5856D6;
+  --chart-3: #FF9500;
+  --chart-4: #30B0C7;
+  --chart-5: #AF52DE;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(16, 24, 40, 0.06), 0 2px 4px -2px rgba(16, 24, 40, 0.05);
+  --shadow-lg: 0 12px 24px -6px rgba(16, 24, 40, 0.10), 0 4px 8px -3px rgba(16, 24, 40, 0.06);
+  --shadow-panel: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 20px 40px -12px rgba(16, 24, 40, 0.12);
+
+  /* Glass */
+  --glass-blur: blur(24px) saturate(1.6);
+  --glass-blur-strong: blur(40px) saturate(1.8);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* Z-Indizes */
+  --z-map: 1;
+  --z-route: 10;
+  --z-marker: 20;
+  --z-panel: 40;
+  --z-tooltip: 60;
+  --z-modal: 80;
+  --z-toast: 90;
+
+  /* === shadcn/ui-Token-Mapping (HSL-Triplets) === */
+  --background: 220 14% 97%;
+  --foreground: 240 3% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 3% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 3% 12%;
+  --primary: 211 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 94%;
+  --secondary-foreground: 240 3% 12%;
+  --muted: 220 14% 94%;
+  --muted-foreground: 240 2% 44%;
+  --accent: 220 14% 94%;
+  --accent-foreground: 240 3% 12%;
+  --destructive: 3 100% 59%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 211 100% 50%;
+  --radius: 10px;
+}
+
+/* Fallback fuer Browser ohne backdrop-filter */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: #FFFFFFEE;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'ss01', 'cv01';
+}
+
+/* Daten-Zahlen durchgaengig monospace */
+.num,
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
