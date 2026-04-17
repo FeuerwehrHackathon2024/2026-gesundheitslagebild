@@ -85,7 +85,13 @@ export function Header() {
         </button>
       </div>
 
-      <div className="ml-auto flex items-center gap-2 text-text-1">
+      <div className="ml-auto flex items-center gap-3 text-text-1">
+        <span
+          className="num text-[10px] text-text-2"
+          title="Space = Pause · 1-5 = Speed · R = Reset · Esc = Auswahl schliessen"
+        >
+          ⌨ Space · 1-5 · R · Esc
+        </span>
         <span className="section-label">Szenario</span>
         <span className="num text-text-0">
           {incidents.length === 0
