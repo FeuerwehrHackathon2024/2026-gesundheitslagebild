@@ -119,6 +119,9 @@ export function MapContainer() {
     );
 
     map.on('load', () => {
+      // Container kann beim Mount noch 0 Hoehe haben (Flex-Layout).
+      // Nach load explizit Groesse neu berechnen.
+      map.resize();
       map.addSource('hospitals-context', {
         type: 'geojson',
         data: toCtxFeatures(HOSPITALS.context),
@@ -227,15 +230,22 @@ export function MapContainer() {
       }
     });
 
+    // Resize-Observer: falls der Container-Flex seine Groesse aendert
+    const ro = new ResizeObserver(() => {
+      map.resize();
+    });
+    ro.observe(ref.current);
+
     return () => {
+      ro.disconnect();
       map.remove();
       mapRef.current = null;
     };
   }, []);
 
   return (
-    <div className="flex-1 relative bg-bg-0">
-      <div ref={ref} className="absolute inset-0" />
+    <div className="flex-1 relative bg-bg-0 min-h-0">
+      <div ref={ref} className="h-full w-full" />
       {hover && (
         <div
           className="pointer-events-none absolute z-10 bg-bg-2 border border-border-2 px-2 py-1 text-[12px] max-w-[280px]"
