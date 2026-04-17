@@ -1,0 +1,74 @@
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+.eggs/
+build/
+dist/
+develop-eggs/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+MANIFEST
+
+# --- Virtual Envs ---
+venv/
+.venv/
+env/
+ENV/
+.python-version
+
+# --- Testing / Coverage ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+coverage.xml
+*.cover
+
+# --- Type checkers ---
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Logs / DBs ---
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Claude Code lokal ---
+.claude/settings.local.json
