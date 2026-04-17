@@ -10,7 +10,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 import { DARK_STYLE_URL } from './mapStyle';
 import { HOSPITALS } from '@/lib/data/hospitalsLoader';
-import { useSimStore } from '@/lib/store';
+import { PZC_BY_CODE } from '@/lib/data/pzc';
+import { useSimStore, type Filters } from '@/lib/store';
 import type { Hospital, ContextHospital, Incident } from '@/lib/types';
 
 const GERMANY_CENTER: [number, number] = [10.4515, 51.1657];
@@ -21,8 +22,12 @@ type SimFeatureProps = {
   name: string;
   stufe: Hospital['versorgungsstufe'];
   occupancy: number; // max discipline occupancy
-  incoming: number; // aktuelle Anfahrten + inTreatment fuer diesen Incident
+  incoming: number; // aktuelle Anfahrten + inTreatment
   betten: number;
+  bettenFrei: number;
+  bettenBelegt: number;
+  reserviert: number;
+  passes: number; // 1 = passt Filter, 0 = ausgefiltert
   city: string;
 };
 
@@ -60,25 +65,58 @@ function totalBeds(h: Hospital): number {
   return t;
 }
 
+function sumDisciplines(
+  h: Hospital,
+): { total: number; occupied: number; reserved: number; free: number } {
+  let total = 0;
+  let occupied = 0;
+  let reserved = 0;
+  for (const e of Object.values(h.disciplines)) {
+    if (!e) continue;
+    total += e.bedsTotal;
+    occupied += e.bedsOccupied;
+    reserved += e.bedsReservedMANV;
+  }
+  const free = Math.max(0, total - occupied - reserved);
+  return { total, occupied, reserved, free };
+}
+
+function hospitalPassesFilter(h: Hospital, filters: Filters): boolean {
+  const { free, occupied, reserved } = sumDisciplines(h);
+  if (filters.freeMin > 0 && free < filters.freeMin) return false;
+  if (filters.occupiedMax > 0 && occupied > filters.occupiedMax) return false;
+  if (filters.reservedMin > 0 && reserved < filters.reservedMin) return false;
+  return true;
+}
+
 function simFC(
   list: Hospital[],
   inflow: Record<string, number>,
+  filters: Filters,
 ): GeoJSON.FeatureCollection<GeoJSON.Point, SimFeatureProps> {
   return {
     type: 'FeatureCollection',
-    features: list.map((h) => ({
-      type: 'Feature',
-      geometry: { type: 'Point', coordinates: h.coords },
-      properties: {
-        id: h.id,
-        name: h.name,
-        stufe: h.versorgungsstufe,
-        occupancy: maxOccupancy(h),
-        incoming: inflow[h.id] ?? 0,
-        betten: totalBeds(h),
-        city: h.address.city,
-      },
-    })),
+    features: list.map((h) => {
+      const s = sumDisciplines(h);
+      const passes = hospitalPassesFilter(h, filters);
+      return {
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: h.coords },
+        properties: {
+          id: h.id,
+          name: h.name,
+          stufe: h.versorgungsstufe,
+          occupancy: maxOccupancy(h),
+          incoming: inflow[h.id] ?? 0,
+          betten: totalBeds(h),
+          bettenFrei: s.free,
+          bettenBelegt: s.occupied,
+          reserviert: s.reserved,
+          passes: passes ? 1 : 0,
+          city: h.address.city,
+        },
+      };
+    }),
   };
 }
 
@@ -156,7 +194,7 @@ export function MapContainer() {
       });
       map.addSource('hospitals-sim', {
         type: 'geojson',
-        data: simFC(HOSPITALS.simulated, {}),
+        data: simFC(HOSPITALS.simulated, {}, useSimStore.getState().filters),
       });
       map.addSource('incidents', {
         type: 'geojson',
@@ -175,12 +213,17 @@ export function MapContainer() {
         },
       });
 
-      // Halo-Layer fuer Haeuser mit aktivem Patienten-Zulauf (cyan ring)
+      // Halo-Layer fuer Haeuser mit aktivem Patienten-Zulauf (cyan ring).
+      // Nur bei Haeusern, die den Filter passieren.
       map.addLayer({
         id: 'hospitals-sim-halo',
         type: 'circle',
         source: 'hospitals-sim',
-        filter: ['>', ['get', 'incoming'], 0],
+        filter: [
+          'all',
+          ['>', ['get', 'incoming'], 0],
+          ['==', ['get', 'passes'], 1],
+        ],
         paint: {
           'circle-radius': [
             'interpolate',
@@ -246,7 +289,19 @@ export function MapContainer() {
             '#38bdf8',
             '#a9b3c3',
           ],
-          'circle-opacity': 0.95,
+          // Ausgefilterte Haeuser werden gedimmt (aber bleiben sichtbar).
+          'circle-opacity': [
+            'case',
+            ['==', ['get', 'passes'], 1],
+            0.95,
+            0.18,
+          ],
+          'circle-stroke-opacity': [
+            'case',
+            ['==', ['get', 'passes'], 1],
+            1,
+            0.2,
+          ],
         },
       });
 
@@ -290,6 +345,15 @@ export function MapContainer() {
         const lines: string[] = [];
         if (p.stufe) lines.push(`Stufe: ${p.stufe}`);
         if (typeof p.betten === 'number') lines.push(`Betten: ${p.betten}`);
+        if (
+          typeof p.bettenFrei === 'number' &&
+          typeof p.bettenBelegt === 'number' &&
+          typeof p.reserviert === 'number'
+        ) {
+          lines.push(
+            `frei ${p.bettenFrei} · belegt ${p.bettenBelegt} · reserv. ${p.reserviert}`,
+          );
+        }
         if (typeof p.occupancy === 'number')
           lines.push(`Max-Auslastung: ${Math.round(p.occupancy * 100)} %`);
         if (typeof p.incoming === 'number' && p.incoming > 0)
@@ -341,9 +405,10 @@ export function MapContainer() {
     };
   }, []);
 
-  // Subscribe: Hospital-Auslastung aendert sich jeden Tick
+  // Subscribe: Hospital-Auslastung + Patienten + Filter -> Source updaten
   const hospitals = useSimStore((s) => s.hospitals);
   const patients = useSimStore((s) => s.patients);
+  const filters = useSimStore((s) => s.filters);
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !readyRef.current) return;
@@ -351,16 +416,21 @@ export function MapContainer() {
       | maplibregl.GeoJSONSource
       | undefined;
     if (!src) return;
-    // Inflow: wie viele Patienten sind aktuell zugewiesen und noch nicht fertig
+    // Inflow: Patienten die aktiv im Haus bzw. auf dem Weg sind,
+    // gefiltert auf aktive SK-Auswahl. T4 (palliativ) zaehlt immer mit.
     const inflow: Record<string, number> = {};
     for (const p of patients) {
       if (!p.assignedHospitalId) continue;
       if (p.status !== 'transport' && p.status !== 'inTreatment') continue;
+      const pzc = PZC_BY_CODE[p.pzc];
+      if (!pzc) continue;
+      if (pzc.triage !== 'T4' && !filters.sk[pzc.triage as 'T1' | 'T2' | 'T3'])
+        continue;
       inflow[p.assignedHospitalId] = (inflow[p.assignedHospitalId] ?? 0) + 1;
     }
     const list = Object.values(hospitals);
-    src.setData(simFC(list, inflow) as GeoJSON.GeoJSON);
-  }, [hospitals, patients]);
+    src.setData(simFC(list, inflow, filters) as GeoJSON.GeoJSON);
+  }, [hospitals, patients, filters]);
 
   // Subscribe: Incidents geaendert -> Layer updaten, bei neuem fliegen
   const incidents = useSimStore((s) => s.incidents);

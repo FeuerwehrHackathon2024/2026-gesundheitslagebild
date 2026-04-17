@@ -17,11 +17,33 @@ import {
   SCENARIOS_BY_ID,
   scenarioToIncident,
 } from '@/lib/simulation/scenarios';
+import type { TriageCategory } from '@/lib/types';
+
+export interface Filters {
+  /** Mindestens N freie Betten (gesamt). 0 = aus. */
+  freeMin: number;
+  /** Hoechstens N belegte Betten (gesamt). 0 = aus. */
+  occupiedMax: number;
+  /** Mindestens N MANV-reservierte Betten (gesamt). 0 = aus. */
+  reservedMin: number;
+  /** SK-Checkboxen - jede aktiv heisst: wird in Zaehlern/Halos beruecksichtigt. */
+  sk: Record<Exclude<TriageCategory, 'T4'>, boolean>;
+}
+
+export const DEFAULT_FILTERS: Filters = {
+  freeMin: 0,
+  occupiedMax: 0,
+  reservedMin: 0,
+  sk: { T1: true, T2: true, T3: true },
+};
 
 interface Store extends SimState {
   // clock
   isPaused: boolean;
   speed: number;
+
+  // filters
+  filters: Filters;
 
   // rng shared across ticks (seeded per reset/launch)
   _rng: () => number;
@@ -34,6 +56,9 @@ interface Store extends SimState {
   launchScenario: (scenarioId: string) => void;
   reset: () => void;
   runTick: () => void;
+  setFilter: <K extends keyof Filters>(key: K, value: Filters[K]) => void;
+  toggleSK: (sk: keyof Filters['sk']) => void;
+  resetFilters: () => void;
 
   // derived: counters for UI
   patientsByStatus: () => Record<string, number>;
@@ -79,8 +104,22 @@ export const useSimStore = create<Store>()(
     ...initialState(),
     isPaused: true,
     speed: 1,
+    filters: { ...DEFAULT_FILTERS, sk: { ...DEFAULT_FILTERS.sk } },
 
     togglePause: () => set({ isPaused: !get().isPaused }),
+
+    setFilter: (key, value) => set({ filters: { ...get().filters, [key]: value } }),
+
+    toggleSK: (sk) => {
+      const cur = get().filters.sk;
+      set({
+        filters: { ...get().filters, sk: { ...cur, [sk]: !cur[sk] } },
+      });
+    },
+
+    resetFilters: () => set({
+      filters: { ...DEFAULT_FILTERS, sk: { ...DEFAULT_FILTERS.sk } },
+    }),
 
     setSpeed: (speed) => set({ speed: Math.max(0.5, Math.min(10, speed)) }),
 
