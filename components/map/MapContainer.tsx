@@ -20,7 +20,8 @@ type SimFeatureProps = {
   id: string;
   name: string;
   stufe: Hospital['versorgungsstufe'];
-  occupancy: number;
+  occupancy: number; // max discipline occupancy
+  incoming: number; // aktuelle Anfahrten + inTreatment fuer diesen Incident
   betten: number;
   city: string;
 };
@@ -39,15 +40,18 @@ type IncFeatureProps = {
   radius: number;
 };
 
-function primaryOccupancy(h: Hospital): number {
-  let total = 0;
-  let occ = 0;
+/**
+ * Sensibelster Indikator: die am staerksten belastete Discipline. So sieht
+ * man auch kleine Zuwaechse, wenn sie in der ITS oder Neurochir ankommen.
+ */
+function maxOccupancy(h: Hospital): number {
+  let max = 0;
   for (const e of Object.values(h.disciplines)) {
-    if (!e) continue;
-    total += e.bedsTotal;
-    occ += e.bedsOccupied;
+    if (!e || e.bedsTotal === 0) continue;
+    const occ = e.bedsOccupied / e.bedsTotal;
+    if (occ > max) max = occ;
   }
-  return total > 0 ? occ / total : 0;
+  return max;
 }
 
 function totalBeds(h: Hospital): number {
@@ -58,6 +62,7 @@ function totalBeds(h: Hospital): number {
 
 function simFC(
   list: Hospital[],
+  inflow: Record<string, number>,
 ): GeoJSON.FeatureCollection<GeoJSON.Point, SimFeatureProps> {
   return {
     type: 'FeatureCollection',
@@ -68,7 +73,8 @@ function simFC(
         id: h.id,
         name: h.name,
         stufe: h.versorgungsstufe,
-        occupancy: primaryOccupancy(h),
+        occupancy: maxOccupancy(h),
+        incoming: inflow[h.id] ?? 0,
         betten: totalBeds(h),
         city: h.address.city,
       },
@@ -150,7 +156,7 @@ export function MapContainer() {
       });
       map.addSource('hospitals-sim', {
         type: 'geojson',
-        data: simFC(HOSPITALS.simulated),
+        data: simFC(HOSPITALS.simulated, {}),
       });
       map.addSource('incidents', {
         type: 'geojson',
@@ -166,6 +172,32 @@ export function MapContainer() {
           'circle-color': '#6b7687',
           'circle-opacity': 0.55,
           'circle-stroke-width': 0,
+        },
+      });
+
+      // Halo-Layer fuer Haeuser mit aktivem Patienten-Zulauf (cyan ring)
+      map.addLayer({
+        id: 'hospitals-sim-halo',
+        type: 'circle',
+        source: 'hospitals-sim',
+        filter: ['>', ['get', 'incoming'], 0],
+        paint: {
+          'circle-radius': [
+            'interpolate',
+            ['linear'],
+            ['get', 'incoming'],
+            1,
+            12,
+            5,
+            18,
+            15,
+            28,
+          ],
+          'circle-color': '#38bdf8',
+          'circle-opacity': 0.15,
+          'circle-stroke-color': '#38bdf8',
+          'circle-stroke-width': 1.5,
+          'circle-stroke-opacity': 0.7,
         },
       });
 
@@ -202,8 +234,18 @@ export function MapContainer() {
             1,
             '#e5484d',
           ],
-          'circle-stroke-width': 1,
-          'circle-stroke-color': '#a9b3c3',
+          'circle-stroke-width': [
+            'case',
+            ['>', ['get', 'incoming'], 0],
+            2.5,
+            1,
+          ],
+          'circle-stroke-color': [
+            'case',
+            ['>', ['get', 'incoming'], 0],
+            '#38bdf8',
+            '#a9b3c3',
+          ],
           'circle-opacity': 0.95,
         },
       });
@@ -249,7 +291,9 @@ export function MapContainer() {
         if (p.stufe) lines.push(`Stufe: ${p.stufe}`);
         if (typeof p.betten === 'number') lines.push(`Betten: ${p.betten}`);
         if (typeof p.occupancy === 'number')
-          lines.push(`Auslastung: ${Math.round(p.occupancy * 100)} %`);
+          lines.push(`Max-Auslastung: ${Math.round(p.occupancy * 100)} %`);
+        if (typeof p.incoming === 'number' && p.incoming > 0)
+          lines.push(`MANV-Zulauf: +${p.incoming}`);
         if (p.art) lines.push(`Art: ${p.art}`);
         if (typeof p.casualties === 'number')
           lines.push(`${p.casualties} Patienten`);
@@ -299,6 +343,7 @@ export function MapContainer() {
 
   // Subscribe: Hospital-Auslastung aendert sich jeden Tick
   const hospitals = useSimStore((s) => s.hospitals);
+  const patients = useSimStore((s) => s.patients);
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !readyRef.current) return;
@@ -306,9 +351,16 @@ export function MapContainer() {
       | maplibregl.GeoJSONSource
       | undefined;
     if (!src) return;
+    // Inflow: wie viele Patienten sind aktuell zugewiesen und noch nicht fertig
+    const inflow: Record<string, number> = {};
+    for (const p of patients) {
+      if (!p.assignedHospitalId) continue;
+      if (p.status !== 'transport' && p.status !== 'inTreatment') continue;
+      inflow[p.assignedHospitalId] = (inflow[p.assignedHospitalId] ?? 0) + 1;
+    }
     const list = Object.values(hospitals);
-    src.setData(simFC(list) as GeoJSON.GeoJSON);
-  }, [hospitals]);
+    src.setData(simFC(list, inflow) as GeoJSON.GeoJSON);
+  }, [hospitals, patients]);
 
   // Subscribe: Incidents geaendert -> Layer updaten, bei neuem fliegen
   const incidents = useSimStore((s) => s.incidents);

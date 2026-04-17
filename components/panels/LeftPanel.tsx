@@ -6,6 +6,16 @@ import { IncidentLauncher } from '@/components/panels/IncidentLauncher';
 export function LeftPanel() {
   const counts = useSimStore((s) => s.patientsByStatus());
   const unassigned = useSimStore((s) => s.unassigned.length);
+  const activeHospitals = useSimStore((s) => {
+    const set = new Set<string>();
+    for (const p of s.patients) {
+      if (!p.assignedHospitalId) continue;
+      if (p.status === 'transport' || p.status === 'inTreatment') {
+        set.add(p.assignedHospitalId);
+      }
+    }
+    return set.size;
+  });
 
   return (
     <aside className="w-[320px] shrink-0 border-r border-border-1 bg-bg-1 flex flex-col overflow-y-auto">
@@ -24,6 +34,7 @@ export function LeftPanel() {
             value={unassigned}
             warn={unassigned > 0}
           />
+          <PatientRow label="Haeuser aktiv" value={activeHospitals} />
         </div>
       </section>
 
