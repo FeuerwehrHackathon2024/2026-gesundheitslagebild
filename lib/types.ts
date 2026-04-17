@@ -55,6 +55,25 @@ export interface Hospital {
   canEscalateTo: EscalationLevel;
 }
 
+/**
+ * Leichtes Haus ohne Abteilungsdaten. Nur fuer Karten-Kontext, nicht simuliert.
+ */
+export interface ContextHospital {
+  id: string;
+  name: string;
+  coords: [number, number];
+  art?: string;
+  betten?: number;
+  ort?: string;
+  bundesland?: string;
+}
+
+export interface HospitalsPayload {
+  generatedAt: string;
+  simulated: Hospital[];
+  context: ContextHospital[];
+}
+
 export type IncidentType =
   | 'verkehrsunfall'
   | 'industriebrand'
