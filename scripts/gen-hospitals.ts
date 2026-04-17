@@ -193,7 +193,8 @@ function buildDisciplines(
   const mkCap = (bedsTotal: number): DisciplineCapacity => {
     const occupancyRatio = 0.65 + rng() * 0.15; // 65-80 %
     const bedsOccupied = Math.round(bedsTotal * occupancyRatio);
-    const bedsReservedMANV = Math.max(1, Math.round(bedsTotal * 0.1));
+    // Reserve ist dynamisch: die Engine erhoeht sie bei Patienten-Zuweisung.
+    const bedsReservedMANV = 0;
     const surgeCapacity = Math.round(bedsTotal * 0.2);
     const staffOnDuty = Math.max(1, Math.round(bedsTotal * 0.25));
     const staffOnCall = Math.max(1, Math.round(bedsTotal * 0.15));

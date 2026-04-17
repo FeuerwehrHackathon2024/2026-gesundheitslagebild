@@ -82,7 +82,7 @@ export function LeftPanel() {
 
       <section className="p-3 border-b border-border-1">
         <div className="section-label mb-2">Legende</div>
-        <div className="flex flex-col gap-1 text-text-1 text-[12px]">
+        <div className="flex flex-col gap-1.5 text-text-1 text-[12px]">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-accent-green" />
             <span>Auslastung ok (&lt; 70 %)</span>
@@ -94,6 +94,22 @@ export function LeftPanel() {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-accent-red" />
             <span>Kritisch (&gt; 95 %)</span>
+          </div>
+          <div className="h-px bg-border-1 my-1" />
+          <div className="flex items-center gap-2">
+            <span className="w-3.5 h-3.5 rounded-full border-2 border-accent-cyan" />
+            <span>MANV-Zulauf (Ringgroesse ~ Patienten)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span
+              className="w-2.5 h-2.5 rounded-full bg-accent-amber"
+              style={{ boxShadow: '0 0 0 1.5px var(--accent-cyan)' }}
+            />
+            <span>Haus mit aktivem Zulauf</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-text-2 opacity-20" />
+            <span>Filter nicht erfuellt</span>
           </div>
         </div>
       </section>

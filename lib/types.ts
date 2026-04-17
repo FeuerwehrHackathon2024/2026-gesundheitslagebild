@@ -110,6 +110,8 @@ export interface Patient {
   spawnedAt: number;
   arrivedAt?: number;
   assignedHospitalId?: string;
+  /** Discipline, auf der bei Zuweisung ein Bett reserviert wurde. */
+  reservedDiscipline?: import('@/lib/data/disciplines').Discipline;
   status: PatientStatus;
   dischargeAt?: number;
 }

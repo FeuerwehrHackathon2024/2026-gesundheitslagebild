@@ -158,8 +158,8 @@ export function MapContainer() {
   const lastIncidentIdRef = useRef<string | null>(null);
 
   const [hover, setHover] = useState<{
-    name: string;
-    detail: string;
+    kind: 'sim' | 'ctx' | 'incident';
+    id: string;
     x: number;
     y: number;
   } | null>(null);
@@ -333,42 +333,28 @@ export function MapContainer() {
 
       readyRef.current = true;
 
-      const onEnter = (
-        e: MapMouseEvent & { features?: MapGeoJSONFeature[] },
-      ) => {
-        map.getCanvas().style.cursor = 'pointer';
-        const f = e.features?.[0];
-        if (!f) return;
-        const p = f.properties as Partial<
-          SimFeatureProps & CtxFeatureProps & IncFeatureProps
-        >;
-        const lines: string[] = [];
-        if (p.stufe) lines.push(`Stufe: ${p.stufe}`);
-        if (typeof p.betten === 'number') lines.push(`Betten: ${p.betten}`);
-        if (
-          typeof p.bettenFrei === 'number' &&
-          typeof p.bettenBelegt === 'number' &&
-          typeof p.reserviert === 'number'
-        ) {
-          lines.push(
-            `frei ${p.bettenFrei} · belegt ${p.bettenBelegt} · reserv. ${p.reserviert}`,
-          );
-        }
-        if (typeof p.occupancy === 'number')
-          lines.push(`Max-Auslastung: ${Math.round(p.occupancy * 100)} %`);
-        if (typeof p.incoming === 'number' && p.incoming > 0)
-          lines.push(`MANV-Zulauf: +${p.incoming}`);
-        if (p.art) lines.push(`Art: ${p.art}`);
-        if (typeof p.casualties === 'number')
-          lines.push(`${p.casualties} Patienten`);
-        if (p.city) lines.push(p.city);
-        setHover({
-          name: p.name ?? p.label ?? '—',
-          detail: lines.join(' · '),
-          x: e.point.x,
-          y: e.point.y,
-        });
+      const LAYER_KIND: Record<string, 'sim' | 'ctx' | 'incident'> = {
+        'hospitals-sim-layer': 'sim',
+        'hospitals-context-layer': 'ctx',
+        'incidents-core': 'incident',
       };
+
+      const onEnterForLayer = (layerId: string) =>
+        (e: MapMouseEvent & { features?: MapGeoJSONFeature[] }) => {
+          map.getCanvas().style.cursor = 'pointer';
+          const f = e.features?.[0];
+          if (!f) return;
+          const p = f.properties as Partial<
+            SimFeatureProps & CtxFeatureProps & IncFeatureProps
+          >;
+          if (!p.id) return;
+          setHover({
+            kind: LAYER_KIND[layerId] ?? 'sim',
+            id: String(p.id),
+            x: e.point.x,
+            y: e.point.y,
+          });
+        };
       const onLeave = () => {
         map.getCanvas().style.cursor = '';
         setHover(null);
@@ -379,15 +365,11 @@ export function MapContainer() {
         );
       };
 
-      for (const layer of [
-        'hospitals-sim-layer',
-        'hospitals-context-layer',
-        'incidents-core',
-      ]) {
+      for (const layer of Object.keys(LAYER_KIND)) {
         map.on(
           'mouseenter',
           layer,
-          onEnter as (e: MapLayerMouseEvent) => void,
+          onEnterForLayer(layer) as (e: MapLayerMouseEvent) => void,
         );
         map.on('mousemove', layer, onMove as (e: MapLayerMouseEvent) => void);
         map.on('mouseleave', layer, onLeave);
@@ -459,16 +441,15 @@ export function MapContainer() {
       <div ref={containerRef} className="h-full w-full" />
       {hover && (
         <div
-          className="pointer-events-none absolute z-10 bg-bg-2 border border-border-2 px-2 py-1 text-[12px] max-w-[280px]"
+          className="pointer-events-none absolute z-10 bg-bg-2 border border-border-2 px-2 py-1 text-[12px] max-w-[320px]"
           style={{
             left: Math.min(hover.x + 12, 10000),
             top: Math.max(hover.y - 28, 0),
           }}
         >
-          <div className="text-text-0 font-medium">{hover.name}</div>
-          {hover.detail && (
-            <div className="text-text-1 num mt-0.5">{hover.detail}</div>
-          )}
+          {hover.kind === 'sim' && <SimTooltip id={hover.id} />}
+          {hover.kind === 'ctx' && <CtxTooltip id={hover.id} />}
+          {hover.kind === 'incident' && <IncidentTooltip id={hover.id} />}
         </div>
       )}
       <div className="absolute top-2 left-2 z-10 flex gap-2 text-[11px]">
@@ -482,5 +463,92 @@ export function MapContainer() {
         </span>
       </div>
     </div>
+  );
+}
+
+/**
+ * Tooltip fuer simulierte Haeuser — subscribed den Store, aktualisiert live.
+ */
+function SimTooltip({ id }: { id: string }) {
+  const hospital = useSimStore((s) => s.hospitals[id]);
+  const incoming = useSimStore((s) => {
+    let n = 0;
+    for (const p of s.patients) {
+      if (p.assignedHospitalId !== id) continue;
+      if (p.status !== 'transport' && p.status !== 'inTreatment') continue;
+      n += 1;
+    }
+    return n;
+  });
+  if (!hospital) return null;
+
+  const s = sumDisciplines(hospital);
+  const maxOcc = Math.round(maxOccupancy(hospital) * 100);
+
+  return (
+    <>
+      <div className="text-text-0 font-medium">{hospital.name}</div>
+      <div className="text-text-1 num mt-0.5">
+        Stufe: {hospital.versorgungsstufe} · Betten: {s.total}
+      </div>
+      <div className="text-text-1 num">
+        frei <span className="text-accent-green">{s.free}</span> · belegt{' '}
+        <span className="text-text-0">{s.occupied}</span> · reserv.{' '}
+        <span className="text-accent-cyan">{s.reserved}</span>
+      </div>
+      <div className="text-text-1 num">Max-Auslastung: {maxOcc} %</div>
+      {incoming > 0 && (
+        <div className="text-accent-cyan num">MANV-Zulauf: +{incoming}</div>
+      )}
+      {hospital.address.city && (
+        <div className="text-text-2 num">{hospital.address.city}</div>
+      )}
+    </>
+  );
+}
+
+function CtxTooltip({ id }: { id: string }) {
+  const ctx = HOSPITALS.context.find((h) => h.id === id);
+  if (!ctx) return null;
+  return (
+    <>
+      <div className="text-text-0 font-medium">{ctx.name}</div>
+      {ctx.art && (
+        <div className="text-text-1 num mt-0.5">Art: {ctx.art}</div>
+      )}
+      {typeof ctx.betten === 'number' && (
+        <div className="text-text-1 num">Betten: {ctx.betten}</div>
+      )}
+      {ctx.ort && <div className="text-text-2 num">{ctx.ort}</div>}
+    </>
+  );
+}
+
+function IncidentTooltip({ id }: { id: string }) {
+  const incident = useSimStore((s) => s.incidents.find((i) => i.id === id));
+  const counts = useSimStore((s) => {
+    const out = { assigned: 0, transport: 0, treated: 0, done: 0 };
+    for (const p of s.patients) {
+      if (p.incidentId !== id) continue;
+      if (p.status === 'onScene') continue;
+      if (p.status === 'transport') out.transport += 1;
+      else if (p.status === 'inTreatment') out.treated += 1;
+      else if (p.status === 'discharged' || p.status === 'deceased') out.done += 1;
+      if (p.assignedHospitalId) out.assigned += 1;
+    }
+    return out;
+  });
+  if (!incident) return null;
+  return (
+    <>
+      <div className="text-text-0 font-medium">{incident.label}</div>
+      <div className="text-text-1 num mt-0.5">
+        {incident.estimatedCasualties} Patienten · Start T+{incident.startedAt}min
+      </div>
+      <div className="text-text-1 num">
+        Transport: {counts.transport} · in Behandlung: {counts.treated} ·
+        abgeschlossen: {counts.done}
+      </div>
+    </>
   );
 }

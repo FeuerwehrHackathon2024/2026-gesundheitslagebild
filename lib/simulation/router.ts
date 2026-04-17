@@ -46,16 +46,42 @@ function overallLoad(h: Hospital): number {
   for (const cap of Object.values(h.disciplines)) {
     if (!cap) continue;
     total += cap.bedsTotal;
-    occ += cap.bedsOccupied;
+    occ += cap.bedsOccupied + cap.bedsReservedMANV;
   }
   return total > 0 ? occ / total : 0;
 }
 
-function freeBedFraction(h: Hospital, d: Discipline): number {
-  const cap = h.disciplines[d];
-  if (!cap) return 0;
-  const free = Math.max(0, cap.bedsTotal - cap.bedsOccupied - cap.bedsReservedMANV);
-  return cap.bedsTotal > 0 ? free / cap.bedsTotal : 0;
+/**
+ * Freies Bett-Anteil auf der engsten required Discipline (Flaschenhals).
+ */
+function freeBedFractionMin(h: Hospital, disciplines: Discipline[]): number {
+  let min = 1;
+  for (const d of disciplines) {
+    const cap = h.disciplines[d];
+    if (!cap || cap.bedsTotal === 0) continue;
+    const free = Math.max(
+      0,
+      cap.bedsTotal - cap.bedsOccupied - cap.bedsReservedMANV,
+    );
+    const frac = free / cap.bedsTotal;
+    if (frac < min) min = frac;
+  }
+  return min;
+}
+
+/**
+ * Deterministischer Jitter (+/- 1.5 %) aus Patient-ID-Hash.
+ * Bricht Monopol-Bildung bei sehr nahen Score-Ergebnissen, bleibt
+ * reproduzierbar (gleicher Seed -> gleiche Ergebnisse).
+ */
+function jitterFromId(id: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < id.length; i++) {
+    h ^= id.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  const norm = ((h >>> 0) / 0xffffffff) * 2 - 1; // in [-1, 1]
+  return norm * 0.015;
 }
 
 export interface RouteResult {
@@ -77,10 +103,19 @@ export interface RouteOptions {
   manvMode?: boolean;
   /** Wenn Kind: paediatrie in required + stufe +1. */
   isChild?: boolean;
+  /** Patient-ID fuer deterministischen Score-Jitter. */
+  patientId?: string;
 }
 
 export function routePatient(opts: RouteOptions): RouteResult | null {
-  const { from, pzc, hospitals, manvMode = false, isChild = false } = opts;
+  const {
+    from,
+    pzc,
+    hospitals,
+    manvMode = false,
+    isChild = false,
+    patientId,
+  } = opts;
 
   const required: Discipline[] = [...pzc.requiredDisciplines];
   if (isChild && !required.includes('paediatrie')) {
@@ -120,19 +155,21 @@ export function routePatient(opts: RouteOptions): RouteResult | null {
 
   if (candidates.length === 0) return null;
 
-  // Score
+  // Score — Gewichte auf gleichmaessigere Verteilung ausgelegt:
+  // Distanz weniger dominant, Lastpenalty deutlich staerker.
   const maxKm = Math.max(...candidates.map((c) => c.km), 1);
   const idealStufe = stufeIndex(pzc.minVersorgungsstufe);
+  const jitter = patientId ? jitterFromId(patientId) : 0;
 
   let best: RouteResult | null = null;
   for (const { h, km } of candidates) {
-    const wDistance = 0.45 * (1 - km / maxKm);
-    const wCapacity = 0.3 * freeBedFraction(h, pzc.primaryDiscipline);
-    // stufe_fit: 1 wenn genau ideal, faellt bei Ueberschuss
+    const wDistance = 0.25 * (1 - km / maxKm);
+    const wCapacity = 0.35 * freeBedFractionMin(h, required);
     const overshoot = Math.max(0, stufeIndex(h.versorgungsstufe) - idealStufe);
     const wStufe = 0.15 * (1 / (1 + overshoot));
-    const wLoad = 0.1 * overallLoad(h);
-    const score = wDistance + wCapacity + wStufe - wLoad;
+    const wLoad = 0.3 * overallLoad(h);
+    const raw = wDistance + wCapacity + wStufe - wLoad;
+    const score = raw * (1 + jitter);
 
     if (!best || score > best.score) {
       best = { hospital: h, distanceKm: km, score };
