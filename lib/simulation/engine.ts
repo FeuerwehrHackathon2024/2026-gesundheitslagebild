@@ -127,10 +127,14 @@ function getChildRatio(inc: Incident): number {
   return 0.05;
 }
 
+/**
+ * Bett in der Discipline belegen. Erlaubt Ueberbelegung
+ * (bedsOccupied > bedsTotal, MANV-Flur-Szenario). False nur, wenn die
+ * Discipline gar nicht im Haus existiert.
+ */
 function assignBed(h: Hospital, d: Discipline): boolean {
   const cap = h.disciplines[d];
   if (!cap) return false;
-  if (cap.bedsOccupied >= cap.bedsTotal) return false;
   cap.bedsOccupied += 1;
   return true;
 }

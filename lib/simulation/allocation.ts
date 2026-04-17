@@ -42,7 +42,12 @@ export interface AllocationSummary {
 }
 
 /** Cascade-Stufen bei Erschoepfung der ersten Suche. */
-export type CascadeStage = 'none' | 'A-distance' | 'B-quota' | 'C-load';
+export type CascadeStage =
+  | 'none'
+  | 'A-distance'
+  | 'B-quota'
+  | 'C-load'
+  | 'D-surge';
 
 /** Default-Tick-Caps per Triage. */
 const BASE_QUOTA: Record<TriageCategory, number> = {
@@ -54,12 +59,14 @@ const BASE_QUOTA: Record<TriageCategory, number> = {
 
 /** Cascade-Multiplikator je Stufe. */
 function quotaForStage(stage: CascadeStage): number {
+  if (stage === 'D-surge') return 999; // effektiv unbegrenzt
   if (stage === 'B-quota' || stage === 'C-load') return 2;
   return 1;
 }
 
 /** Distanz-Cutoff fuer Stufe. */
 function cutoffForStage(triage: TriageCategory, stage: CascadeStage): number {
+  if (stage === 'D-surge') return 900; // ganz Deutschland
   const base = DISTANCE_CUTOFF_KM[triage];
   if (stage === 'A-distance' || stage === 'B-quota' || stage === 'C-load') {
     return Math.min(base * 2, 300);
@@ -69,10 +76,22 @@ function cutoffForStage(triage: TriageCategory, stage: CascadeStage): number {
 
 /** effLoad-Obergrenze je Stufe. */
 function loadCeilForStage(stage: CascadeStage): number {
+  if (stage === 'D-surge') return Infinity;
   return stage === 'C-load' ? 1.0 : 0.99;
 }
 
-const STAGES: CascadeStage[] = ['none', 'A-distance', 'B-quota', 'C-load'];
+/** In Cascade D: auch Haeuser ohne freies Bett akzeptieren (Ueberbelegung). */
+function allowFullForStage(stage: CascadeStage): boolean {
+  return stage === 'D-surge';
+}
+
+const STAGES: CascadeStage[] = [
+  'none',
+  'A-distance',
+  'B-quota',
+  'C-load',
+  'D-surge',
+];
 
 /**
  * Prioritaet eines Kandidaten fuer einen Patienten.
@@ -228,18 +247,24 @@ function tryPlace(
   const cutoff = cutoffForStage(triage, stage);
   const loadCeil = loadCeilForStage(stage);
   const quotaMult = quotaForStage(stage);
+  const allowFull = allowFullForStage(stage);
 
-  // Cascade-Stufe B/C: Quote-Cap hochdrehen
+  // Cascade-Stufe B/C/D: Quote-Cap hochdrehen. In D: effektiv unbegrenzt,
+  // Bett-Limit wird ignoriert (Surge-Ueberbelegung).
   if (quotaMult > 1) {
     for (const h of hospitals) {
       if (h.excludedFromAllocation) continue;
-      const primary = pzc.primaryDiscipline;
-      const bedLimit = freeBedsPrimary(h, primary);
       const cap = BASE_QUOTA[triage] * quotaMult;
-      remaining[h.id] = Math.min(
-        Math.max(remaining[h.id] ?? 0, cap),
-        bedLimit,
-      );
+      if (stage === 'D-surge') {
+        remaining[h.id] = cap; // kein Bett-Limit mehr
+      } else {
+        const primary = pzc.primaryDiscipline;
+        const bedLimit = freeBedsPrimary(h, primary);
+        remaining[h.id] = Math.min(
+          Math.max(remaining[h.id] ?? 0, cap),
+          bedLimit,
+        );
+      }
     }
   }
 
@@ -249,6 +274,7 @@ function tryPlace(
     hospitals,
     isChild: patient.isChild,
     distanceCutoffKm: cutoff,
+    allowFull,
   });
   if (candidates.length === 0) return null;
 

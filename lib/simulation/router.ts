@@ -106,6 +106,12 @@ export interface FindCandidatesOptions {
   isChild?: boolean;
   /** Ueberschreibt das Default-Cutoff fuer Cascade-Stufen im Allokator. */
   distanceCutoffKm?: number;
+  /**
+   * Erlaubt Kandidaten ohne freies Bett in required-Disciplines.
+   * Wird vom Allokator in Cascade-Stufe D ("surge", Flur-Patienten) gesetzt.
+   * Discipline-Abdeckung, Stufe, Burn-Center bleiben hart.
+   */
+  allowFull?: boolean;
 }
 
 /**
@@ -113,7 +119,7 @@ export interface FindCandidatesOptions {
  * Liefert alle Kandidaten-Haeuser plus Distanz.
  */
 export function findCandidates(opts: FindCandidatesOptions): Candidate[] {
-  const { from, pzc, hospitals, isChild = false } = opts;
+  const { from, pzc, hospitals, isChild = false, allowFull = false } = opts;
 
   const required: Discipline[] = [...pzc.requiredDisciplines];
   if (isChild && !required.includes('paediatrie')) {
@@ -140,8 +146,8 @@ export function findCandidates(opts: FindCandidatesOptions): Candidate[] {
     // Stufe
     if (stufeIndex(h.versorgungsstufe) < stufeIndex(minStufe)) continue;
 
-    // Freies Bett in einer required Discipline
-    if (!hospitalHasFreeBed(h, required)) continue;
+    // Freies Bett in einer required Discipline — bei allowFull uebersprungen
+    if (!allowFull && !hospitalHasFreeBed(h, required)) continue;
 
     // Burn-Center-Anforderung
     if (pzc.requiresBurnCenter && !h.disciplines['verbrennung']) continue;

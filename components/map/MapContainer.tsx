@@ -133,54 +133,6 @@ function ctxFC(
   };
 }
 
-/**
- * Pseudo-Isochrone: einfache geografische Kreise um einen Punkt in km.
- * Keine echten Routing-Isochronen — 30 km entsprechen grob 10-20 min
- * Fahrzeit mit Blaulicht auf Autobahn, 5-10 min in der Stadt (SPEC §12).
- */
-function ringPolygon(
-  center: [number, number],
-  radiusKm: number,
-): Array<[number, number]> {
-  const points: Array<[number, number]> = [];
-  const R = 6371;
-  const lat0 = (center[1] * Math.PI) / 180;
-  const lng0 = (center[0] * Math.PI) / 180;
-  const d = radiusKm / R;
-  for (let i = 0; i <= 64; i++) {
-    const bearing = (i / 64) * 2 * Math.PI;
-    const lat = Math.asin(
-      Math.sin(lat0) * Math.cos(d) +
-        Math.cos(lat0) * Math.sin(d) * Math.cos(bearing),
-    );
-    const lng =
-      lng0 +
-      Math.atan2(
-        Math.sin(bearing) * Math.sin(d) * Math.cos(lat0),
-        Math.cos(d) - Math.sin(lat0) * Math.sin(lat),
-      );
-    points.push([(lng * 180) / Math.PI, (lat * 180) / Math.PI]);
-  }
-  return points;
-}
-
-function isochroneFC(list: Incident[]): GeoJSON.FeatureCollection {
-  const features: GeoJSON.Feature[] = [];
-  for (const inc of list) {
-    for (const km of [10, 20, 30]) {
-      features.push({
-        type: 'Feature',
-        geometry: {
-          type: 'Polygon',
-          coordinates: [ringPolygon(inc.location, km)],
-        },
-        properties: { incidentId: inc.id, radiusKm: km },
-      });
-    }
-  }
-  return { type: 'FeatureCollection', features };
-}
-
 function incFC(
   list: Incident[],
 ): GeoJSON.FeatureCollection<GeoJSON.Point, IncFeatureProps> {
@@ -247,40 +199,6 @@ export function MapContainer() {
       map.addSource('incidents', {
         type: 'geojson',
         data: incFC([]),
-      });
-      map.addSource('isochrones', {
-        type: 'geojson',
-        data: isochroneFC([]),
-      });
-
-      // Isochronen zuerst (unter allen Haeusern)
-      map.addLayer({
-        id: 'isochrones-fill',
-        type: 'fill',
-        source: 'isochrones',
-        paint: {
-          'fill-color': '#f5a623',
-          'fill-opacity': [
-            'interpolate',
-            ['linear'],
-            ['get', 'radiusKm'],
-            10,
-            0.08,
-            30,
-            0.02,
-          ],
-        },
-      });
-      map.addLayer({
-        id: 'isochrones-line',
-        type: 'line',
-        source: 'isochrones',
-        paint: {
-          'line-color': '#f5a623',
-          'line-opacity': 0.4,
-          'line-width': 1,
-          'line-dasharray': [2, 3],
-        },
       });
 
       map.addLayer({
@@ -556,13 +474,6 @@ export function MapContainer() {
       | undefined;
     if (!src) return;
     src.setData(incFC(incidents) as GeoJSON.GeoJSON);
-
-    const isoSrc = map.getSource('isochrones') as
-      | maplibregl.GeoJSONSource
-      | undefined;
-    if (isoSrc) {
-      isoSrc.setData(isochroneFC(incidents) as GeoJSON.GeoJSON);
-    }
 
     const latest = incidents[incidents.length - 1];
     if (latest && latest.id !== lastIncidentIdRef.current) {
