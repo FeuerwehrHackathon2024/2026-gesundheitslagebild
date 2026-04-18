@@ -147,15 +147,17 @@ function processPlannedIntakes(state: SimState): void {
 
     // Fuer alle Fluege, deren etaMin bereits erreicht ist und fuer die noch
     // nicht alle Patienten gespawnt wurden: spawne den Rest.
+    // Wichtig: Zaehler filtert auf source='planned-intake' — Phantom-
+    // Relocations tragen zwar sourceRefId=intake.id, zaehlen aber nicht als
+    // echte Flug-Passagiere (source='baseline').
     let spawnedForIntake = state.patients.filter(
-      (p) => p.sourceRefId === intake.id
+      (p) => p.sourceRefId === intake.id && p.source === 'planned-intake'
     ).length;
     const totalSoFarTarget = intake.flights
       .filter((f) => state.simTime >= f.etaMin)
       .reduce((s, f) => s + f.patientCount, 0);
     const toSpawn = totalSoFarTarget - spawnedForIntake;
     if (toSpawn > 0) {
-      // Needs-Profile und TriageMix des juengsten gelandeten Flugs nehmen.
       const lastFlight = [...intake.flights]
         .filter((f) => state.simTime >= f.etaMin)
         .pop();
@@ -170,7 +172,6 @@ function processPlannedIntakes(state: SimState): void {
           rng,
           spawnedForIntake
         );
-        // Markiere als planned-intake-Source statt incident.
         for (const p of fresh) {
           p.source = 'planned-intake';
         }
@@ -179,16 +180,20 @@ function processPlannedIntakes(state: SimState): void {
       }
     }
 
-    // Wenn alle erwarteten Patienten gespawnt sind UND keine mehr onScene →
-    // status complete.
+    // Intake ist erst 'complete' wenn alle Soldaten versorgt sind — nicht
+    // schon wenn sie im Transport sind. Das laesst dem Operator Zeit, den
+    // Verteilungs-Vorgang visuell zu verfolgen.
     if (
       intake.status === 'arriving' &&
       spawnedForIntake >= intake.totalPatients
     ) {
-      const stillOnScene = state.patients.some(
-        (p) => p.sourceRefId === intake.id && p.status === 'onScene'
+      const stillOutstanding = state.patients.some(
+        (p) =>
+          p.sourceRefId === intake.id &&
+          p.source === 'planned-intake' &&
+          (p.status === 'onScene' || p.status === 'transport')
       );
-      if (!stillOnScene) intake.status = 'complete';
+      if (!stillOutstanding) intake.status = 'complete';
     }
   }
 }
