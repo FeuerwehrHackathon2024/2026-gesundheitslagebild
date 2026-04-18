@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MANV Dashboard Flask</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    >
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar" id="topbar"></header>
+      <section class="body">
+        <aside class="sidebar left" id="left-panel"></aside>
+        <section class="center">
+          <div class="map-card">
+            <div class="card-head">
+              <span class="section-label">Operations Map</span>
+              <span class="muted mono">SVG-Projektion Deutschland</span>
+            </div>
+            <div class="map-wrap" id="map-wrap"></div>
+          </div>
+        </section>
+        <aside class="sidebar right" id="right-panel"></aside>
+      </section>
+      <footer class="timeline" id="timeline"></footer>
+    </main>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
