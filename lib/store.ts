@@ -14,6 +14,8 @@ import { tick } from '@/lib/simulation/engine';
 import { spawnIncidentPatients } from '@/lib/simulation/allocation';
 import { seededRng } from '@/lib/simulation/rng';
 import { applyMeasureToState } from '@/lib/simulation/measures';
+import { mkEvent } from '@/lib/audit/event-log';
+import { createIncidentFromScenario } from '@/lib/simulation/scenarios';
 
 const DEFAULT_SEED = 42;
 
@@ -39,6 +41,9 @@ type Store = SimState & {
   executeRecommendation: (recommendationId: string) => void;
   selectHospital: (id: string | undefined) => void;
   hoverRecommendation: (id: string | undefined) => void;
+  updateFilters: (patch: Partial<SimState['filters']>) => void;
+  clearEvents: () => void;
+  runShowcase: () => void;
 };
 
 function initialState(seed = DEFAULT_SEED): SimState {
@@ -65,6 +70,7 @@ function initialState(seed = DEFAULT_SEED): SimState {
       bedThresholds: { min: 0, max: 1 },
       triage: { T1: true, T2: true, T3: true, T4: true },
     },
+    events: [],
   };
 }
 
@@ -92,17 +98,44 @@ export const useSimStore = create<Store>((set, get) => ({
 
   pause: () => {
     clearTickLoop();
-    set({ isRunning: false });
+    const s = get();
+    set({
+      isRunning: false,
+      events: [
+        ...s.events,
+        mkEvent({ simTime: s.simTime, kind: 'sim.paused', scope: 'system', triggeredBy: 'operator' }),
+      ],
+    });
   },
 
   resume: () => {
     if (get().isRunning) return;
-    set({ isRunning: true });
+    const s = get();
+    set({
+      isRunning: true,
+      events: [
+        ...s.events,
+        mkEvent({ simTime: s.simTime, kind: 'sim.resumed', scope: 'system', triggeredBy: 'operator' }),
+      ],
+    });
     scheduleTickLoop(() => get().speed, () => get().tick());
   },
 
   setSpeed: (speed) => {
-    set({ speed });
+    const s = get();
+    set({
+      speed,
+      events: [
+        ...s.events,
+        mkEvent({
+          simTime: s.simTime,
+          kind: 'sim.speed-changed',
+          scope: 'system',
+          payload: { speed },
+          triggeredBy: 'operator',
+        }),
+      ],
+    });
     if (get().isRunning) {
       scheduleTickLoop(() => get().speed, () => get().tick());
     }
@@ -131,6 +164,22 @@ export const useSimStore = create<Store>((set, get) => ({
     set({
       incidents: [...s.incidents, incident],
       patients: [...s.patients, ...patients],
+      events: [
+        ...s.events,
+        mkEvent({
+          simTime: s.simTime,
+          kind: 'incident.started',
+          scope: 'incident',
+          scopeRef: incident.id,
+          payload: {
+            type: incident.type,
+            label: incident.label,
+            location: incident.location,
+            estimatedCasualties: incident.estimatedCasualties,
+          },
+          triggeredBy: 'operator',
+        }),
+      ],
     });
   },
 
@@ -178,7 +227,26 @@ export const useSimStore = create<Store>((set, get) => ({
       status: 'announced' as const,
       bufferRatio,
     };
-    set((st) => ({ plannedIntakes: [...st.plannedIntakes, intake] }));
+    set((st) => ({
+      plannedIntakes: [...st.plannedIntakes, intake],
+      events: [
+        ...st.events,
+        mkEvent({
+          simTime: st.simTime,
+          kind: 'intake.announced',
+          scope: 'intake',
+          scopeRef: intake.id,
+          payload: {
+            label,
+            totalPatients,
+            flightCount,
+            prepWindowMin,
+            firstArrivalAt,
+          },
+          triggeredBy: 'operator',
+        }),
+      ],
+    }));
     return intake.id;
   },
 
@@ -221,6 +289,104 @@ export const useSimStore = create<Store>((set, get) => ({
       hospitals: next.hospitals,
       plannedIntakes: next.plannedIntakes,
       recommendations: updatedRecs,
+      events: [
+        ...s.events,
+        mkEvent({
+          simTime: s.simTime,
+          kind: 'measure.applied',
+          scope: 'system',
+          scopeRef: rec.id,
+          payload: {
+            action: rec.action,
+            targets: rec.targetHospitalIds,
+            intakeRefId: rec.intakeRefId,
+          },
+          triggeredBy: 'operator',
+        }),
+        mkEvent({
+          simTime: s.simTime,
+          kind: 'recommendation.executed',
+          scope: 'system',
+          scopeRef: rec.id,
+          payload: {
+            action: rec.action,
+            expectedImpact: rec.expectedImpact,
+          },
+          triggeredBy: 'operator',
+        }),
+      ],
+    });
+  },
+
+  updateFilters: (patch) => {
+    set((s) => ({ filters: { ...s.filters, ...patch } }));
+  },
+
+  clearEvents: () => {
+    set({ events: [] });
+  },
+
+  runShowcase: () => {
+    const SEED = 20260418;
+    clearTickLoop();
+    // Reset auf sauberen State mit fixem Seed.
+    set({ ...initialState(SEED) });
+    const startTime = get().simTime;
+    set((s) => ({
+      speed: 10,
+      isRunning: true,
+      events: [
+        ...s.events,
+        mkEvent({
+          simTime: s.simTime,
+          kind: 'user.showcase-started',
+          scope: 'system',
+          triggeredBy: 'operator',
+          payload: { seed: SEED },
+        }),
+      ],
+    }));
+    scheduleTickLoop(() => get().speed, () => get().tick());
+
+    // Showcase-Ablauf (SCENARIOS.md §5): T+30 Intake, T+720 S-Bahn, T+840 Allianz.
+    const scheduleAction = (afterSimMin: number, fn: () => void) => {
+      const interval = setInterval(() => {
+        if (!get().isRunning) return;
+        if (get().simTime - startTime >= afterSimMin) {
+          clearInterval(interval);
+          fn();
+        }
+      }, 100);
+    };
+
+    scheduleAction(30, () => {
+      const api = get();
+      api.announcePlannedIntake({
+        label: 'Medizinische Evakuierung — Soldaten MUC',
+        totalPatients: 750,
+        flightCount: 3,
+        flightIntervalMin: 45,
+        prepWindowMin: 1440,
+        bufferRatio: 0.15,
+        arrivalPoint: [11.7861, 48.3538],
+      });
+    });
+
+    scheduleAction(720, () => {
+      const api = get();
+      const inc = createIncidentFromScenario('sbahn-ostbahnhof', api.simTime, seededRng(SEED));
+      if (inc) api.launchIncident(inc);
+    });
+
+    scheduleAction(840, () => {
+      const api = get();
+      const inc = createIncidentFromScenario(
+        'allianz-arena-panik',
+        api.simTime,
+        seededRng(SEED + 1),
+        { perturbLocation: true }
+      );
+      if (inc) api.launchIncident(inc);
     });
   },
 }));

@@ -73,6 +73,7 @@ function cloneForFork(state: SimState): SimState {
     occupancyHistory: [],
     forkPreviewCache: {},
     filters: { ...state.filters },
+    events: [],
   };
 }
 

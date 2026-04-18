@@ -4,12 +4,12 @@
 
 | Feld | Wert |
 |------|------|
-| Aktive Phase | Phase 10 — Audit-Log + Export + Filter + Demo-Showcase (startet) |
-| Aktueller Schritt | Phase 9 abgeschlossen autonom: Fork-Preview (SimState-Clone + Tick-Loop + Diff), TimelineStrip mit 4 Kurven + Hover-Highlight + gestrichelte Preview-Overlay, applyMeasureToState extrahiert. 137/137 Tests, Gate gruen. |
+| Aktive Phase | Phase 11 (optional) — Polish & Performance — danach Release-Candidate |
+| Aktueller Schritt | Phase 10 abgeschlossen autonom: Event-Log + JSONL/CSV-Export + Filter-Panel + Demo-Showcase. 143/143 Tests, Gate gruen. Alle Pflicht-Phasen 0–10 durch. |
 | Session | 1 |
 | Letztes Update | 2026-04-18 |
 | Blockiert durch | — |
-| Naechste Aktion | Phase 10 Schritt 10.1: `lib/audit/event-log.ts` + `event-types.ts` + AuditPanel mit JSONL-Export + Filter + Demo-Showcase-Button |
+| Naechste Aktion | Phase 11 (optional): Keyboard-Shortcuts, Performance-Review, Accessibility-Baseline. Danach Release-Candidate-Commit. |
 
 ## Changelog
 
@@ -43,7 +43,8 @@
 - **09:06** — **Phase 6 abgeschlossen (autonom)**: OSRM-Client + IndexedDB-Cache + Fallback + RouteLayer mit animierten Pillen. 13 neue Tests. Gate gruen.
 - **09:11** — **Phase 7 abgeschlossen (autonom)**: PlannedIntake + Relocation-Engine. 7 neue Tests (130 total). Gate gruen.
 - **09:16** — **Phase 8 abgeschlossen (autonom)**: Right-Panel mit 4 Tabs. 130 Tests. Gate gruen.
-- **09:22** — **Phase 9 abgeschlossen (autonom)**: Timeline mit Fork-Preview. `lib/simulation/measures.ts` als einzige Source-of-Truth fuer applyMeasureToState (aus Store herausgezogen, DRY). `lib/simulation/fork-preview.ts` mit `computeForkPreview` (Deep-Clone ausgewaehlter SimState-Teile, tick-Schleife N Minuten, Snapshot alle 5 Min, diff berechnet peakLoad/crit/bedsFreed). `ForkPreviewResult` + `TimelinePoint` in `lib/types.ts` konkretisiert (Phase-1-TODO geschlossen). `components/panels/TimelineStrip.tsx` 160 px, 4 Kurven (Gesamt/ITS/OP/Notaufnahme) aus occupancyHistory, Hover-Highlight dimmt andere Kurven, Scrubber-Linie bei "Jetzt", Kritisch-Zone ≥95 % als Background-Band, gestrichelte Fork-Preview-Overlay bei Hover auf Recommendation-Card (150 ms Debounce, Cache via `forkPreviewCache`). Store um `hoveredRecommendationId` + `hoverRecommendation`-Action erweitert. RecommendationCard ruft hover/leave auf. 7 neue Tests (fork-preview: applyMeasureToState fuer surge/cancel-elective/prepare-reception/reserve, computeForkPreview-Kurvenlaenge+Immutability+peakLoadDelta). Gate: typecheck/lint/build/137 Tests gruen.
+- **09:22** — **Phase 9 abgeschlossen (autonom)**: Timeline mit Fork-Preview. 7 neue Tests (137 total). Gate gruen.
+- **09:30** — **Phase 10 abgeschlossen (autonom)**: Audit-Log + Export + Filter + Demo-Showcase. `lib/audit/event-log.ts` (mkEvent mit monoton-ID, exportJsonl, exportCsv mit CSV-Escape, downloadBlob). `SimState.events`-Array. Store instrumentiert sim.paused/resumed/speed-changed, incident.started, intake.announced, measure.applied, recommendation.executed, user.showcase-started. `updateFilters` + `clearEvents` + `runShowcase` (deterministischer Ablauf seed=20260418: T+30 Intake 750 Pat., T+720 S-Bahn, T+840 Allianz). `components/panels/FilterPanel.tsx` (Bett-Threshold-Slider min/max, Triage-Checkboxes T1-T4). `AuditLogPanel.tsx` komplett neu (Kind-Gruppen-Tabs Alle/Einsatz/Intake/Massnahmen/Verlegung/Steuerung, JSONL- und CSV-Export-Buttons, Log-leeren). Header um Demo-Showcase-Button erweitert. HospitalLayer dimmt Kliniken ausserhalb der Bett-Threshold-Range (opacity 0.18). 6 neue Tests (mkEvent, exportJsonl mit JSON.parse-Check, exportCsv mit Komma/Quote-Escape). Gate: **143/143 Tests**, typecheck/lint/build gruen.
 
 ## Phase-1-Abschluss-Stand
 

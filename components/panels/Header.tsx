@@ -20,6 +20,7 @@ export function Header() {
   const pause = useSimStore((s) => s.pause);
   const reset = useSimStore((s) => s.reset);
   const setSpeed = useSimStore((s) => s.setSpeed);
+  const runShowcase = useSimStore((s) => s.runShowcase);
 
   return (
     <header
@@ -112,6 +113,19 @@ export function Header() {
           }}
         >
           Reset
+        </button>
+
+        <button
+          type="button"
+          data-testid="btn-showcase"
+          onClick={() => runShowcase()}
+          className="h-8 rounded-md px-3 text-sm font-medium"
+          style={{
+            background: 'var(--accent-purple)',
+            color: 'var(--text-on-color)',
+          }}
+        >
+          Demo-Showcase
         </button>
       </div>
     </header>

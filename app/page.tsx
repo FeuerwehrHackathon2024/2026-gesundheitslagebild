@@ -9,6 +9,7 @@ import { Header } from '@/components/panels/Header';
 import { LeftPanel } from '@/components/panels/LeftPanel';
 import { IncidentLauncher } from '@/components/panels/IncidentLauncher';
 import { PlannedIntakeForm } from '@/components/panels/PlannedIntakeForm';
+import { FilterPanel } from '@/components/panels/FilterPanel';
 import { RightPanel } from '@/components/panels/RightPanel';
 import { TimelineStrip } from '@/components/panels/TimelineStrip';
 
@@ -30,6 +31,8 @@ export default function Home() {
         <IncidentLauncher />
         <div style={{ height: 1, background: 'var(--border-1)' }} />
         <PlannedIntakeForm />
+        <div style={{ height: 1, background: 'var(--border-1)' }} />
+        <FilterPanel />
       </LeftPanel>
       <RightPanel />
       <TimelineStrip />

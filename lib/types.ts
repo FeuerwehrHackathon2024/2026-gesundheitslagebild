@@ -361,4 +361,7 @@ export interface SimState {
   // UI-State (non-sim, aber im Store fuer globalen Zugriff).
   selectedHospitalId?: string;
   hoveredRecommendationId?: string;
+
+  // Audit-Event-Log (nur persistiert, nicht simulationskritisch).
+  events: Event[];
 }

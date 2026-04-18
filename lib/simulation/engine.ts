@@ -178,6 +178,7 @@ export function emptySimState(seed = 42): SimState {
       bedThresholds: { min: 0, max: 1 },
       triage: { T1: true, T2: true, T3: true, T4: true },
     },
+    events: [],
   };
 }
 

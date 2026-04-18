@@ -30,6 +30,7 @@ interface HospitalProps {
   radius: number;
   strokeColor: string;
   strokeWidth: number;
+  opacity: number;
   ratio: number;
   // 4-Balken-Auslastung fuer Tooltip (0..1).
   ratios: Record<ResourceType, number>;
@@ -53,11 +54,13 @@ function ratioColorHex(ratio: number): string {
 
 function toFeatureCollection(
   hospitals: Hospital[],
-  seed: number
+  seed: number,
+  thresholds: { min: number; max: number } = { min: 0, max: 1 }
 ): FeatureCollection<Point, HospitalProps> {
   const features: Feature<Point, HospitalProps>[] = hospitals.map((h) => {
     const cap = baselineCapacity(h, seed);
     const ratio = overallOccupancyRatio(cap);
+    const inRange = ratio >= thresholds.min && ratio <= thresholds.max;
     const ratios = {
       notaufnahme: cap.notaufnahme.total === 0 ? 0 : cap.notaufnahme.occupied / cap.notaufnahme.total,
       op_saal: cap.op_saal.total === 0 ? 0 : cap.op_saal.occupied / cap.op_saal.total,
@@ -75,6 +78,7 @@ function toFeatureCollection(
         radius: tierRadiusPx(h.tier),
         strokeColor: '#FFFFFF',
         strokeWidth: 2,
+        opacity: inRange ? 1 : 0.18,
         ratio,
         ratios,
         capacity: cap,
@@ -137,9 +141,10 @@ interface HospitalLayerProps {
 }
 
 export function HospitalLayer({ map, seed = 42 }: HospitalLayerProps) {
+  const thresholds = useSimStore((s) => s.filters.bedThresholds);
   useEffect(() => {
     const hospitals = getHospitals();
-    const data = toFeatureCollection(hospitals, seed);
+    const data = toFeatureCollection(hospitals, seed, thresholds);
 
     const ensureSourceAndLayers = () => {
       const existingSrc = map.getSource(SOURCE_ID) as GeoJSONSource | undefined;
@@ -174,6 +179,7 @@ export function HospitalLayer({ map, seed = 42 }: HospitalLayerProps) {
             'circle-stroke-color': ['get', 'strokeColor'],
             'circle-stroke-width': ['get', 'strokeWidth'],
             'circle-stroke-opacity': 0.9,
+            'circle-opacity': ['get', 'opacity'],
           },
         });
       }
@@ -239,7 +245,7 @@ export function HospitalLayer({ map, seed = 42 }: HospitalLayerProps) {
       if (map.getLayer(LAYER_ID_HALO)) map.removeLayer(LAYER_ID_HALO);
       if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID);
     };
-  }, [map, seed]);
+  }, [map, seed, thresholds]);
 
   return null;
 }
