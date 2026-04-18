@@ -219,6 +219,43 @@ function parseNonNegativeInt(value, fallback = 0) {
   return Math.max(0, Number(cleaned));
 }
 
+function browserTodayIso() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function haversineKm(pointA, pointB) {
+  if (!pointA || !pointB) return null;
+  const [lng1, lat1] = pointA;
+  const [lng2, lat2] = pointB;
+  const toRad = (value) => (value * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const lat1Rad = toRad(lat1);
+  const lat2Rad = toRad(lat2);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(dLng / 2) ** 2;
+  return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function activeManvIncident() {
+  return state.data.incidents.find((incident) => incident.type === "manv") || null;
+}
+
+function vorplanungConflictInfo() {
+  const currentPlan = state.data.vorplanung;
+  const currentManv = activeManvIncident();
+  if (!currentPlan || !currentManv) return null;
+  if (!currentPlan.date || !currentManv.date || currentPlan.date !== currentManv.date) return null;
+  const distanceKm = haversineKm(currentPlan.location, currentManv.location);
+  if (distanceKm == null || distanceKm > 10) return null;
+  return {
+    date: currentPlan.date,
+    distanceKm,
+    planAddress: currentPlan.address,
+  };
+}
+
 function syncTimer() {
   if (state.timer) {
     clearInterval(state.timer);
@@ -234,48 +271,26 @@ function syncTimer() {
 
 function renderTopbar() {
   const topbar = document.getElementById("topbar");
-  const scenarioLabel = state.data.incidents.length
-    ? state.data.incidents[state.data.incidents.length - 1].label
-    : "kein Szenario";
+  const now = new Date();
+  const currentDate = now.toLocaleDateString("de-DE", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+  const currentTime = now.toLocaleTimeString("de-DE", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   topbar.innerHTML = `
-    <div class="row-between" style="gap:8px;">
-      <span class="section-label">MANV Dashboard</span>
-      <span class="badge mono">${state.data.isPaused ? "Pause" : "Live"}</span>
-    </div>
-    <div>
-      <div class="section-label">Sim-Clock</div>
-      <div class="mono">${formatSimTime(state.data.simTime)}</div>
-    </div>
-    <div>
-      <div class="section-label">Speed</div>
-      <div class="row-between" style="gap:6px; margin-top:4px;">
-        ${speedOptions.map((speed) => `<button class="btn ${speed === state.data.speed ? "accent" : ""}" data-speed="${speed}">${speed}x</button>`).join("")}
+    <div class="row-between" style="gap:8px; width:100%;">
+      <span class="section-label">Gesundheitslagebild</span>
+      <button class="btn ghost" id="reset-sim">Reset</button>
+      <div style="margin-left:auto; text-align:right;">
+        <div class="section-label">Datum / Uhrzeit</div>
+        <div class="mono">${currentDate} ${currentTime}</div>
       </div>
     </div>
-    <div class="row-between" style="gap:8px;">
-      <button class="btn" id="toggle-pause">${state.data.isPaused ? "Play" : "Pause"}</button>
-      <button class="btn" data-step="10">+10 min</button>
-      <button class="btn" data-step="60">+1 h</button>
-      <button class="btn ghost" id="reset-sim">Reset</button>
-    </div>
-    <div style="margin-left:auto;">
-      <div class="section-label">Szenario</div>
-      <div class="mono">${scenarioLabel}</div>
-    </div>
   `;
-  topbar.querySelectorAll("[data-speed]").forEach((button) => {
-    button.addEventListener("click", () => api("/api/control/speed", { body: { speed: Number(button.dataset.speed) } }));
-  });
-  topbar.querySelectorAll("[data-step]").forEach((button) => {
-    button.addEventListener("click", () => api("/api/control/step", { body: { minutes: Number(button.dataset.step) } }));
-  });
-  document.getElementById("toggle-pause").onclick = () => {
-    if (state.timer) {
-      clearInterval(state.timer);
-      state.timer = null;
-    }
-    api("/api/control/toggle-pause");
-  };
   document.getElementById("reset-sim").onclick = () => {
     if (state.timer) {
       clearInterval(state.timer);
@@ -462,6 +477,7 @@ function renderMap() {
   const involved = involvedHospitalIds();
   const hospitals = getHospitals();
   const hasActiveScenario = state.data.incidents.length > 0;
+  const conflict = vorplanungConflictInfo();
   if (!state.map) {
     wrap.innerHTML = "";
     state.map = L.map(wrap, {
@@ -540,6 +556,21 @@ function renderMap() {
     if (slider && slider.value !== String(state.transparenzLevel)) {
       slider.value = String(state.transparenzLevel);
     }
+  }
+
+  let conflictBanner = wrap.querySelector(".map-conflict-banner");
+  if (conflict) {
+    if (!conflictBanner) {
+      conflictBanner = document.createElement("div");
+      conflictBanner.className = "map-conflict-banner";
+      wrap.appendChild(conflictBanner);
+    }
+    conflictBanner.innerHTML = `
+      <strong>Achtung</strong>
+      <span>Am ${conflict.date} gibt es bereits eine Vorplanung im Umkreis von ${conflict.distanceKm.toFixed(1)} km. Moeglicher Konflikt.</span>
+    `;
+  } else if (conflictBanner) {
+    conflictBanner.remove();
   }
 
   state.layers.context.clearLayers();
@@ -867,10 +898,6 @@ function renderRightPanel() {
               </div>
             </div>
           ` : ""}
-          <div class="row-between" style="gap:8px; margin-top:8px;">
-            <button class="btn" id="escalate-hospital">Stufe erhoehen</button>
-            <button class="btn ${selectedHospital.excludedFromAllocation ? "danger" : ""}" id="toggle-exclusion">${selectedHospital.excludedFromAllocation ? "Wieder aufnehmen" : "Aus Zuteilung nehmen"}</button>
-          </div>
           <div style="margin-top:12px;" class="list">
             ${Object.entries(selectedHospital.disciplines).map(([discipline, cap]) => {
               const ratio = cap.bedsTotal ? cap.bedsOccupied / cap.bedsTotal : 0;
@@ -953,10 +980,6 @@ function renderRightPanel() {
       renderRightPanel();
     });
   });
-  const escalate = document.getElementById("escalate-hospital");
-  if (escalate) escalate.onclick = () => api(`/api/hospitals/${selectedHospital.id}/escalate`);
-  const exclusion = document.getElementById("toggle-exclusion");
-  if (exclusion) exclusion.onclick = () => api(`/api/hospitals/${selectedHospital.id}/toggle-exclusion`);
   right.querySelectorAll(".execute-rec").forEach((button) => {
     button.addEventListener("click", () => api(`/api/recommendations/${button.dataset.id}/execute`));
   });
@@ -981,23 +1004,6 @@ function renderRightPanel() {
       document.addEventListener("mouseup", onUp);
     };
   }
-}
-
-function renderTimeline() {
-  const timeline = document.getElementById("timeline");
-  const cursorPct = Math.min(100, (state.data.simTime / (24 * 60)) * 100);
-  timeline.innerHTML = `
-    <div class="row-between">
-      <span class="section-label">Timeline</span>
-      <span class="mono">${formatSimTime(state.data.simTime)}</span>
-    </div>
-    <div class="timeline-axis">
-      <div class="timeline-line"></div>
-      ${state.data.incidents.map((incident) => `<div class="timeline-marker incident" style="left:${Math.min(100, (incident.startedAt / (24 * 60)) * 100)}%;" title="${incident.label}"></div>`).join("")}
-      ${state.data.alerts.filter((alert) => alert.severity === "critical").map((alert) => `<div class="timeline-marker alert" style="left:${Math.min(100, (alert.firedAt / (24 * 60)) * 100)}%;" title="${alert.title}"></div>`).join("")}
-      <div class="cursor" style="left:${cursorPct}%;"></div>
-    </div>
-  `;
 }
 
 function renderLeftPanelCollapsible() {
@@ -1071,26 +1077,6 @@ function renderLeftPanelCollapsible() {
     </section>
     <section class="section">
       <div class="panel-head">
-        <button class="btn ghost section-toggle" data-section="settings">${sections.settings ? "&#9662;" : "&#9656;"} Einstellungen</button>
-      </div>
-      ${sections.settings ? `
-        <div class="settings-group">
-          <div class="section-label">Karte</div>
-          <div class="checkbox-list" style="margin-top:8px;">
-            <label><input type="checkbox" id="toggle-context-hospitals" ${state.showContextHospitals ? "checked" : ""}> <span>Kontext-Krankenhaeuser anzeigen</span></label>
-          </div>
-        </div>
-        <div class="settings-group">
-          <div class="section-label">Transportzeiten</div>
-          <div class="muted" style="font-size:12px; margin:6px 0 10px;">Grenzwerte fuer Warnung und Zuweisung je Sichtungskategorie.</div>
-          <label class="field"><span>SK I max. Min.</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="threshold-sk1" value="${thresholds.SK1}"></label>
-          <label class="field"><span>SK II max. Min.</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="threshold-sk2" value="${thresholds.SK2}"></label>
-          <label class="field"><span>SK III max. Min.</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="threshold-sk3" value="${thresholds.SK3}"></label>
-        </div>
-      ` : ""}
-    </section>
-    <section class="section">
-      <div class="panel-head">
         <button class="btn ghost section-toggle" data-section="filters">${sections.filters ? "&#9662;" : "&#9656;"} Filter</button>
         ${sections.filters ? `<button class="btn ghost" id="reset-filters">Reset</button>` : ""}
       </div>
@@ -1127,6 +1113,26 @@ function renderLeftPanelCollapsible() {
           <div><span class="legend-dot" style="background:var(--accent-red)"></span>Rot: Auslastung ueber 95 %</div>
           <div><span class="legend-dot" style="border:2px solid var(--accent-cyan); background:transparent"></span>Cyan-Ring: beteiligtes Krankenhaus</div>
           <div><span class="legend-dot" style="background:#36d1dc"></span>Blau: MANV-Ort</div>
+        </div>
+      ` : ""}
+    </section>
+    <section class="section">
+      <div class="panel-head">
+        <button class="btn ghost section-toggle" data-section="settings">${sections.settings ? "&#9662;" : "&#9656;"} Einstellungen</button>
+      </div>
+      ${sections.settings ? `
+        <div class="settings-group">
+          <div class="section-label">Karte</div>
+          <div class="checkbox-list" style="margin-top:8px;">
+            <label><input type="checkbox" id="toggle-context-hospitals" ${state.showContextHospitals ? "checked" : ""}> <span>Kontext-Krankenhaeuser anzeigen</span></label>
+          </div>
+        </div>
+        <div class="settings-group">
+          <div class="section-label">Transportzeiten</div>
+          <div class="muted" style="font-size:12px; margin:6px 0 10px;">Grenzwerte fuer Warnung und Zuweisung je Sichtungskategorie.</div>
+          <label class="field"><span>SK I max. Min.</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="threshold-sk1" value="${thresholds.SK1}"></label>
+          <label class="field"><span>SK II max. Min.</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="threshold-sk2" value="${thresholds.SK2}"></label>
+          <label class="field"><span>SK III max. Min.</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="threshold-sk3" value="${thresholds.SK3}"></label>
         </div>
       ` : ""}
     </section>
@@ -1190,7 +1196,7 @@ function renderLeftPanelCollapsible() {
           const button = document.getElementById(target === "manv" ? "start-manv" : "start-vorplanung");
           if (button) {
             const currentTotal = Object.values(form.counts).reduce((sum, value) => sum + Number(value || 0), 0);
-            button.disabled = form.lat == null || currentTotal <= 0 || (target === "vorplanung" && !state.vorplanungForm.date);
+            button.disabled = form.lat == null || currentTotal <= 0 || (target === "vorplanung" ? !state.vorplanungForm.date : false);
           }
         };
       }
@@ -1201,6 +1207,7 @@ function renderLeftPanelCollapsible() {
   if (startManv) {
     startManv.onclick = () => api("/api/manv", {
       body: {
+        date: browserTodayIso(),
         address: state.manvForm.address,
         lat: state.manvForm.lat,
         lng: state.manvForm.lng,
@@ -1274,18 +1281,12 @@ function render() {
   renderLeftPanelCollapsible();
   renderMap();
   renderRightPanel();
-  renderTimeline();
 }
 
 document.addEventListener("keydown", (event) => {
   if (!state.data) return;
-  if (event.code === "Space") {
-    event.preventDefault();
-    api("/api/control/toggle-pause");
-  } else if (event.key === "r" || event.key === "R") {
+  if (event.key === "r" || event.key === "R") {
     api("/api/control/reset");
-  } else if (["1", "2", "3", "4", "5"].includes(event.key)) {
-    api("/api/control/speed", { body: { speed: speedOptions[Number(event.key) - 1] } });
   } else if (event.key === "Escape") {
     state.selection = null;
     renderRightPanel();
@@ -1294,3 +1295,6 @@ document.addEventListener("keydown", (event) => {
 });
 
 fetchState();
+setInterval(() => {
+  if (state.data) renderTopbar();
+}, 30000);

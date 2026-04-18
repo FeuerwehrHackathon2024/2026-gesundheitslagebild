@@ -5,6 +5,7 @@ import json
 import math
 import pathlib
 import threading
+from datetime import date as datetime_date
 from typing import Any
 
 
@@ -1355,6 +1356,7 @@ class SimController:
 
     def create_manv(self, payload: dict[str, Any]) -> dict[str, Any]:
         with self.lock:
+            date = str(payload.get("date", "")).strip() or datetime_date.today().isoformat()
             address = str(payload.get("address", "")).strip() or "Unbekannter Einsatzort"
             lat = float(payload["lat"])
             lng = float(payload["lng"])
@@ -1376,6 +1378,7 @@ class SimController:
                 "id": incident_id,
                 "type": "manv",
                 "label": f"MANV {address}",
+                "date": date,
                 "location": [lng, lat],
                 "radius": 1000,
                 "startedAt": self.state["simTime"],
