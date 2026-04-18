@@ -4,12 +4,12 @@
 
 | Feld | Wert |
 |------|------|
-| Aktive Phase | Phase 11 (optional) — Polish & Performance — danach Release-Candidate |
-| Aktueller Schritt | Phase 10 abgeschlossen autonom: Event-Log + JSONL/CSV-Export + Filter-Panel + Demo-Showcase. 143/143 Tests, Gate gruen. Alle Pflicht-Phasen 0–10 durch. |
+| Aktive Phase | **Release-Candidate** — alle Phasen 0–11 durch |
+| Aktueller Schritt | Phase 11 abgeschlossen: Keyboard-Shortcuts (Space/1-5/R/D/Esc), Fokus-Ringe, prefers-reduced-motion, ARIA-Labels im Header. 143/143 Tests, Gate gruen. |
 | Session | 1 |
 | Letztes Update | 2026-04-18 |
 | Blockiert durch | — |
-| Naechste Aktion | Phase 11 (optional): Keyboard-Shortcuts, Performance-Review, Accessibility-Baseline. Danach Release-Candidate-Commit. |
+| Naechste Aktion | `chore: release-candidate`-Commit. Uebergabereif. |
 
 ## Changelog
 
@@ -44,7 +44,8 @@
 - **09:11** — **Phase 7 abgeschlossen (autonom)**: PlannedIntake + Relocation-Engine. 7 neue Tests (130 total). Gate gruen.
 - **09:16** — **Phase 8 abgeschlossen (autonom)**: Right-Panel mit 4 Tabs. 130 Tests. Gate gruen.
 - **09:22** — **Phase 9 abgeschlossen (autonom)**: Timeline mit Fork-Preview. 7 neue Tests (137 total). Gate gruen.
-- **09:30** — **Phase 10 abgeschlossen (autonom)**: Audit-Log + Export + Filter + Demo-Showcase. `lib/audit/event-log.ts` (mkEvent mit monoton-ID, exportJsonl, exportCsv mit CSV-Escape, downloadBlob). `SimState.events`-Array. Store instrumentiert sim.paused/resumed/speed-changed, incident.started, intake.announced, measure.applied, recommendation.executed, user.showcase-started. `updateFilters` + `clearEvents` + `runShowcase` (deterministischer Ablauf seed=20260418: T+30 Intake 750 Pat., T+720 S-Bahn, T+840 Allianz). `components/panels/FilterPanel.tsx` (Bett-Threshold-Slider min/max, Triage-Checkboxes T1-T4). `AuditLogPanel.tsx` komplett neu (Kind-Gruppen-Tabs Alle/Einsatz/Intake/Massnahmen/Verlegung/Steuerung, JSONL- und CSV-Export-Buttons, Log-leeren). Header um Demo-Showcase-Button erweitert. HospitalLayer dimmt Kliniken ausserhalb der Bett-Threshold-Range (opacity 0.18). 6 neue Tests (mkEvent, exportJsonl mit JSON.parse-Check, exportCsv mit Komma/Quote-Escape). Gate: **143/143 Tests**, typecheck/lint/build gruen.
+- **09:30** — **Phase 10 abgeschlossen (autonom)**: Audit-Log + Export + Filter + Demo-Showcase. 6 neue Tests (143 total). Gate gruen.
+- **09:36** — **Phase 11 abgeschlossen (Polish, autonom)**: Keyboard-Shortcuts via `hooks/useKeyboardShortcuts.ts` (Space = Play/Pause, 1-5 = Speed 0.5/1/2/5/10×, R = Reset, D = Demo, Esc = Klinik-Detail schliessen — Eingabefelder werden ausgenommen). `globals.css` erweitert um `:focus-visible` mit 2 px accent-blue Ring + Offset, Transitions 180/120 ms, `prefers-reduced-motion`-Override. ARIA-Labels fuer Header-Buttons (Play/Pause, Reset, Showcase) inkl. Shortcut-Hint. README um Shortcut-Tabelle ergaenzt. Kein Gate-Bruch: 143/143 Tests, typecheck/lint/build gruen.
 
 ## Phase-1-Abschluss-Stand
 

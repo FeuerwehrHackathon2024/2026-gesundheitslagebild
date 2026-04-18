@@ -54,6 +54,16 @@ Laufender Projektstand in `STATUS.md`, Claude-Kontext in `CLAUDE.md`.
 
 `doc/Krankenhäuser_München.xlsx` — 49 Kliniken im Grossraum München mit Koordinaten, Abteilungen, Betten und Intensivbetten. Einmalige Konvertierung per `scripts/gen-hospitals.ts` nach `lib/data/hospitals.json`.
 
+## Keyboard-Shortcuts
+
+| Taste | Aktion |
+|---|---|
+| `Space` | Pause / Weiter |
+| `1`..`5` | Geschwindigkeit 0.5× / 1× / 2× / 5× / 10× |
+| `R` | Reset |
+| `D` | Demo-Showcase starten |
+| `Esc` | Klinik-Detail-Panel schliessen |
+
 ## Architektur-Leitplanken
 
 - **Kein Backend.** Keine DB auf dem Server. Keine API-Keys. Kein Auth.

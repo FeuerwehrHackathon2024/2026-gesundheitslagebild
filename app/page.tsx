@@ -12,8 +12,10 @@ import { PlannedIntakeForm } from '@/components/panels/PlannedIntakeForm';
 import { FilterPanel } from '@/components/panels/FilterPanel';
 import { RightPanel } from '@/components/panels/RightPanel';
 import { TimelineStrip } from '@/components/panels/TimelineStrip';
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 
 export default function Home() {
+  useKeyboardShortcuts();
   return (
     <main className="relative h-screen w-screen overflow-hidden">
       <Header />

@@ -56,6 +56,7 @@ export function Header() {
           <button
             type="button"
             data-testid="btn-pause"
+            aria-label="Simulation pausieren (Space)"
             onClick={() => pause()}
             className="h-8 rounded-md px-3 text-sm font-medium"
             style={{
@@ -69,6 +70,7 @@ export function Header() {
           <button
             type="button"
             data-testid="btn-play"
+            aria-label="Simulation starten (Space)"
             onClick={() => resume()}
             className="h-8 rounded-md px-3 text-sm font-medium"
             style={{
@@ -104,6 +106,7 @@ export function Header() {
         <button
           type="button"
           data-testid="btn-reset"
+          aria-label="Simulation zuruecksetzen (R)"
           onClick={() => reset()}
           className="h-8 rounded-md px-3 text-sm"
           style={{
@@ -118,6 +121,7 @@ export function Header() {
         <button
           type="button"
           data-testid="btn-showcase"
+          aria-label="Demo-Showcase starten (D)"
           onClick={() => runShowcase()}
           className="h-8 rounded-md px-3 text-sm font-medium"
           style={{
