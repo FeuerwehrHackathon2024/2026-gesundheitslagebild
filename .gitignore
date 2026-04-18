@@ -41,3 +41,6 @@ Thumbs.db
 # Claude Code runtime artifacts (lokal, nicht versionieren)
 .claude/session.log
 .claude/scheduled_tasks.lock
+
+# Debug-Screenshots aus scripts/inspect-live.mjs
+scripts/_inspect-*.png

@@ -27,17 +27,31 @@ export function MapContainer({ children }: MapContainerProps) {
       center: MAP_INITIAL_CENTER,
       zoom: MAP_INITIAL_ZOOM,
       attributionControl: { compact: true },
+      // Fallback fuer GPUs/Treiber mit unvollstaendigem WebGL2-Support:
+      // erzwingt WebGL1 — vermeidet "Could not compile fragment shader"-Error.
+      canvasContextAttributes: { contextType: 'webgl' },
     });
 
     instance.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
 
     instance.on('load', () => {
       setMap(instance);
+      // Initial-Resize: bei Mount kann der Container noch nicht seine finale
+      // Groesse haben (Layout-Pass, absolute inset-0 + ueberlappende Panels).
+      instance.resize();
     });
+
+    // ResizeObserver fuer spaetere Layout-Aenderungen (Panel-Ein-/Ausblenden,
+    // Window-Resize innerhalb eines Layout-Containers).
+    const ro = new ResizeObserver(() => {
+      instance.resize();
+    });
+    ro.observe(nodeRef.current);
 
     mapRef.current = instance;
 
     return () => {
+      ro.disconnect();
       instance.remove();
       mapRef.current = null;
       setMap(null);
@@ -48,8 +62,20 @@ export function MapContainer({ children }: MapContainerProps) {
     <div
       ref={nodeRef}
       data-testid="map-container"
-      className="absolute inset-0 z-map"
-      style={{ background: 'var(--bg-base)' }}
+      // MapLibre setzt `.maplibregl-map { position: relative }` mit hoher
+      // Spezifitaet und ueberschreibt Tailwind's `absolute inset-0`. Daher
+      // inline-style mit position/inset, das Tailwind-Class fuer z-map reicht.
+      className="z-map"
+      style={{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        background: 'var(--bg-base)',
+      }}
     >
       {map && children ? children(map) : null}
     </div>
