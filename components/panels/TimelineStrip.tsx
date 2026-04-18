@@ -209,10 +209,13 @@ function useTimelineGeom(
     const width = 1200;
     const height = 140;
     const plotH = height - PADDING_Y * 2;
-    // Zeitfenster: letzte 120 Sim-min + HORIZON_MIN Prognose.
+    // Zeitfenster: vom Anfang der Session bis jetzt + HORIZON_MIN Prognose.
+    // Wenn die Session gerade erst beginnt, zeigen wir mindestens 60 Min
+    // Vorlauf damit die Achse nicht auf einen Punkt kollabiert.
     const now = preview?.computedAt ?? (history.length ? history[history.length - 1].simTime : 0);
-    const tsStart = Math.max(0, now - 120);
-    const tsEnd = now + HORIZON_MIN;
+    const historyStart = history.length > 0 ? history[0].simTime : 0;
+    const tsStart = Math.max(0, Math.min(historyStart, now - 30));
+    const tsEnd = Math.max(now + HORIZON_MIN, tsStart + 60);
     const span = Math.max(1, tsEnd - tsStart);
     const xFor = (t: number) =>
       PADDING_X + ((t - tsStart) / span) * (width - PADDING_X * 2);

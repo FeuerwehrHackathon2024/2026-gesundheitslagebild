@@ -68,7 +68,18 @@ describe('HospitalSaturation', () => {
     expect(ruleHospitalSaturation([h], 0)).toEqual([]);
   });
 
-  it('warn bei 85 %', () => {
+  it('warn bei Notaufnahme 80 % (ressourcen-spezifische Schwelle)', () => {
+    const h = mkHospital('H', { capacity: {
+      notaufnahme: cap(10, 8), // 80 % → warn laut RESOURCE_THRESHOLDS
+      op_saal: cap(10, 5),
+      its_bett: cap(10, 5),
+      normal_bett: cap(100, 50),
+    }});
+    const alerts = ruleHospitalSaturation([h], 0);
+    expect(alerts.some((a) => a.severity === 'warn' && a.ruleName === 'HospitalSaturation')).toBe(true);
+  });
+
+  it('critical bei Notaufnahme 90 % (Kern-Ressource wird strenger bewertet)', () => {
     const h = mkHospital('H', { capacity: {
       notaufnahme: cap(10, 9),
       op_saal: cap(10, 5),
@@ -76,7 +87,7 @@ describe('HospitalSaturation', () => {
       normal_bett: cap(100, 50),
     }});
     const alerts = ruleHospitalSaturation([h], 0);
-    expect(alerts.some((a) => a.severity === 'warn' && a.ruleName === 'HospitalSaturation')).toBe(true);
+    expect(alerts.some((a) => a.severity === 'critical' && a.ruleName === 'HospitalSaturation')).toBe(true);
   });
 
   it('critical bei 95 %', () => {

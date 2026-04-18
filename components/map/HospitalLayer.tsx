@@ -146,18 +146,17 @@ export function HospitalLayer({ map }: HospitalLayerProps) {
   const thresholds = useSimStore((s) => s.filters.bedThresholds);
   const lookupRef = useRef<Map<string, HospitalDisplay>>(new Map());
 
+  // Effect A: Setup — Source + Layers + Event-Handler + Popup. Einmal am
+  // Mount registrieren, beim Unmount sauber entfernen. Keine Dependency auf
+  // Live-Daten → kein Flimmern durch Layer-Recreate pro Tick.
   useEffect(() => {
-    const { fc, lookup } = buildData(Object.values(hospitalsRec), thresholds);
-    lookupRef.current = lookup;
-
     const ensureSourceAndLayers = () => {
-      const existingSrc = map.getSource(SOURCE_ID) as GeoJSONSource | undefined;
-      if (existingSrc) {
-        existingSrc.setData(fc);
-      } else {
-        map.addSource(SOURCE_ID, { type: 'geojson', data: fc });
+      if (!map.getSource(SOURCE_ID)) {
+        map.addSource(SOURCE_ID, {
+          type: 'geojson',
+          data: { type: 'FeatureCollection', features: [] },
+        });
       }
-
       if (!map.getLayer(LAYER_ID_HALO)) {
         map.addLayer({
           id: LAYER_ID_HALO,
@@ -171,7 +170,6 @@ export function HospitalLayer({ map }: HospitalLayerProps) {
           },
         });
       }
-
       if (!map.getLayer(LAYER_ID)) {
         map.addLayer({
           id: LAYER_ID,
@@ -189,11 +187,8 @@ export function HospitalLayer({ map }: HospitalLayerProps) {
       }
     };
 
-    if (map.isStyleLoaded()) {
-      ensureSourceAndLayers();
-    } else {
-      map.once('load', ensureSourceAndLayers);
-    }
+    if (map.isStyleLoaded()) ensureSourceAndLayers();
+    else map.once('load', ensureSourceAndLayers);
 
     const popup = new maplibregl.Popup({
       closeButton: false,
@@ -251,6 +246,19 @@ export function HospitalLayer({ map }: HospitalLayerProps) {
       if (map.getLayer(LAYER_ID_HALO)) map.removeLayer(LAYER_ID_HALO);
       if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID);
     };
+  }, [map]);
+
+  // Effect B: Data-only. setData() schickt nur die FeatureCollection durch —
+  // MapLibre updated Paint ohne Layer-Re-Add (kein Flimmern).
+  useEffect(() => {
+    const { fc, lookup } = buildData(Object.values(hospitalsRec), thresholds);
+    lookupRef.current = lookup;
+    const apply = () => {
+      const src = map.getSource(SOURCE_ID) as GeoJSONSource | undefined;
+      if (src) src.setData(fc);
+    };
+    if (map.isStyleLoaded() && map.getSource(SOURCE_ID)) apply();
+    else map.once('load', apply);
   }, [map, hospitalsRec, thresholds]);
 
   return null;

@@ -36,35 +36,65 @@ function pushAlert(
   });
 }
 
+// Ressourcen-spezifische Schwellwerte: Notaufnahme + OP sind Engpass-
+// Kernressourcen und werden strenger bewertet als Normalbetten.
+export const RESOURCE_THRESHOLDS: Record<
+  (typeof RESOURCE_TYPES)[number],
+  { warn: number; critical: number }
+> = {
+  notaufnahme: { warn: 0.8, critical: 0.9 },
+  op_saal: { warn: 0.8, critical: 0.9 },
+  its_bett: { warn: 0.85, critical: 0.95 },
+  normal_bett: { warn: 0.9, critical: 0.98 },
+};
+
 // §7.1 HospitalSaturation: pro Klinik EIN Alert.
-// Schwerste Einzelressource bestimmt Severity, Detail listet betroffene Ressourcen.
+// Schwerste Einzelressource bestimmt Severity (ressourcen-spezifische Schwelle).
+// Kernressourcen (Notaufnahme/OP) triggern frueher als Normalbetten.
 export function ruleHospitalSaturation(
   hospitals: Hospital[],
   simTime: number
 ): Alert[] {
   const alerts: Alert[] = [];
   for (const h of hospitals) {
-    let peakRatio = 0;
+    let severity: AlertSeverity | null = null;
+    let worstRes: (typeof RESOURCE_TYPES)[number] | null = null;
+    let worstRatio = 0;
     const hotResources: string[] = [];
+
     for (const r of RESOURCE_TYPES) {
       const cap = h.capacity[r];
       const eff = effectiveTotal(cap);
       if (eff === 0) continue;
       const ratio = cap.occupied / eff;
-      if (ratio > peakRatio) peakRatio = ratio;
-      if (ratio >= 0.85) hotResources.push(RESOURCE_DISPLAY_LONG[r]);
+      const t = RESOURCE_THRESHOLDS[r];
+      let resSev: AlertSeverity | null = null;
+      if (ratio >= t.critical) resSev = 'critical';
+      else if (ratio >= t.warn) resSev = 'warn';
+      if (!resSev) continue;
+      hotResources.push(`${RESOURCE_DISPLAY_LONG[r]} (${Math.round(ratio * 100)} %)`);
+      // Schwerer gewichten: critical > warn.
+      if (resSev === 'critical' && severity !== 'critical') {
+        severity = 'critical';
+        worstRes = r;
+        worstRatio = ratio;
+      } else if (severity == null) {
+        severity = 'warn';
+        worstRes = r;
+        worstRatio = ratio;
+      } else if (ratio > worstRatio && severity === resSev) {
+        worstRes = r;
+        worstRatio = ratio;
+      }
     }
-    let severity: AlertSeverity | null = null;
-    if (peakRatio >= 0.95) severity = 'critical';
-    else if (peakRatio >= 0.85) severity = 'warn';
-    if (!severity) continue;
+    if (!severity || !worstRes) continue;
     pushAlert(alerts, {
       ruleName: 'HospitalSaturation',
       severity,
       scope: 'hospital',
       scopeRef: h.id,
       firedAt: simTime,
-      title: `${h.name}: ${Math.round(peakRatio * 100)} %`,
+      title: `${h.name}: ${RESOURCE_DISPLAY_LONG[worstRes]} ${Math.round(worstRatio * 100)} %`,
       detail:
         hotResources.length === 1
           ? `${hotResources[0]} ueberlastet`
