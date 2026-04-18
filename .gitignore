@@ -42,5 +42,6 @@ Thumbs.db
 .claude/session.log
 .claude/scheduled_tasks.lock
 
-# Debug-Screenshots aus scripts/inspect-live.mjs
+# Debug-Screenshots aus scripts/inspect-*.mjs
 scripts/_inspect-*.png
+scripts/_intake-*.png
