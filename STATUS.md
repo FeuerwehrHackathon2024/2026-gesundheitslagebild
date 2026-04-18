@@ -4,12 +4,12 @@
 
 | Feld | Wert |
 |------|------|
-| Aktive Phase | Phase 3 — Map-Basis + Kliniken-Layer (startet) |
-| Aktueller Schritt | Phase 2 abgeschlossen (48 Kliniken generiert, Gate 25/25 Tests gruen, inkl. LMU Grosshadern = maximal + 94 ITS, Rechts der Isar = hasOP + hasNeurochir). Loop laeuft autonom weiter (User-Freigabe-Stop entfernt per feedback_autonomer_loop). |
+| Aktive Phase | Phase 4 — Simulation-Engine-Kern + Store (startet) |
+| Aktueller Schritt | Phase 3 abgeschlossen autonom (Map + 48 Kliniken-Layer + Hover-Tooltip + Baseline-Auslastung-Helper). Gate gruen: 37/37 Tests, build, lint, typecheck, dev-Smoke HTTP 200 mit Map-Container + Header + lang=de. |
 | Session | 1 |
 | Letztes Update | 2026-04-18 |
 | Blockiert durch | — |
-| Naechste Aktion | Phase 3 Schritt 3.1: MapLibre-Setup — `components/map/mapStyle.ts` (CartoDB Positron) + `components/map/MapContainer.tsx` (Center Marienplatz, Zoom 9.5) |
+| Naechste Aktion | Phase 4 Schritt 4.1: `lib/store.ts` mit Zustand-Store (simState + Actions: tick, pause, resume, setSpeed, reset, launchIncident, launchPlannedIntake, executeRecommendation) |
 
 ## Changelog
 
@@ -36,7 +36,8 @@
 - **07:46** — Phase 1 (nach User-Freigabe) Schritt 1.1: `lib/types.ts` mit allen Domain-Typen laut DATA_MODEL.md — Grundtypen (Triage, ResourceType, PatientStatus, HospitalTier), Patient, Capacity, Hospital (+Address/Flags/Staff/Escalation), Incident (+NeedsProfile), PlannedIntake (+FlightArrival/Status), Alert, Recommendation (+MeasureAction/ExpectedImpact), Event (+Kinds/Scope), Route, SimState (+OccupancyHistoryEntry/SimFilters). ForkPreviewResult als Phase-9-TODO-Stub. Typecheck gruen.
 - **07:51** — Phase 1, Schritt 1.2: `lib/data/resources.ts` mit kanonischer `RESOURCE_TYPES`-Reihenfolge, `RESOURCE_DISPLAY` (kurz) und `RESOURCE_DISPLAY_LONG` (lang) und `RESOURCE_COLOR` als CSS-var-Mapping (chart-4/3/2 + accent-green). Typecheck gruen.
 - **07:57** — Phase 1, Schritt 1.3 **(Phase-Abschluss)**: `lib/geo.ts` mit `haversine`, `bboxFromPoints`, `bboxContains`, `centerOf`, Konstanten `MARIENPLATZ_COORDS`, `FLUGHAFEN_MUC_COORDS`, `MUC_REGION_BBOX`. Co-locate Tests `lib/geo.test.ts` mit 12 Faellen. Alle Tests gruen.
-- **08:04** — **Phase 2 abgeschlossen (autonom, ohne User-Freigabe-Stop)**: `scripts/gen-hospitals.ts` parst `doc/Krankenhäuser_München.xlsx` und erzeugt `lib/data/hospitals.json`. `lib/data/hospitalsLoader.ts` liefert typisierten Zugriff. Spec-Abweichungen in `doc/DECISIONS.md` dokumentiert: echte Excel-Spalten 1–14 (nicht 2–15 wie DATA_GENERATION.md §1 behauptet) und 48 Datenzeilen (nicht 49). Tests `tests/unit/data-generation.test.ts` mit 13 Faellen (IDs, Bayern-BBox, Tier-Ableitung inkl. LMU Grosshadern=maximal mit 94 ITS-Betten, Rechts der Isar=hasOP+hasNeurochir, ≥3 maximal, ≥8 Notaufnahme, Surge=20%, Initial-Zustand). `hospitals.json` committed (aus .gitignore entfernt) fuer CI-Verfuegbarkeit. Gate: typecheck/lint/build ✓, 25/25 Tests ✓.
+- **08:04** — **Phase 2 abgeschlossen (autonom)**: `scripts/gen-hospitals.ts` parst Excel → 48 Kliniken nach `lib/data/hospitals.json`. `lib/data/hospitalsLoader.ts` typisierter Zugriff. `doc/DECISIONS.md` dokumentiert Spec-Abweichungen (Spalten 1–14, 48 statt 49 Kliniken). 13 Tests. Gate gruen.
+- **08:12** — **Phase 3 abgeschlossen (autonom)**: Map-Basis + Kliniken-Layer. `lib/simulation/baseline.ts` (deterministische 65–80 %-Auslastung + Farb/Radius-Helpers, 12 Tests). `components/map/mapStyle.ts` (CartoDB Positron Raster). `components/map/MapContainer.tsx` (MapLibre Client-Component mit NavigationControl). `components/map/HospitalLayer.tsx` (48 Klinik-Punkte als Circle-Layer + Halo; Hover-Popup mit Name, Tier, 4 Ressourcen-Balken und Betten-Zahlen). `app/globals.css` um `.rl-popup` / `.rl-tooltip` / `.rl-bar-*`-Styles ergaenzt (Liquid-Glass gemaess DESIGN.md §5.4). `app/page.tsx` mit Header-Platzhalter + Map (`'use client'` wegen MapLibre/window). `@types/geojson` installiert. Dev-Smoke: HTTP 200, Map-Container + Header + Phase-3-Badge im HTML. Gate: 37/37 Tests, build, lint, typecheck gruen.
 
 ## Phase-1-Abschluss-Stand
 
