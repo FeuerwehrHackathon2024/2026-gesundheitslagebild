@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import type {
   Map as MaplibreMap,
   GeoJSONSource,
@@ -8,7 +8,7 @@ import type {
 } from 'maplibre-gl';
 import maplibregl from 'maplibre-gl';
 import type { Feature, FeatureCollection, Point } from 'geojson';
-import type { Hospital, ResourceType } from '@/lib/types';
+import type { Capacity, Hospital, ResourceType } from '@/lib/types';
 import { getHospitals } from '@/lib/data/hospitalsLoader';
 import { useSimStore } from '@/lib/store';
 import {
@@ -20,21 +20,25 @@ import {
   overallOccupancyRatio,
   tierRadiusPx,
 } from '@/lib/simulation/baseline';
-import type { Capacity } from '@/lib/types';
 
-interface HospitalProps {
+// MapLibre stringifyt verschachtelte Properties verlustbehaftet. Daher nur
+// primitive Werte als Feature-Property; die komplexen Display-Daten liegen
+// in einem separaten Lookup per Hospital-ID.
+interface HospitalFeatureProps {
   id: string;
-  name: string;
-  tier: Hospital['tier'];
   color: string;
   radius: number;
   strokeColor: string;
   strokeWidth: number;
   opacity: number;
+}
+
+interface HospitalDisplay {
+  id: string;
+  name: string;
+  tier: Hospital['tier'];
   ratio: number;
-  // 4-Balken-Auslastung fuer Tooltip (0..1).
   ratios: Record<ResourceType, number>;
-  // Betten-Absolutzahlen fuer Tooltip.
   capacity: Record<ResourceType, Capacity>;
 }
 
@@ -42,9 +46,6 @@ const SOURCE_ID = 'hospitals-src';
 const LAYER_ID = 'hospitals-circles';
 const LAYER_ID_HALO = 'hospitals-halo';
 
-// DESIGN.md §6: grün < 60 %, gelb 60–80 %, orange 80–95 %, rot ≥ 95 %.
-// Hex-Werte aus DESIGN.md §1 (Apple System Colors) — der Marker-Layer kann
-// keine CSS-Variablen ausrechnen, daher hier direkt eingefroren.
 function ratioColorHex(ratio: number): string {
   if (ratio >= 0.95) return '#FF3B30';
   if (ratio >= 0.8) return '#FF9500';
@@ -52,40 +53,42 @@ function ratioColorHex(ratio: number): string {
   return '#34C759';
 }
 
-function toFeatureCollection(
+function buildData(
   hospitals: Hospital[],
   seed: number,
-  thresholds: { min: number; max: number } = { min: 0, max: 1 }
-): FeatureCollection<Point, HospitalProps> {
-  const features: Feature<Point, HospitalProps>[] = hospitals.map((h) => {
+  thresholds: { min: number; max: number }
+): { fc: FeatureCollection<Point, HospitalFeatureProps>; lookup: Map<string, HospitalDisplay> } {
+  const features: Feature<Point, HospitalFeatureProps>[] = [];
+  const lookup = new Map<string, HospitalDisplay>();
+  for (const h of hospitals) {
     const cap = baselineCapacity(h, seed);
     const ratio = overallOccupancyRatio(cap);
     const inRange = ratio >= thresholds.min && ratio <= thresholds.max;
-    const ratios = {
-      notaufnahme: cap.notaufnahme.total === 0 ? 0 : cap.notaufnahme.occupied / cap.notaufnahme.total,
-      op_saal: cap.op_saal.total === 0 ? 0 : cap.op_saal.occupied / cap.op_saal.total,
-      its_bett: cap.its_bett.total === 0 ? 0 : cap.its_bett.occupied / cap.its_bett.total,
-      normal_bett: cap.normal_bett.total === 0 ? 0 : cap.normal_bett.occupied / cap.normal_bett.total,
+    const ratios: Record<ResourceType, number> = {
+      notaufnahme:
+        cap.notaufnahme.total === 0 ? 0 : cap.notaufnahme.occupied / cap.notaufnahme.total,
+      op_saal:
+        cap.op_saal.total === 0 ? 0 : cap.op_saal.occupied / cap.op_saal.total,
+      its_bett:
+        cap.its_bett.total === 0 ? 0 : cap.its_bett.occupied / cap.its_bett.total,
+      normal_bett:
+        cap.normal_bett.total === 0 ? 0 : cap.normal_bett.occupied / cap.normal_bett.total,
     };
-    return {
+    features.push({
       type: 'Feature',
       geometry: { type: 'Point', coordinates: h.coords },
       properties: {
         id: h.id,
-        name: h.name,
-        tier: h.tier,
         color: ratioColorHex(ratio),
         radius: tierRadiusPx(h.tier),
         strokeColor: '#FFFFFF',
         strokeWidth: 2,
         opacity: inRange ? 1 : 0.18,
-        ratio,
-        ratios,
-        capacity: cap,
       },
-    };
-  });
-  return { type: 'FeatureCollection', features };
+    });
+    lookup.set(h.id, { id: h.id, name: h.name, tier: h.tier, ratio, ratios, capacity: cap });
+  }
+  return { fc: { type: 'FeatureCollection', features }, lookup };
 }
 
 const TIER_LABEL: Record<Hospital['tier'], string> = {
@@ -95,16 +98,15 @@ const TIER_LABEL: Record<Hospital['tier'], string> = {
   grund: 'Grundversorger',
 };
 
-function tooltipHtml(p: HospitalProps): string {
+function tooltipHtml(d: HospitalDisplay): string {
   const bars = RESOURCE_TYPES.map((res) => {
-    const r = p.ratios[res];
-    const cap = p.capacity[res];
+    const r = d.ratios[res];
+    const cap = d.capacity[res];
     const pct = Math.round(r * 100);
     const barColor = ratioColorHex(r);
     const label = RESOURCE_DISPLAY[res];
-    const capText = cap.total === 0
-      ? '—'
-      : `${cap.occupied}/${cap.total}`;
+    const capText =
+      !cap || cap.total === 0 ? '—' : `${cap.occupied}/${cap.total}`;
     return `
       <div class="rl-bar-row">
         <div class="rl-bar-label">${label}</div>
@@ -119,8 +121,8 @@ function tooltipHtml(p: HospitalProps): string {
   return `
     <div class="rl-tooltip">
       <div class="rl-tooltip-head">
-        <div class="rl-tooltip-name">${escapeHtml(p.name)}</div>
-        <div class="rl-tooltip-tier">${TIER_LABEL[p.tier]}</div>
+        <div class="rl-tooltip-name">${escapeHtml(d.name)}</div>
+        <div class="rl-tooltip-tier">${TIER_LABEL[d.tier]}</div>
       </div>
       <div class="rl-bar-grid">${bars}</div>
     </div>
@@ -142,16 +144,19 @@ interface HospitalLayerProps {
 
 export function HospitalLayer({ map, seed = 42 }: HospitalLayerProps) {
   const thresholds = useSimStore((s) => s.filters.bedThresholds);
+  const lookupRef = useRef<Map<string, HospitalDisplay>>(new Map());
+
   useEffect(() => {
     const hospitals = getHospitals();
-    const data = toFeatureCollection(hospitals, seed, thresholds);
+    const { fc, lookup } = buildData(hospitals, seed, thresholds);
+    lookupRef.current = lookup;
 
     const ensureSourceAndLayers = () => {
       const existingSrc = map.getSource(SOURCE_ID) as GeoJSONSource | undefined;
       if (existingSrc) {
-        existingSrc.setData(data);
+        existingSrc.setData(fc);
       } else {
-        map.addSource(SOURCE_ID, { type: 'geojson', data });
+        map.addSource(SOURCE_ID, { type: 'geojson', data: fc });
       }
 
       if (!map.getLayer(LAYER_ID_HALO)) {
@@ -191,7 +196,6 @@ export function HospitalLayer({ map, seed = 42 }: HospitalLayerProps) {
       map.once('load', ensureSourceAndLayers);
     }
 
-    // Hover-Tooltip via MapLibre-Popup (HTML mit DESIGN-Tokens per CSS).
     const popup = new maplibregl.Popup({
       closeButton: false,
       closeOnClick: false,
@@ -204,9 +208,13 @@ export function HospitalLayer({ map, seed = 42 }: HospitalLayerProps) {
       map.getCanvas().style.cursor = 'pointer';
       const f = e.features?.[0];
       if (!f || f.geometry.type !== 'Point') return;
+      const id = (f.properties as HospitalFeatureProps | undefined)?.id;
+      if (!id) return;
+      const display = lookupRef.current.get(id);
+      if (!display) return;
       popup
         .setLngLat(f.geometry.coordinates as [number, number])
-        .setHTML(tooltipHtml(f.properties as unknown as HospitalProps))
+        .setHTML(tooltipHtml(display))
         .addTo(map);
     };
 
@@ -224,8 +232,9 @@ export function HospitalLayer({ map, seed = 42 }: HospitalLayerProps) {
     const onClick = (e: MapLayerMouseEvent) => {
       const f = e.features?.[0];
       if (!f) return;
-      const props = f.properties as unknown as HospitalProps;
-      useSimStore.getState().selectHospital(props.id);
+      const id = (f.properties as HospitalFeatureProps | undefined)?.id;
+      if (!id) return;
+      useSimStore.getState().selectHospital(id);
     };
 
     map.on('mouseenter', LAYER_ID, onEnter);
@@ -239,8 +248,6 @@ export function HospitalLayer({ map, seed = 42 }: HospitalLayerProps) {
       map.off('mouseleave', LAYER_ID, onLeave);
       map.off('click', LAYER_ID, onClick);
       popup.remove();
-      // Layer/source aufraeumen nur beim Unmount — bei map.remove() macht das der
-      // Destroy automatisch. Hier defensiv entfernen, falls Layer-Stack neu gebaut wird.
       if (map.getLayer(LAYER_ID)) map.removeLayer(LAYER_ID);
       if (map.getLayer(LAYER_ID_HALO)) map.removeLayer(LAYER_ID_HALO);
       if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID);
