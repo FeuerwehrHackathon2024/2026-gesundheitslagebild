@@ -24,6 +24,8 @@ interface LineProps {
 interface DotProps {
   key: string;
   color: string;
+  radius: number;
+  count: number;
 }
 
 interface LabelProps {
@@ -31,13 +33,21 @@ interface LabelProps {
   text: string;
 }
 
+interface DotLabelProps {
+  key: string;
+  text: string;
+  color: string;
+}
+
 const SRC_LINES = 'rl-routes-lines';
 const SRC_DOTS = 'rl-routes-dots';
 const SRC_LABELS = 'rl-routes-labels';
+const SRC_DOT_LABELS = 'rl-routes-dot-labels';
 const LAYER_LINES_HALO = 'rl-routes-lines-halo';
 const LAYER_LINES = 'rl-routes-lines';
 const LAYER_DOTS = 'rl-routes-dots';
 const LAYER_LABELS = 'rl-routes-labels';
+const LAYER_DOT_LABELS = 'rl-routes-dot-labels';
 
 const COLOR_MANV = '#007AFF';
 const COLOR_TRANSFER = '#AF52DE';
@@ -108,6 +118,12 @@ export function RouteLayer({ map }: RouteLayerProps) {
           data: { type: 'FeatureCollection', features: [] },
         });
       }
+      if (!map.getSource(SRC_DOT_LABELS)) {
+        map.addSource(SRC_DOT_LABELS, {
+          type: 'geojson',
+          data: { type: 'FeatureCollection', features: [] },
+        });
+      }
       // Halo-Layer fuer Soldaten-/Intake-Fluesse: breite, transparente Linie
       // unter der Hauptlinie → der Fluss ist auch neben dichten Marker-
       // Clustern am Flughafen sofort erkennbar.
@@ -146,7 +162,7 @@ export function RouteLayer({ map }: RouteLayerProps) {
           source: SRC_DOTS,
           paint: {
             'circle-color': ['get', 'color'],
-            'circle-radius': 6,
+            'circle-radius': ['get', 'radius'],
             'circle-stroke-color': '#FFFFFF',
             'circle-stroke-width': 2,
             'circle-opacity': 0.98,
@@ -173,11 +189,32 @@ export function RouteLayer({ map }: RouteLayerProps) {
           },
         });
       }
+      // Pillen-Label: Patientenzahl DIREKT auf der Batch-Pille, damit klar
+      // erkennbar wie viele Patienten in diesem Konvoi unterwegs sind.
+      if (!map.getLayer(LAYER_DOT_LABELS)) {
+        map.addLayer({
+          id: LAYER_DOT_LABELS,
+          type: 'symbol',
+          source: SRC_DOT_LABELS,
+          layout: {
+            'text-field': ['get', 'text'],
+            'text-size': 11,
+            'text-allow-overlap': true,
+            'text-ignore-placement': true,
+            'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold', 'sans-serif'],
+          },
+          paint: {
+            'text-color': '#FFFFFF',
+            'text-halo-color': ['get', 'color'],
+            'text-halo-width': 1,
+          },
+        });
+      }
     };
     ensure();
   }, [map]);
 
-  const { lineFC, dotFC, labelFC } = useMemo(() => {
+  const { lineFC, dotFC, labelFC, dotLabelFC } = useMemo(() => {
     // Gruppiere Patient-Flows nach (from-hospital|incident) → to-hospital.
     const groups = new Map<string, AggregatedFlow>();
     for (const p of patients) {
@@ -211,13 +248,17 @@ export function RouteLayer({ map }: RouteLayerProps) {
     const lines: Array<Feature<LineString, LineProps>> = [];
     const dots: Array<Feature<Point, DotProps>> = [];
     const labels: Array<Feature<Point, LabelProps>> = [];
+    const dotLabels: Array<Feature<Point, DotLabelProps>> = [];
+
+    // Batch-Groesse: so viele Patienten teilen sich eine Transport-Pille.
+    // Damit entsteht eine ueberschaubare Anzahl von "Konvoi-Fahrzeugen"
+    // pro Fluss statt hunderter winziger Pillen.
+    const BATCH_SIZE = 30;
 
     for (const [, g] of groups) {
       const poly = flowPath(g.from, g.to);
       const color = colorForKind(g.kind);
       const count = g.patients.length;
-      // Dicke: 2.5 + 1.5*sqrt(count), Soldaten-Fluesse +1.5 extra damit sie
-      // neben den dichten Marker-Clustern am Flughafen klar sichtbar sind.
       const kindBoost = g.kind === 'planned' ? 1.5 : 0;
       const width = Math.min(12, 2.5 + 1.5 * Math.sqrt(count) + kindBoost);
 
@@ -235,7 +276,7 @@ export function RouteLayer({ map }: RouteLayerProps) {
         },
       });
 
-      // Ein Label-Punkt in der Mitte mit der Anzahl Patienten.
+      // Start-/End-Label mit Gesamtzahl (Mitte der Linie).
       if (count > 1) {
         const mid = poly[Math.floor(poly.length / 2)];
         labels.push({
@@ -245,17 +286,39 @@ export function RouteLayer({ map }: RouteLayerProps) {
         });
       }
 
-      // Pro Patient eine Pille — zeitlich verteilt entlang der Linie, damit
-      // man sie als einzelnen Fluss erkennt (Staffelung durch arrivedAt).
-      for (const p of g.patients) {
-        const durMin = flowDurationMin(g.from, g.to);
-        const startSim = (p.arrivedAt ?? 0) - durMin;
-        const progress =
-          durMin <= 0 ? 1 : Math.max(0, Math.min(1, (simTime - startSim) / durMin));
+      // Patienten in Batches zerlegen. Jeder Batch ist ein "Konvoi" mit
+      // einer einzigen Pille + Patient-Zahl drauf, die sich entlang der
+      // Bezier bewegt. Mehrere Batches = mehrere Konvois hintereinander.
+      const batches: Patient[][] = [];
+      for (let i = 0; i < g.patients.length; i += BATCH_SIZE) {
+        batches.push(g.patients.slice(i, i + BATCH_SIZE));
+      }
+
+      for (let bIdx = 0; bIdx < batches.length; bIdx++) {
+        const batch = batches[bIdx];
+        const batchCount = batch.length;
+        // Progress: Mittelwert des Batches — so rollen Batches natuerlich
+        // staggered (spaetere Batches spawnen spaeter → geringerer progress).
+        let progressSum = 0;
+        for (const p of batch) {
+          const durMin = flowDurationMin(g.from, g.to);
+          const startSim = (p.arrivedAt ?? 0) - durMin;
+          progressSum += durMin <= 0 ? 1 : Math.max(0, Math.min(1, (simTime - startSim) / durMin));
+        }
+        const avgProgress = progressSum / batchCount;
+        const pos = flowPosition(g.from, g.to, avgProgress);
+        const radius = Math.min(22, 9 + 1.8 * Math.sqrt(batchCount));
+        const dotKey = `${g.key}|batch-${bIdx}`;
+
         dots.push({
           type: 'Feature',
-          geometry: { type: 'Point', coordinates: flowPosition(g.from, g.to, progress) },
-          properties: { key: `${g.key}|${p.id}`, color },
+          geometry: { type: 'Point', coordinates: pos },
+          properties: { key: dotKey, color, radius, count: batchCount },
+        });
+        dotLabels.push({
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: pos },
+          properties: { key: dotKey, text: String(batchCount), color },
         });
       }
     }
@@ -272,17 +335,23 @@ export function RouteLayer({ map }: RouteLayerProps) {
       type: 'FeatureCollection',
       features: labels,
     };
-    return { lineFC, dotFC, labelFC };
+    const dotLabelFC: FeatureCollection<Point, DotLabelProps> = {
+      type: 'FeatureCollection',
+      features: dotLabels,
+    };
+    return { lineFC, dotFC, labelFC, dotLabelFC };
   }, [patients, incidents, hospitals, simTime]);
 
   useEffect(() => {
     const srcLines = map.getSource(SRC_LINES) as GeoJSONSource | undefined;
     const srcDots = map.getSource(SRC_DOTS) as GeoJSONSource | undefined;
     const srcLabels = map.getSource(SRC_LABELS) as GeoJSONSource | undefined;
+    const srcDotLabels = map.getSource(SRC_DOT_LABELS) as GeoJSONSource | undefined;
     if (srcLines) srcLines.setData(lineFC);
     if (srcDots) srcDots.setData(dotFC);
     if (srcLabels) srcLabels.setData(labelFC);
-  }, [map, lineFC, dotFC, labelFC]);
+    if (srcDotLabels) srcDotLabels.setData(dotLabelFC);
+  }, [map, lineFC, dotFC, labelFC, dotLabelFC]);
 
   return null;
 }
