@@ -4,12 +4,12 @@
 
 | Feld | Wert |
 |------|------|
-| Aktive Phase | Phase 1 — Datenmodell & Typen |
-| Aktueller Schritt | Schritt 1.2 erledigt (`lib/data/resources.ts`: RESOURCE_TYPES-Reihenfolge, Kurz- und Lang-Display, CSS-var-Farb-Mapping; typecheck gruen). Als naechstes Schritt 1.3 (Gate-relevant): `lib/geo.ts` mit Haversine + BBox-Helpers + FLUGHAFEN_MUC_COORDS + Unit-Tests fuer Haversine |
+| Aktive Phase | **Phase 1 — Gate erreicht**, wartet auf Freigabe fuer Phase 2 |
+| Aktueller Schritt | Schritte 1.1–1.3 erledigt. Gate gruen: `pnpm typecheck` ✓ · `pnpm lint` ✓ · `pnpm build` ✓ · `pnpm test` 12/12 ✓ (inkl. Haversine Marienplatz↔Flughafen MUC 27–30 km) |
 | Session | 1 |
 | Letztes Update | 2026-04-18 |
-| Blockiert durch | — |
-| Naechste Aktion | Schritt 1.3: `lib/geo.ts` (Haversine, BBox-Helpers, MUC-Flughafen-Konstante) + Unit-Tests (Gate: Haversine Muenchen–Flughafen ≈ 28 km) |
+| Blockiert durch | User-Freigabe fuer Phase 2 |
+| Naechste Aktion | Nach Freigabe: Phase 2 — Excel-Parser `scripts/gen-hospitals.ts` gemaess DATA_GENERATION.md + `lib/data/hospitalsLoader.ts` + Tests (49 Kliniken, Betten-Summen plausibel, Bayern-BBox, LMU Grosshadern = `maximal` + `hasITS`) |
 
 ## Changelog
 
@@ -35,6 +35,17 @@
 
 - **07:46** — Phase 1 (nach User-Freigabe) Schritt 1.1: `lib/types.ts` mit allen Domain-Typen laut DATA_MODEL.md — Grundtypen (Triage, ResourceType, PatientStatus, HospitalTier), Patient, Capacity, Hospital (+Address/Flags/Staff/Escalation), Incident (+NeedsProfile), PlannedIntake (+FlightArrival/Status), Alert, Recommendation (+MeasureAction/ExpectedImpact), Event (+Kinds/Scope), Route, SimState (+OccupancyHistoryEntry/SimFilters). ForkPreviewResult als Phase-9-TODO-Stub. Typecheck gruen.
 - **07:51** — Phase 1, Schritt 1.2: `lib/data/resources.ts` mit kanonischer `RESOURCE_TYPES`-Reihenfolge, `RESOURCE_DISPLAY` (kurz) und `RESOURCE_DISPLAY_LONG` (lang) und `RESOURCE_COLOR` als CSS-var-Mapping (chart-4/3/2 + accent-green). Typecheck gruen.
+- **07:57** — Phase 1, Schritt 1.3 **(Phase-Abschluss)**: `lib/geo.ts` mit `haversine`, `bboxFromPoints`, `bboxContains`, `centerOf`, Konstanten `MARIENPLATZ_COORDS`, `FLUGHAFEN_MUC_COORDS`, `MUC_REGION_BBOX`. Co-locate Tests `lib/geo.test.ts` mit 12 Faellen (Haversine-Identitaet/Symmetrie/1°-Aequator/Gate-Punkt MP↔MUC ~28 km, BBox-Faelle inkl. Leer-Array-Throw, Center-of-Points). Alle Tests gruen.
+
+## Phase-1-Abschluss-Stand
+
+| Deliverable laut PHASES.md Phase 1 | Status |
+|---|---|
+| `lib/types.ts` mit allen Domain-Typen | ✓ (§1–§11 aus DATA_MODEL.md) |
+| `lib/data/resources.ts` mit Display + Farb-Mapping | ✓ |
+| `lib/geo.ts` mit Haversine + BBox + MUC-Konstanten | ✓ |
+| Unit-Tests fuer `geo.ts` (Haversine Gate-Punkt) | ✓ 12/12 |
+| Typecheck gruen | ✓ |
 
 ## Phase-0-Abschluss-Stand
 
