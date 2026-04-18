@@ -1,0 +1,3497 @@
+[
+  {
+    "id": "H-MUC-01",
+    "name": "LMU Klinikum München - Campus Großhadern",
+    "kind": "Universitätsklinikum",
+    "tier": "maximal",
+    "coords": [
+      11.46951138,
+      48.11248425
+    ],
+    "address": {
+      "street": "Marchioninistraße 15",
+      "plz": "81377",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 16,
+        "occupied": 0,
+        "surgeReserve": 3,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 22,
+        "occupied": 0,
+        "surgeReserve": 4,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 94,
+        "occupied": 0,
+        "surgeReserve": 19,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 1214,
+        "occupied": 0,
+        "surgeReserve": 243,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Innere Medizin",
+      "Kardiologie",
+      "Gastroenterologie",
+      "Neurologie",
+      "Neurochirurgie",
+      "Nuklearmedizin",
+      "Palliativmedizin",
+      "Strahlentherapie",
+      "Urologie",
+      "Neonatologie",
+      "Neonatale Intensivstation",
+      "Handchirurgie",
+      "Plastische Chirurgie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Transplantationschirurgie",
+      "Traumatologie",
+      "Kinderkardiologie",
+      "Pädiatrische Intensivstation",
+      "Neuroradiologie",
+      "Thoraxchirurgie",
+      "Immunologie",
+      "Stroke Unit",
+      "Geburtshilfe",
+      "Gynäkologie",
+      "HNO",
+      "Rheumatologie",
+      "Herzchirurgie",
+      "Herzkatheterlabor",
+      "Genetik",
+      "Pulmologie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": true,
+      "hasNeurochir": true,
+      "hasPaediatrie": true
+    },
+    "staff": {
+      "onDuty": 1020,
+      "onCall": 408
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-02",
+    "name": "Klinikum Rechts der Isar",
+    "kind": "Universitätsklinikum",
+    "tier": "maximal",
+    "coords": [
+      11.60054442,
+      48.136333
+    ],
+    "address": {
+      "street": "Ismaninger Straße 22",
+      "plz": "81675",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 15,
+        "occupied": 0,
+        "surgeReserve": 3,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 19,
+        "occupied": 0,
+        "surgeReserve": 4,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 51,
+        "occupied": 0,
+        "surgeReserve": 10,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 1110,
+        "occupied": 0,
+        "surgeReserve": 222,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Allgemeinmedizin",
+      "Allgemeinchirurgie",
+      "Angiologie",
+      "Gefäßchirurgie",
+      "Augenheilkunde",
+      "Augenchirurgie",
+      "Brustchirurgie",
+      "Onkologie",
+      "Gastroenterologie",
+      "Viszeralchirurgie",
+      "Dermatologie",
+      "Allergologie",
+      "Gynäkologie",
+      "Ernährungs- und Stoffwechselklinik",
+      "Hämatologie",
+      "Immunologie",
+      "Geburtshilfe",
+      "HNO",
+      "HNO-Chirurgie",
+      "Handchirurgie",
+      "Genetik",
+      "Endoskopie",
+      "Kardiologie",
+      "Pathologie",
+      "HNO- Hals- und Kopfchirurgie",
+      "Mikrobiologie",
+      "Mund-Kiefer-Gesichtschirurgie",
+      "Nephrologie",
+      "Neurologie",
+      "Neurochirurgie",
+      "neurochirurgische Intensivstation",
+      "Endokrinologie",
+      "Neuroradiologie",
+      "Nuklearmedizin",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Traumatologie",
+      "Palliativmedizin",
+      "Pharmakologie",
+      "Toxikologie",
+      "Plastische Chirurgie",
+      "Sportmedizin",
+      "Psychiatrie",
+      "Thoraxchirurgie",
+      "Transplantationschirurgie",
+      "Unfallchirurgie",
+      "Urologie",
+      "Venerologie",
+      "Wirbelsäulenchirurgie",
+      "Stroke Unit",
+      "Herzkatheterlabor"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": true,
+      "hasNeurochir": true,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 906,
+      "onCall": 362
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-03",
+    "name": "München Klinik Bogenhausen",
+    "kind": "Krankenhaus",
+    "tier": "schwerpunkt",
+    "coords": [
+      11.62469000001289,
+      48.15523000000232
+    ],
+    "address": {
+      "street": "Englschalkinger Straße 77",
+      "plz": "81925",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 9,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 11,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 46,
+        "occupied": 0,
+        "surgeReserve": 9,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 634,
+        "occupied": 0,
+        "surgeReserve": 127,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Verbrennungsmedizin",
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Innere Medizin",
+      "Plastische Chirurgie",
+      "Rekonstruktive Chirurgie",
+      "Handchirurgie",
+      "Neurologie",
+      "Stroke Unit",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Endokrinologie",
+      "Minimal invasive Chirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Unfallchirurgie",
+      "Sportmedizin",
+      "Neuroradiologie",
+      "Rehabilitation",
+      "Urologie",
+      "Thoraxchirurgie",
+      "Gefäßchirurgie",
+      "Schmerzklinik",
+      "Herzchirurgie",
+      "Herzkatheterlabor",
+      "Gastroenterologie",
+      "Onkologie",
+      "Pneumologie",
+      "Kardiologie",
+      "Diabetologie",
+      "Angiologie",
+      "Rheumatologie",
+      "Immunologie",
+      "Neurochirurgie",
+      "Brustchirurgie",
+      "Chest-Pain-Unit"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": true,
+      "hasNeurochir": true,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 442,
+      "onCall": 177
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-04",
+    "name": "LMU Klinikum München - Campus Innenstadt",
+    "kind": "Universitätsklinikum",
+    "tier": "maximal",
+    "coords": [
+      11.56102167,
+      48.1327807
+    ],
+    "address": {
+      "street": "Ziemssenstr. 5",
+      "plz": "80336",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 9,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 12,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 738,
+        "occupied": 0,
+        "surgeReserve": 148,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Neurologie",
+      "Nuklearmedizin",
+      "Augenheilkunde",
+      "Psychiatrie",
+      "Strahlentherapie",
+      "Kieferorthopädie",
+      "Prothesenversorgung (Zahn)",
+      "Zahnmedizin",
+      "Infektiologie",
+      "Tropenmedizin",
+      "Handchirurgie",
+      "Plastische Chirurgie",
+      "Pharmakologie",
+      "Allgemeinmedizin",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Transplantationschirurgie",
+      "Arbeitsmedizin",
+      "Genetik",
+      "Gefäßchirurgie",
+      "Dermatologie",
+      "Allergologie",
+      "Gynäkologie",
+      "Geburtshilfe",
+      "HNO",
+      "Mund-Kiefer-Gesichtschirurgie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 576,
+      "onCall": 230
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-05",
+    "name": "München Klinik Harlaching",
+    "kind": "Krankenhaus",
+    "tier": "regel",
+    "coords": [
+      11.55864000001136,
+      48.08604000000194
+    ],
+    "address": {
+      "street": "Sanatoriumsplatz 2",
+      "plz": "81545",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 6,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 8,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 24,
+        "occupied": 0,
+        "surgeReserve": 5,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 446,
+        "occupied": 0,
+        "surgeReserve": 89,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Neurologie",
+      "Rheumatologie",
+      "Gastroenterologie",
+      "Physiotherapie/ Krankengymnastik",
+      "Schmerzklinik",
+      "Pneumologie",
+      "Unfallchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Rekonstruktive Chirurgie",
+      "Urologie",
+      "Neuroradiologie",
+      "Radiologie",
+      "Augenheilkunde",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Hämatologie",
+      "Onkologie",
+      "Palliativmedizin",
+      "Kardiologie",
+      "Pädiatrie",
+      "Pädiatrische Intensivstation",
+      "Neonatologie",
+      "Neonatale Intensivstation",
+      "Nephrologie",
+      "Gynäkologie",
+      "Geburtshilfe",
+      "Stroke Unit",
+      "Herzkatheterlabor",
+      "Chest-Pain-Unit"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": true
+    },
+    "staff": {
+      "onDuty": 245,
+      "onCall": 98
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-06",
+    "name": "München Klinik Schwabing",
+    "kind": "Krankenhaus",
+    "tier": "regel",
+    "coords": [
+      11.57762000001171,
+      48.17058000000203
+    ],
+    "address": {
+      "street": "Kölner Platz 1",
+      "plz": "80804",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 6,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 8,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 15,
+        "occupied": 0,
+        "surgeReserve": 3,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 447,
+        "occupied": 0,
+        "surgeReserve": 89,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Hämatologie",
+      "Onkologie",
+      "Immunologie",
+      "Palliativmedizin",
+      "Infektiologie",
+      "Tropenmedizin",
+      "Neurochirurgie",
+      "Pädiatrie",
+      "Pädiatrische Intensivstation",
+      "Kinderchirurgie",
+      "HNO- Hals- und Kopfchirurgie",
+      "HNO",
+      "HNO-Chirurgie",
+      "Neonatologie",
+      "Neonatale Intensivstation",
+      "Kardiologie",
+      "Pneumologie",
+      "Schmerzklinik",
+      "Viszeralchirurgie",
+      "Gastroenterologie",
+      "Unfallchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Physiotherapie/ Krankengymnastik",
+      "Endokrinologie",
+      "Diabetologie",
+      "Angiologie",
+      "Geburtshilfe",
+      "Gynäkologie",
+      "Rheumatologie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": true,
+      "hasPaediatrie": true
+    },
+    "staff": {
+      "onDuty": 240,
+      "onCall": 96
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-07",
+    "name": "Klinikum Dritter Orden",
+    "kind": "Krankenhaus",
+    "tier": "schwerpunkt",
+    "coords": [
+      11.50536000001011,
+      48.16499000000168
+    ],
+    "address": {
+      "street": "Menzinger Straße 44",
+      "plz": "80638",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 7,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 9,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 36,
+        "occupied": 0,
+        "surgeReserve": 7,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 502,
+        "occupied": 0,
+        "surgeReserve": 100,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Thoraxchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Unfallchirurgie",
+      "Gefäßchirurgie",
+      "Gynäkologie",
+      "Geburtshilfe",
+      "Herzkatheterlabor",
+      "Kardiologie",
+      "Gastroenterologie",
+      "Hämatologie",
+      "Pneumologie",
+      "Kinderchirurgie",
+      "Pädiatrie",
+      "Pädiatrische Intensivstation",
+      "Neonatale Intensivstation",
+      "Neonatologie",
+      "Nuklearmedizin",
+      "Chest-Pain-Unit",
+      "Brustchirurgie",
+      "HNO",
+      "Mund-Kiefer-Gesichtschirurgie",
+      "Plastische Chirurgie",
+      "Apotheke"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": true
+    },
+    "staff": {
+      "onDuty": 350,
+      "onCall": 140
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-08",
+    "name": "München Klinik Neuperlach",
+    "kind": "Krankenhaus",
+    "tier": "regel",
+    "coords": [
+      11.6564300000138,
+      48.09485000000252
+    ],
+    "address": {
+      "street": "Oskar-Maria-Graf-Ring 51",
+      "plz": "81737",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 5,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 7,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 21,
+        "occupied": 0,
+        "surgeReserve": 4,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 411,
+        "occupied": 0,
+        "surgeReserve": 82,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Unfallchirurgie",
+      "Orthopädie",
+      "Orthopädische Chirurgie",
+      "Rekonstruktive Chirurgie",
+      "Geriatrie",
+      "Rehabilitation",
+      "Nuklearmedizin",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Schmerzklinik",
+      "Endokrinologie",
+      "Diabetologie",
+      "Angiologie",
+      "Innere Medizin",
+      "Gynäkologie",
+      "Geburtshilfe",
+      "Gastroenterologie",
+      "Gefäßchirurgie",
+      "Hämatologie",
+      "Onkologie",
+      "Kardiologie",
+      "Pneumologie",
+      "Proktologie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 225,
+      "onCall": 90
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-09",
+    "name": "Rotkreuzklinikum München",
+    "kind": "Krankenhaus",
+    "tier": "regel",
+    "coords": [
+      11.5326000000107,
+      48.15416000000181
+    ],
+    "address": {
+      "street": "Nymphenburger Straße 163",
+      "plz": "80634",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 5,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 7,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 435,
+        "occupied": 0,
+        "surgeReserve": 87,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Thoraxchirurgie",
+      "Minimal invasive Chirurgie",
+      "Augenheilkunde",
+      "Gefäßchirurgie",
+      "Geriatrie",
+      "HNO",
+      "Kardiologie",
+      "Pneumologie",
+      "Gastroenterologie",
+      "Hämatologie",
+      "Onkologie",
+      "Plastische Chirurgie",
+      "Unfallchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Urologie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 226,
+      "onCall": 90
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-10",
+    "name": "Deutsches Herzzentrum München",
+    "kind": "Fachklinik",
+    "tier": "regel",
+    "coords": [
+      11.54858000001106,
+      48.15244000000189
+    ],
+    "address": {
+      "street": "Lazarettstraße 36",
+      "plz": "80636",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 3,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 4,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 228,
+        "occupied": 0,
+        "surgeReserve": 46,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Herzchirurgie",
+      "Gefäßchirurgie",
+      "Kardiologie",
+      "Kinderkardiologie",
+      "Intensivstation",
+      "Koronare Intensivstation",
+      "Anästhesie",
+      "OP",
+      "Labor (allgemein)",
+      "Radiologie",
+      "Nuklearmedizin",
+      "Chest-Pain-Unit",
+      "Elektrophysiologie",
+      "Herzkatheterlabor",
+      "Minimal invasive Chirurgie",
+      "Blutbank"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": true
+    },
+    "staff": {
+      "onDuty": 118,
+      "onCall": 47
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-11",
+    "name": "ISAR Klinikum",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.56456175,
+      48.13542173
+    ],
+    "address": {
+      "street": "Sonnenstraße 24-26",
+      "plz": "80331",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 3,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 192,
+        "occupied": 0,
+        "surgeReserve": 38,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Anästhesie",
+      "Intensivstation",
+      "OP",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Minimal invasive Chirurgie",
+      "Gastroenterologie",
+      "Gefäßchirurgie",
+      "Kardiologie",
+      "Orthopädie",
+      "Orthopädische Chirurgie",
+      "Unfallchirurgie",
+      "Plastische Chirurgie",
+      "Rekonstruktive Chirurgie",
+      "Urologie",
+      "Wirbelsäulenchirurgie",
+      "Radiologie",
+      "Strahlentherapie",
+      "Herzkatheterlabor"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 100,
+      "onCall": 40
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-12",
+    "name": "Helios Klinikum München West",
+    "kind": "Krankenhaus",
+    "tier": "regel",
+    "coords": [
+      11.45410000000909,
+      48.14479000000146
+    ],
+    "address": {
+      "street": "Steinerweg 5",
+      "plz": "81241",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 5,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 7,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 412,
+        "occupied": 0,
+        "surgeReserve": 82,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Diabetologie",
+      "Ernährungs- und Stoffwechselklinik",
+      "Endokrinologie",
+      "Gastroenterologie",
+      "Geburtshilfe",
+      "Gefäßchirurgie",
+      "Geriatrie",
+      "Gynäkologie",
+      "HNO",
+      "Hämatologie",
+      "Handchirurgie",
+      "Innere Medizin",
+      "Kardiologie",
+      "Mund-Kiefer-Gesichtschirurgie",
+      "Plastische Chirurgie",
+      "Neurologie",
+      "Neuroradiologie",
+      "Onkologie",
+      "Orthopädie",
+      "Orthopädische Chirurgie",
+      "Sportmedizin",
+      "Palliativmedizin",
+      "Rekonstruktive Chirurgie",
+      "Pneumologie",
+      "Strahlentherapie",
+      "Thoraxchirurgie",
+      "Unfallchirurgie",
+      "HNO- Hals- und Kopfchirurgie",
+      "HNO-Chirurgie",
+      "Nephrologie",
+      "Rheumatologie",
+      "Infektiologie",
+      "Stroke Unit"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 214,
+      "onCall": 86
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-13",
+    "name": "Barmherzige Brüder München",
+    "kind": "Krankenhaus",
+    "tier": "regel",
+    "coords": [
+      11.5105476,
+      48.15594632
+    ],
+    "address": {
+      "street": "Romanstraße 93",
+      "plz": "80639",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 5,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 7,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 405,
+        "occupied": 0,
+        "surgeReserve": 81,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "OP",
+      "Anästhesie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Gastroenterologie",
+      "Onkologie",
+      "Innere Medizin",
+      "Geriatrie",
+      "Kardiologie",
+      "Pneumologie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Unfallchirurgie",
+      "Radiologie",
+      "Palliativmedizin",
+      "Urologie",
+      "Labor (allgemein)",
+      "Gefäßchirurgie",
+      "Chest-Pain-Unit",
+      "Ernährungs- und Stoffwechselklinik",
+      "Neurochirurgie",
+      "Herzkatheterlabor",
+      "Elektrophysiologie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": true,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 210,
+      "onCall": 84
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-14",
+    "name": "Helios Klinikum München Perlach",
+    "kind": "Krankenhaus",
+    "tier": "grund",
+    "coords": [
+      11.62934653,
+      48.10225732
+    ],
+    "address": {
+      "street": "Schmidbauerstraße 44",
+      "plz": "81737",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 3,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 150,
+        "occupied": 0,
+        "surgeReserve": 30,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Labor (allgemein)",
+      "Intensivstation",
+      "Anästhesie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Thoraxchirurgie",
+      "Gefäßchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Geriatrie",
+      "Innere Medizin",
+      "Handchirurgie",
+      "Wirbelsäulenchirurgie",
+      "Gastroenterologie",
+      "Unfallchirurgie",
+      "Traumatologie",
+      "Kardiologie",
+      "Pneumologie",
+      "Ernährungs- und Stoffwechselklinik"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 78,
+      "onCall": 31
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-15",
+    "name": "Klinikum Augustinum",
+    "kind": "Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.48798287,
+      48.12243375
+    ],
+    "address": {
+      "street": "Wolkerweg 16",
+      "plz": "81375",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 140,
+        "occupied": 0,
+        "surgeReserve": 28,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "OP",
+      "Intensivstation",
+      "Anästhesie",
+      "Kardiologie",
+      "Pneumologie",
+      "Gastroenterologie",
+      "Nephrologie",
+      "Rheumatologie",
+      "Chest-Pain-Unit",
+      "Herzkatheterlabor"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 73,
+      "onCall": 29
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-16",
+    "name": "Klinikum Martha-Maria",
+    "kind": "Krankenhaus",
+    "tier": "grund",
+    "coords": [
+      11.53421906,
+      48.08517799
+    ],
+    "address": {
+      "street": "Wolfratshauser Straße 109",
+      "plz": "81479",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 110,
+        "occupied": 0,
+        "surgeReserve": 22,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "Notaufnahme",
+      "Intensivstation",
+      "Anästhesie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Thoraxchirurgie",
+      "HNO",
+      "HNO-Chirurgie",
+      "Innere Medizin",
+      "Pneumologie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 58,
+      "onCall": 23
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-17",
+    "name": "Artemed Klinikum München Süd",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.54878000001111,
+      48.10287000000188
+    ],
+    "address": {
+      "street": "Am Isarkanal 30",
+      "plz": "81379",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 3,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 155,
+        "occupied": 0,
+        "surgeReserve": 31,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Radiologie",
+      "OP",
+      "Intensivstation",
+      "Anästhesie",
+      "Unfallchirurgie",
+      "Rekonstruktive Chirurgie",
+      "Fußchirurgie",
+      "Wirbelsäulenchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Sportmedizin",
+      "Gefäßchirurgie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Herzchirurgie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 81,
+      "onCall": 32
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-18",
+    "name": "Internistisches Klinikum München Süd",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.54792000001109,
+      48.10243000000187
+    ],
+    "address": {
+      "street": "Am Isarkanal 36",
+      "plz": "81379",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 110,
+        "occupied": 0,
+        "surgeReserve": 22,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Gastroenterologie",
+      "Kardiologie",
+      "Pneumologie",
+      "Radiologie",
+      "Notaufnahme",
+      "Innere Medizin",
+      "Intensivstation"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 58,
+      "onCall": 23
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-19",
+    "name": "Krankenhaus Neuwittelsbach",
+    "kind": "Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.52619000001056,
+      48.15704000000179
+    ],
+    "address": {
+      "street": "Renatastraße 71a",
+      "plz": "80639",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 122,
+        "occupied": 0,
+        "surgeReserve": 24,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notaufnahme",
+      "Intensivstation",
+      "Anästhesie",
+      "Kardiologie",
+      "Pneumologie",
+      "Innere Medizin",
+      "Rheumatologie",
+      "Radiologie",
+      "Nuklearmedizin",
+      "Gastroenterologie",
+      "Physiotherapie/ Krankengymnastik",
+      "Herzkatheterlabor"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 63,
+      "onCall": 25
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-20",
+    "name": "Diakoniewerk München",
+    "kind": "Krankenhaus",
+    "tier": "grund",
+    "coords": [
+      11.56952669,
+      48.15102921
+    ],
+    "address": {
+      "street": "Arcisstraße 35",
+      "plz": "80799",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 87,
+        "occupied": 0,
+        "surgeReserve": 17,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Radiologie",
+      "OP",
+      "Notaufnahme",
+      "Intensivstation",
+      "Anästhesie",
+      "Viszeralchirurgie",
+      "Gelenkprothetik",
+      "Handchirurgie",
+      "Fußchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Unfallchirurgie",
+      "Minimal invasive Chirurgie",
+      "Geriatrie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 46,
+      "onCall": 18
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-21",
+    "name": "Dr. Lubus Klinik Bogenhausen",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.61449448,
+      48.14856924
+    ],
+    "address": {
+      "street": "Denninger Str. 44",
+      "plz": "81679",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 3,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 82,
+        "occupied": 0,
+        "surgeReserve": 16,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Allgemeinchirurgie",
+      "Urologie",
+      "Gynäkologie",
+      "Orthopädie",
+      "Orthopädische Chirurgie",
+      "Anästhesie",
+      "Intensivstation",
+      "Radiologie",
+      "Adipositaschirurgie",
+      "Viszeralchirurgie",
+      "Minimal invasive Chirurgie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": true,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 44,
+      "onCall": 18
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-22",
+    "name": "Arabella-Klinik",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.61856000001274,
+      48.15159000000226
+    ],
+    "address": {
+      "street": "Arabellastraße 5",
+      "plz": "81925",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 60,
+        "occupied": 0,
+        "surgeReserve": 12,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "Anästhesie",
+      "IMC",
+      "Augenchirurgie",
+      "Augenheilkunde",
+      "Allgemeinchirurgie",
+      "Unfallchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Viszeralchirurgie",
+      "Plastische Chirurgie",
+      "HNO",
+      "HNO-Chirurgie",
+      "Mund-Kiefer-Gesichtschirurgie",
+      "Oralchirurgie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 31,
+      "onCall": 12
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-23",
+    "name": "Artemed Fachklinik München",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.55494000001123,
+      48.1302300000019
+    ],
+    "address": {
+      "street": "Mozartstraße 14a-16",
+      "plz": "80336",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 74,
+        "occupied": 0,
+        "surgeReserve": 15,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Gefäßchirurgie",
+      "Dermatologie",
+      "Anästhesie",
+      "Venerologie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 38,
+      "onCall": 15
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-24",
+    "name": "ATOS Klinik München",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.61642000001268,
+      48.15438000000226
+    ],
+    "address": {
+      "street": "Effnerstraße 38",
+      "plz": "81925",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 40,
+        "occupied": 0,
+        "surgeReserve": 8,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Handchirurgie",
+      "Wirbelsäulenchirurgie",
+      "Plastische Chirurgie",
+      "Sportmedizin",
+      "Fußchirurgie",
+      "Physiotherapie/ Krankengymnastik",
+      "Radiologie",
+      "Allgemeinchirurgie",
+      "Viszeralchirurgie",
+      "Kardiologie",
+      "Gefäßchirurgie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 21,
+      "onCall": 8
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-25",
+    "name": "ATOS Starmed Klinik",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.63315000001318,
+      48.09973000000237
+    ],
+    "address": {
+      "street": "Putzbrunner Straße 9",
+      "plz": "81737",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 22,
+        "occupied": 0,
+        "surgeReserve": 4,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "Anästhesie",
+      "Fußchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 11,
+      "onCall": 4
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-26",
+    "name": "Augenklinik Herzog Carl Theodor",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.55067000001111,
+      48.14848000000188
+    ],
+    "address": {
+      "street": "Nymphenburger Straße 43",
+      "plz": "80335",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 47,
+        "occupied": 0,
+        "surgeReserve": 9,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Augenchirurgie",
+      "Augenheilkunde",
+      "OP",
+      "Anästhesie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 25,
+      "onCall": 10
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-27",
+    "name": "Clinic Dr. Decker",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.58944000001201,
+      48.1587400000021
+    ],
+    "address": {
+      "street": "Seestraße 10-12",
+      "plz": "80802",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 50,
+        "occupied": 0,
+        "surgeReserve": 10,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Angiologie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "OP",
+      "Anästhesie",
+      "Physiotherapie/ Krankengymnastik",
+      "Schmerzklinik"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 26,
+      "onCall": 10
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-28",
+    "name": "Dr. Lubos Kliniken Pasing",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.45775000000916,
+      48.14655000000148
+    ],
+    "address": {
+      "street": "Schmiedwegerl 2-6",
+      "plz": "81241",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 45,
+        "occupied": 0,
+        "surgeReserve": 9,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Gynäkologie",
+      "Plastische Chirurgie",
+      "Anästhesie",
+      "Urologie",
+      "Brustchirurgie",
+      "OP"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 23,
+      "onCall": 9
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-29",
+    "name": "EuroEyes alz Augenklinik München",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.56394000001142,
+      48.13915000000195
+    ],
+    "address": {
+      "street": "Bayerstraße 3",
+      "plz": "80335",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Augenchirurgie",
+      "Augenheilkunde"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 1,
+      "onCall": 0
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-30",
+    "name": "Frauenklinik Dr. Geisenhofer",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.59585000001218,
+      48.15155000000215
+    ],
+    "address": {
+      "street": "Hirschauer Straße 6",
+      "plz": "80538",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 86,
+        "occupied": 0,
+        "surgeReserve": 17,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Geburtshilfe",
+      "Gynäkologie",
+      "Neonatologie",
+      "Neonatale Intensivstation",
+      "Brustchirurgie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": true,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": true
+    },
+    "staff": {
+      "onDuty": 45,
+      "onCall": 18
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-31",
+    "name": "Herzogpark Klinik",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.61884000001275,
+      48.15038000000227
+    ],
+    "address": {
+      "street": "Arabellastraße 9-11",
+      "plz": "81925",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 22,
+        "occupied": 0,
+        "surgeReserve": 4,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "IMC",
+      "Wirbelsäulenchirurgie",
+      "Viszeralchirurgie",
+      "Plastische Chirurgie",
+      "Unfallchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Brustchirurgie",
+      "Anästhesie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 11,
+      "onCall": 4
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-32",
+    "name": "HNO-Klinik Bogenhausen Dr. Gaertner",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.60636000001244,
+      48.14394000000219
+    ],
+    "address": {
+      "street": "Possartstraße 31",
+      "plz": "81679",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 20,
+        "occupied": 0,
+        "surgeReserve": 4,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "HNO",
+      "HNO- Hals- und Kopfchirurgie",
+      "HNO-Chirurgie",
+      "OP",
+      "Anästhesie",
+      "Plastische Chirurgie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 10,
+      "onCall": 4
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-33",
+    "name": "Iatros Klinik",
+    "kind": "Private Tagesklinik",
+    "tier": "grund",
+    "coords": [
+      11.55802000001128,
+      48.14730000000193
+    ],
+    "address": {
+      "street": "Nymphenburger Straße 1",
+      "plz": "80335",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 21,
+        "occupied": 0,
+        "surgeReserve": 4,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "Anästhesie",
+      "Augenchirurgie",
+      "Gynäkologie",
+      "HNO-Chirurgie",
+      "Mund-Kiefer-Gesichtschirurgie",
+      "Orthopädische Chirurgie",
+      "Plastische Chirurgie",
+      "Urologie",
+      "Handchirurgie",
+      "Viszeralchirurgie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 11,
+      "onCall": 4
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-34",
+    "name": "kbo-Heckscher-Klinikum München Kinder- und Jugendpsychiatrie, Psychosomatik und Psychotherapie",
+    "kind": "Psychiatrische Einrichtung",
+    "tier": "grund",
+    "coords": [
+      11.5830300000119,
+      48.11407000000207
+    ],
+    "address": {
+      "street": "Deisenhofener Straße 28",
+      "plz": "81539",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 78,
+        "occupied": 0,
+        "surgeReserve": 16,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Kinder- und Jugendpsychiatrie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": true
+    },
+    "staff": {
+      "onDuty": 41,
+      "onCall": 16
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-35",
+    "name": "kbo-Isar-Amper-Klinikum Atriumhaus",
+    "kind": "Psychiatrische Einrichtung",
+    "tier": "grund",
+    "coords": [
+      11.54512000001101,
+      48.12364000000187
+    ],
+    "address": {
+      "street": "Bavariastraße 11",
+      "plz": "80336",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 14,
+        "occupied": 0,
+        "surgeReserve": 3,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Psychiatrie",
+      "Psychologie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 7,
+      "onCall": 3
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-36",
+    "name": "kbo-Isar-Amper-Klinikum München-Nord",
+    "kind": "Psychiatrische Einrichtung",
+    "tier": "grund",
+    "coords": [
+      11.57997557505605,
+      48.1723957809096
+    ],
+    "address": {
+      "street": "Kölner Platz 1",
+      "plz": "80804",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 105,
+        "occupied": 0,
+        "surgeReserve": 21,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Psychiatrie",
+      "Psychologie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 54,
+      "onCall": 22
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-37",
+    "name": "Klinik Menterschwaiger",
+    "kind": "Psychiatrische Einrichtung",
+    "tier": "grund",
+    "coords": [
+      11.55708000001133,
+      48.07992000000192
+    ],
+    "address": {
+      "street": "Geiselgasteigstraße 203",
+      "plz": "81545",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 62,
+        "occupied": 0,
+        "surgeReserve": 12,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Psychiatrie",
+      "Psychologie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 32,
+      "onCall": 13
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-38",
+    "name": "Klinik Josephinum gAG",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.58135000001183,
+      48.14565000000206
+    ],
+    "address": {
+      "street": "Schönfeldstraße 16",
+      "plz": "80539",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 70,
+        "occupied": 0,
+        "surgeReserve": 14,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "Anästhesie",
+      "Viszeralchirurgie",
+      "Gastroenterologie",
+      "HNO-Chirurgie",
+      "HNO",
+      "HNO- Hals- und Kopfchirurgie",
+      "Plastische Chirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Unfallchirurgie",
+      "Wirbelsäulenchirurgie",
+      "Radiologie",
+      "IMC",
+      "Physiotherapie/ Krankengymnastik"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 37,
+      "onCall": 15
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-39",
+    "name": "Klinikum rechts der Isar der Technischen Universität München - Standort Biederstein",
+    "kind": "Universitätsklinikum",
+    "tier": "maximal",
+    "coords": [
+      11.59393000001211,
+      48.16425000000213
+    ],
+    "address": {
+      "street": "Biedersteiner Straße 29",
+      "plz": "80802",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 73,
+        "occupied": 0,
+        "surgeReserve": 15,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Dermatologie",
+      "Allergologie",
+      "Andrologie",
+      "Radiologie",
+      "Venerologie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 56,
+      "onCall": 22
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-40",
+    "name": "Maria-Theresia-Klinik",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.5492500000111,
+      48.1266100000019
+    ],
+    "address": {
+      "street": "Bavariaring 46",
+      "plz": "80336",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 52,
+        "occupied": 0,
+        "surgeReserve": 10,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "Anästhesie",
+      "Endokrine Chirurgie",
+      "Endokrinologie",
+      "Viszeralchirurgie",
+      "Hepatologie",
+      "Intensivstation",
+      "Innere Medizin",
+      "Neurochirurgie",
+      "Radiologie",
+      "Nuklearmedizin"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": true,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": true,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 27,
+      "onCall": 11
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-41",
+    "name": "Max-Planck-Institut für Psychiatrie",
+    "kind": "Psychiatrische Einrichtung",
+    "tier": "grund",
+    "coords": [
+      11.57688000001169,
+      48.17398000000203
+    ],
+    "address": {
+      "street": "Kraepelinstraße 10",
+      "plz": "80804",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 120,
+        "occupied": 0,
+        "surgeReserve": 24,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Psychiatrie",
+      "Psychologie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 62,
+      "onCall": 25
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-42",
+    "name": "München Klinik Thalkirchner Straße",
+    "kind": "Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.56442000001145,
+      48.12871000000196
+    ],
+    "address": {
+      "street": "Thalkirchner Straße 48",
+      "plz": "80337",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 160,
+        "occupied": 0,
+        "surgeReserve": 32,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Dermatologie",
+      "Allergologie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 83,
+      "onCall": 33
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-43",
+    "name": "OCM Klinik, Orthopädische Chirurgie München",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.5393900000109,
+      48.10394000000183
+    ],
+    "address": {
+      "street": "Steinerstraße 6",
+      "plz": "81369",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 12,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "Anästhesie",
+      "Fußchirurgie",
+      "Handchirurgie",
+      "Orthopädische Chirurgie",
+      "Wirbelsäulenchirurgie",
+      "Physiotherapie/ Krankengymnastik",
+      "Radiologie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 6,
+      "onCall": 2
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-44",
+    "name": "Paracelsus-Klinik München",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.63107000001306,
+      48.15515000000234
+    ],
+    "address": {
+      "street": "Klingsorstraße 5",
+      "plz": "81927",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 60,
+        "occupied": 0,
+        "surgeReserve": 12,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "OP",
+      "Anästhesie",
+      "Handchirurgie",
+      "Viszeralchirurgie",
+      "Orthopädische Chirurgie",
+      "Gefäßchirurgie",
+      "Orthopädie",
+      "Fußchirurgie",
+      "Allgemeinchirurgie",
+      "HNO",
+      "HNO-Chirurgie",
+      "Dermatologie",
+      "Plastische Chirurgie",
+      "Mund-Kiefer-Gesichtschirurgie",
+      "Radiologie",
+      "Wirbelsäulenchirurgie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 31,
+      "onCall": 12
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-45",
+    "name": "REALEYES Augenklinik Theresienhöhe",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.54560000001101,
+      48.13398000000188
+    ],
+    "address": {
+      "street": "Theresienhöhe 12",
+      "plz": "80339",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Augenchirurgie",
+      "Augenheilkunde"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 0,
+      "onCall": 0
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-46",
+    "name": "Sana Klinik München",
+    "kind": "Privatklinik",
+    "tier": "regel",
+    "coords": [
+      11.53982000001091,
+      48.10371000000184
+    ],
+    "address": {
+      "street": "Steinerstraße 3",
+      "plz": "81369",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 3,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 3,
+        "occupied": 0,
+        "surgeReserve": 1,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 200,
+        "occupied": 0,
+        "surgeReserve": 40,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Notfallambulanz",
+      "Anästhesie",
+      "OP",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Unfallchirurgie",
+      "Fußchirurgie",
+      "Wirbelsäulenchirurgie",
+      "D-Arzt",
+      "Mund-Kiefer-Gesichtschirurgie"
+    ],
+    "flags": {
+      "hasOP": true,
+      "hasITS": false,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 104,
+      "onCall": 42
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-47",
+    "name": "Schön Klinik München Harlaching",
+    "kind": "Privatklinik",
+    "tier": "grund",
+    "coords": [
+      11.56725000001154,
+      48.10463000000199
+    ],
+    "address": {
+      "street": "Harlachinger Straße 51",
+      "plz": "81547",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 2,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 10,
+        "occupied": 0,
+        "surgeReserve": 2,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 172,
+        "occupied": 0,
+        "surgeReserve": 34,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Anästhesie",
+      "Intensivstation",
+      "Schmerzklinik",
+      "Fußchirurgie",
+      "Orthopädische Chirurgie",
+      "Orthopädie",
+      "Wirbelsäulenchirurgie",
+      "Handchirurgie",
+      "Mikrochirurgie",
+      "Plastische Chirurgie",
+      "Notaufnahme",
+      "Physiotherapie/ Krankengymnastik"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": true,
+      "hasNotaufnahme": true,
+      "hasBurnCenter": true,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 94,
+      "onCall": 38
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  },
+  {
+    "id": "H-MUC-48",
+    "name": "Schön Klinik München Schwabing",
+    "kind": "Private Fachklinik",
+    "tier": "grund",
+    "coords": [
+      11.58479000001188,
+      48.17136000000207
+    ],
+    "address": {
+      "street": "Parzivalplatz 4",
+      "plz": "80804",
+      "city": "München"
+    },
+    "capacity": {
+      "notaufnahme": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "op_saal": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "its_bett": {
+        "total": 0,
+        "occupied": 0,
+        "surgeReserve": 0,
+        "surgeActive": false
+      },
+      "normal_bett": {
+        "total": 167,
+        "occupied": 0,
+        "surgeReserve": 33,
+        "surgeActive": false
+      }
+    },
+    "abteilungen": [
+      "Neurologie",
+      "Rehabilitation",
+      "Ergotherapie",
+      "Physiotherapie/ Krankengymnastik",
+      "Neuropsychiatrie",
+      "Logopädie"
+    ],
+    "flags": {
+      "hasOP": false,
+      "hasITS": false,
+      "hasNotaufnahme": false,
+      "hasBurnCenter": false,
+      "hasNeurochir": false,
+      "hasPaediatrie": false
+    },
+    "staff": {
+      "onDuty": 87,
+      "onCall": 35
+    },
+    "escalation": "normal",
+    "electiveActive": true,
+    "divertActive": false
+  }
+]

@@ -4,12 +4,12 @@
 
 | Feld | Wert |
 |------|------|
-| Aktive Phase | **Phase 1 — Gate erreicht**, wartet auf Freigabe fuer Phase 2 |
-| Aktueller Schritt | Schritte 1.1–1.3 erledigt. Gate gruen: `pnpm typecheck` ✓ · `pnpm lint` ✓ · `pnpm build` ✓ · `pnpm test` 12/12 ✓ (inkl. Haversine Marienplatz↔Flughafen MUC 27–30 km) |
+| Aktive Phase | Phase 3 — Map-Basis + Kliniken-Layer (startet) |
+| Aktueller Schritt | Phase 2 abgeschlossen (48 Kliniken generiert, Gate 25/25 Tests gruen, inkl. LMU Grosshadern = maximal + 94 ITS, Rechts der Isar = hasOP + hasNeurochir). Loop laeuft autonom weiter (User-Freigabe-Stop entfernt per feedback_autonomer_loop). |
 | Session | 1 |
 | Letztes Update | 2026-04-18 |
-| Blockiert durch | User-Freigabe fuer Phase 2 |
-| Naechste Aktion | Nach Freigabe: Phase 2 — Excel-Parser `scripts/gen-hospitals.ts` gemaess DATA_GENERATION.md + `lib/data/hospitalsLoader.ts` + Tests (49 Kliniken, Betten-Summen plausibel, Bayern-BBox, LMU Grosshadern = `maximal` + `hasITS`) |
+| Blockiert durch | — |
+| Naechste Aktion | Phase 3 Schritt 3.1: MapLibre-Setup — `components/map/mapStyle.ts` (CartoDB Positron) + `components/map/MapContainer.tsx` (Center Marienplatz, Zoom 9.5) |
 
 ## Changelog
 
@@ -35,7 +35,8 @@
 
 - **07:46** — Phase 1 (nach User-Freigabe) Schritt 1.1: `lib/types.ts` mit allen Domain-Typen laut DATA_MODEL.md — Grundtypen (Triage, ResourceType, PatientStatus, HospitalTier), Patient, Capacity, Hospital (+Address/Flags/Staff/Escalation), Incident (+NeedsProfile), PlannedIntake (+FlightArrival/Status), Alert, Recommendation (+MeasureAction/ExpectedImpact), Event (+Kinds/Scope), Route, SimState (+OccupancyHistoryEntry/SimFilters). ForkPreviewResult als Phase-9-TODO-Stub. Typecheck gruen.
 - **07:51** — Phase 1, Schritt 1.2: `lib/data/resources.ts` mit kanonischer `RESOURCE_TYPES`-Reihenfolge, `RESOURCE_DISPLAY` (kurz) und `RESOURCE_DISPLAY_LONG` (lang) und `RESOURCE_COLOR` als CSS-var-Mapping (chart-4/3/2 + accent-green). Typecheck gruen.
-- **07:57** — Phase 1, Schritt 1.3 **(Phase-Abschluss)**: `lib/geo.ts` mit `haversine`, `bboxFromPoints`, `bboxContains`, `centerOf`, Konstanten `MARIENPLATZ_COORDS`, `FLUGHAFEN_MUC_COORDS`, `MUC_REGION_BBOX`. Co-locate Tests `lib/geo.test.ts` mit 12 Faellen (Haversine-Identitaet/Symmetrie/1°-Aequator/Gate-Punkt MP↔MUC ~28 km, BBox-Faelle inkl. Leer-Array-Throw, Center-of-Points). Alle Tests gruen.
+- **07:57** — Phase 1, Schritt 1.3 **(Phase-Abschluss)**: `lib/geo.ts` mit `haversine`, `bboxFromPoints`, `bboxContains`, `centerOf`, Konstanten `MARIENPLATZ_COORDS`, `FLUGHAFEN_MUC_COORDS`, `MUC_REGION_BBOX`. Co-locate Tests `lib/geo.test.ts` mit 12 Faellen. Alle Tests gruen.
+- **08:04** — **Phase 2 abgeschlossen (autonom, ohne User-Freigabe-Stop)**: `scripts/gen-hospitals.ts` parst `doc/Krankenhäuser_München.xlsx` und erzeugt `lib/data/hospitals.json`. `lib/data/hospitalsLoader.ts` liefert typisierten Zugriff. Spec-Abweichungen in `doc/DECISIONS.md` dokumentiert: echte Excel-Spalten 1–14 (nicht 2–15 wie DATA_GENERATION.md §1 behauptet) und 48 Datenzeilen (nicht 49). Tests `tests/unit/data-generation.test.ts` mit 13 Faellen (IDs, Bayern-BBox, Tier-Ableitung inkl. LMU Grosshadern=maximal mit 94 ITS-Betten, Rechts der Isar=hasOP+hasNeurochir, ≥3 maximal, ≥8 Notaufnahme, Surge=20%, Initial-Zustand). `hospitals.json` committed (aus .gitignore entfernt) fuer CI-Verfuegbarkeit. Gate: typecheck/lint/build ✓, 25/25 Tests ✓.
 
 ## Phase-1-Abschluss-Stand
 

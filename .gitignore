@@ -34,9 +34,6 @@ Thumbs.db
 .vscode/settings.json
 .idea/
 
-# Generated data (wird per scripts/gen-hospitals.ts erzeugt)
-lib/data/hospitals.json
-
 # Cache
 .cache/
 *.tmp
