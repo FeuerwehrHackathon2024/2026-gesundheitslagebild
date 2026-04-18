@@ -314,15 +314,19 @@ button:disabled {
  * ============================================================= */
 
 .rl-intake-marker {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 6px 10px 4px;
-  border-radius: var(--radius-md);
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  gap: 0;
   background: var(--accent-green);
   color: #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 8px 16px -6px rgba(16, 24, 40, 0.35);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.95), 0 0 0 3px rgba(0, 0, 0, 0.18),
+    0 6px 14px -4px rgba(16, 24, 40, 0.35);
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   cursor: pointer;
@@ -337,16 +341,54 @@ button:disabled {
   background: var(--accent-orange);
 }
 
+/* Ring-Pulse der nach aussen wandert — macht sofort klar "Flughafen
+   aktiv, Patienten gehen gerade raus". Ring beginnt am Marker-Rand und
+   loest sich nach aussen auf. */
+.rl-intake-marker[data-intake-status='arriving']::after,
+.rl-intake-marker[data-intake-status='preparing']::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: rl-intake-ring 2s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.rl-intake-marker[data-intake-status='arriving']::after {
+  color: var(--accent-orange);
+}
+
+.rl-intake-marker[data-intake-status='preparing']::after {
+  color: var(--accent-blue);
+}
+
+@keyframes rl-intake-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
 .rl-intake-marker:hover {
   transform: scale(1.05);
 }
 
 .rl-intake-plane {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1;
 }
 
 .rl-intake-count {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 700;
+  margin-top: -1px;
 }
