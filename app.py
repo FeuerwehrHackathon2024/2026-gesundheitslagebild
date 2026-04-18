@@ -97,6 +97,12 @@ def create_manv():
     return jsonify(controller.create_manv(payload))
 
 
+@app.post("/api/vorplanung")
+def create_vorplanung():
+    payload = request.get_json(silent=True) or {}
+    return jsonify(controller.create_vorplanung(payload))
+
+
 @app.post("/api/settings/manv")
 def set_manv_settings():
     payload = request.get_json(silent=True) or {}

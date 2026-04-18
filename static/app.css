@@ -95,7 +95,7 @@ button, select, input {
 .right-panel-top {
   flex: 1 1 auto;
   min-height: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .right-panel-bottom {
@@ -104,6 +104,21 @@ button, select, input {
   overflow: auto;
   border-top: 1px solid var(--border-1);
   padding-top: 12px;
+}
+
+.right-panel-resizer {
+  flex: 0 0 12px;
+  margin: 4px 0;
+  border-top: 1px solid var(--border-2);
+  border-bottom: 1px solid var(--border-2);
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(72, 200, 240, 0.12) 50%, transparent 100%);
+  cursor: row-resize;
+}
+
+.right-panel-resizer:hover {
+  border-top-color: var(--accent-cyan);
+  border-bottom-color: var(--accent-cyan);
 }
 
 .map-card {
@@ -343,6 +358,102 @@ button, select, input {
   flex-wrap: wrap;
   gap: 6px;
   margin: 8px 0;
+}
+
+.capacity-compare {
+  border: 1px solid var(--border-1);
+  background: rgba(32, 50, 68, 0.28);
+  padding: 10px;
+}
+
+.capacity-bars {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.panel-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.capacity-row {
+  display: grid;
+  gap: 6px;
+}
+
+.capacity-vertical-bars {
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
+.capacity-vertical-col {
+  flex: 1;
+  display: grid;
+  gap: 8px;
+}
+
+.capacity-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.capacity-track {
+  height: 34px;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--border-1);
+  background: var(--bg-3);
+}
+
+.capacity-vertical-track {
+  height: 220px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  border: 1px solid var(--border-1);
+  background: var(--bg-3);
+}
+
+.capacity-seg {
+  min-width: 0;
+}
+
+.capacity-occupied {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(227, 95, 98, 0.92),
+    rgba(227, 95, 98, 0.92) 8px,
+    rgba(184, 63, 66, 0.92) 8px,
+    rgba(184, 63, 66, 0.92) 16px
+  );
+}
+
+.capacity-incoming {
+  background: rgba(244, 179, 62, 0.95);
+}
+
+.capacity-free {
+  background: rgba(77, 193, 125, 0.9);
+}
+
+.capacity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.capacity-badge-incoming {
+  color: var(--accent-amber);
+}
+
+.capacity-badge-free {
+  color: var(--accent-green);
 }
 
 .timeline-axis {

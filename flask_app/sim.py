@@ -997,6 +997,77 @@ def manv_capacity_split(hospital: dict[str, Any], capacity_mode: str = "availabl
     return {"SK1": sk1, "SK2": sk2, "SK3": sk3}
 
 
+def allocate_planned_cases(
+    hospitals: list[dict[str, Any]],
+    *,
+    lng: float,
+    lat: float,
+    sk_counts: dict[str, int],
+    transport_thresholds: dict[str, int],
+    capacity_mode: str,
+) -> dict[str, Any]:
+    candidate_hospitals = [
+        hospital
+        for hospital in hospitals
+        if hospital.get("emergencyBeds", 0) > 0 and not hospital.get("excludedFromAllocation")
+    ]
+    capacities = {
+        hospital["id"]: manv_capacity_split(hospital, capacity_mode)
+        for hospital in candidate_hospitals
+    }
+    by_hospital: dict[str, dict[str, int]] = {}
+    unassigned_by_sk = {"SK1": 0, "SK2": 0, "SK3": 0}
+    threshold_breaches_by_hospital: dict[str, dict[str, Any]] = {}
+
+    for sk_key in ["SK1", "SK2", "SK3"]:
+        threshold = transport_thresholds[sk_key]
+        for _ in range(sk_counts[sk_key]):
+            sorted_hospitals = sorted(
+                candidate_hospitals,
+                key=lambda hospital: haversine_km([lng, lat], hospital["coords"]),
+            )
+            assignment = None
+            fallback_assignment = None
+            for hospital in sorted_hospitals:
+                eta = round(haversine_km([lng, lat], hospital["coords"]))
+                if capacities[hospital["id"]][sk_key] <= 0:
+                    continue
+                if fallback_assignment is None:
+                    fallback_assignment = (hospital, eta)
+                if eta <= threshold:
+                    assignment = (hospital, eta)
+                    break
+            if assignment is None and fallback_assignment is not None:
+                assignment = fallback_assignment
+                hospital, eta = fallback_assignment
+                hospital_entry = threshold_breaches_by_hospital.setdefault(
+                    hospital["id"],
+                    {
+                        "hospitalId": hospital["id"],
+                        "hospitalName": hospital["name"],
+                        "count": 0,
+                        "maxEta": 0,
+                        "bySk": {"SK1": 0, "SK2": 0, "SK3": 0},
+                    },
+                )
+                hospital_entry["count"] += 1
+                hospital_entry["maxEta"] = max(hospital_entry["maxEta"], eta)
+                hospital_entry["bySk"][sk_key] += 1
+            if assignment:
+                hospital, _eta = assignment
+                capacities[hospital["id"]][sk_key] -= 1
+                by_hospital.setdefault(hospital["id"], {"SK1": 0, "SK2": 0, "SK3": 0})
+                by_hospital[hospital["id"]][sk_key] += 1
+            else:
+                unassigned_by_sk[sk_key] += 1
+
+    return {
+        "allocationsByHospital": by_hospital,
+        "unassignedBySk": unassigned_by_sk,
+        "thresholdBreachesByHospital": threshold_breaches_by_hospital,
+    }
+
+
 class SimController:
     def __init__(self) -> None:
         self.lock = threading.RLock()
@@ -1020,6 +1091,7 @@ class SimController:
             "speed": 1,
             "filters": copy.deepcopy(DEFAULT_FILTERS),
             "manvSettings": copy.deepcopy(DEFAULT_MANV_SETTINGS),
+            "vorplanung": None,
             "summary": "",
         }
 
@@ -1249,12 +1321,45 @@ class SimController:
                 self.state["manvSettings"]["capacityMode"] = payload["capacityMode"]
             return self.snapshot()
 
+    def create_vorplanung(self, payload: dict[str, Any]) -> dict[str, Any]:
+        with self.lock:
+            address = str(payload.get("address", "")).strip() or "Unbekannter Einsatzort"
+            date = str(payload.get("date", "")).strip() or "ohne Datum"
+            lat = float(payload["lat"])
+            lng = float(payload["lng"])
+            counts = payload.get("counts", {})
+            sk_counts = {
+                "SK1": max(0, int(counts.get("SK1", 0))),
+                "SK2": max(0, int(counts.get("SK2", 0))),
+                "SK3": max(0, int(counts.get("SK3", 0))),
+            }
+            plan = allocate_planned_cases(
+                list(self.state["hospitals"].values()),
+                lng=lng,
+                lat=lat,
+                sk_counts=sk_counts,
+                transport_thresholds=self.state["manvSettings"]["transportThresholds"],
+                capacity_mode=self.state["manvSettings"].get("capacityMode", "available"),
+            )
+            self.state["vorplanung"] = {
+                "date": date,
+                "address": address,
+                "location": [lng, lat],
+                "counts": sk_counts,
+                "allocationsByHospital": plan["allocationsByHospital"],
+                "unassignedBySk": plan["unassignedBySk"],
+                "thresholdBreachesByHospital": plan["thresholdBreachesByHospital"],
+                "createdAt": self.state["simTime"],
+            }
+            return self.snapshot()
+
     def create_manv(self, payload: dict[str, Any]) -> dict[str, Any]:
         with self.lock:
             address = str(payload.get("address", "")).strip() or "Unbekannter Einsatzort"
             lat = float(payload["lat"])
             lng = float(payload["lng"])
             current_manv_settings = copy.deepcopy(self.state["manvSettings"])
+            current_vorplanung = copy.deepcopy(self.state.get("vorplanung"))
             counts = payload.get("counts", {})
             sk_counts = {
                 "SK1": max(0, int(counts.get("SK1", 0))),
@@ -1263,6 +1368,7 @@ class SimController:
             }
             self.state = self._base_state()
             self.state["manvSettings"] = current_manv_settings
+            self.state["vorplanung"] = current_vorplanung
             self._rng = seeded_rng(INITIAL_SEED)
             self.state["isPaused"] = True
             incident_id = f"I-manv-{self.state['simTime']}"

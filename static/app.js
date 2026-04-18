@@ -8,10 +8,21 @@ const state = {
     counts: { SK1: 0, SK2: 0, SK3: 0 },
     suggestions: [],
   },
+  vorplanungForm: {
+    date: "",
+    address: "",
+    lat: null,
+    lng: null,
+    counts: { SK1: 0, SK2: 0, SK3: 0 },
+    suggestions: [],
+  },
   transparenzLevel: 18,
   showContextHospitals: false,
+  rightPanelBottomRatio: 50,
+  rightPanelHospitalTab: "details",
   leftSections: {
     manv: true,
+    vorplanung: true,
     settings: true,
     filters: true,
     patients: true,
@@ -75,10 +86,11 @@ async function fetchState() {
   syncTimer();
 }
 
-async function fetchAddressSuggestions(query) {
+async function fetchAddressSuggestions(query, target = "manv") {
+  const formKey = target === "vorplanung" ? "vorplanungForm" : "manvForm";
   const trimmed = query.trim();
   if (trimmed.length < 3) {
-    state.manvForm.suggestions = [];
+    state[formKey].suggestions = [];
     renderLeftPanelCollapsible();
     return;
   }
@@ -86,13 +98,13 @@ async function fetchAddressSuggestions(query) {
     `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=5&countrycodes=de&q=${encodeURIComponent(trimmed)}`
   );
   const payload = await response.json();
-  state.manvForm.suggestions = payload.map((entry) => ({
+  state[formKey].suggestions = payload.map((entry) => ({
     label: entry.display_name,
     lat: Number(entry.lat),
     lng: Number(entry.lon),
   }));
   renderLeftPanelCollapsible();
-  const addressInput = document.getElementById("manv-address");
+  const addressInput = document.getElementById(`${target}-address`);
   if (addressInput) {
     addressInput.focus();
     addressInput.setSelectionRange(addressInput.value.length, addressInput.value.length);
@@ -702,19 +714,39 @@ function renderRightPanel() {
   const selectedContextHospital = state.selection?.kind === "context-hospital"
     ? state.data.contextHospitals.find((entry) => entry.id === state.selection.id)
     : null;
+  const incoming = incomingByHospital();
   const history = state.data.occupancyHistory.filter((entry) => selectedHospital && entry.occupancy[selectedHospital.id] != null);
   const hasActiveScenario = state.data.incidents.length > 0;
+  const hospitalStats = selectedHospital ? sumDisciplines(selectedHospital) : { total: 0, occupied: 0 };
+  const incomingTotal = selectedHospital ? (incoming[selectedHospital.id] || 0) : 0;
+  const totalIncomingDisplay = selectedHospital ? Math.min(incomingTotal, Math.max(0, hospitalStats.total - hospitalStats.occupied)) : 0;
+  const totalFree = selectedHospital ? Math.max(0, hospitalStats.total - hospitalStats.occupied - totalIncomingDisplay) : 0;
+  const emergencyTotal = selectedHospital?.disciplines?.notaufnahme?.bedsTotal || 0;
+  const emergencyOccupied = selectedHospital?.disciplines?.notaufnahme?.bedsOccupied || 0;
+  const emergencyIncomingDisplay = selectedHospital ? Math.min(incomingTotal, Math.max(0, emergencyTotal - emergencyOccupied)) : 0;
+  const emergencyFree = selectedHospital ? Math.max(0, emergencyTotal - emergencyOccupied - emergencyIncomingDisplay) : 0;
   const allocationBreakdown = selectedHospital ? (manvAllocationByHospital()[selectedHospital.id] || { "SK I": 0, "SK II": 0, "SK III": 0 }) : { "SK I": 0, "SK II": 0, "SK III": 0 };
   const baselineHospital = selectedHospital ? state.data.baselineHospitals[selectedHospital.id] : null;
+  const currentPlan = state.data.vorplanung;
+  const plannedBreakdown = selectedHospital && currentPlan
+    ? (currentPlan.allocationsByHospital[selectedHospital.id] || { "SK I": 0, "SK II": 0, "SK III": 0 })
+    : { "SK I": 0, "SK II": 0, "SK III": 0 };
   const baselineNotaufnahme = baselineHospital?.disciplines?.notaufnahme?.bedsOccupied || 0;
   const currentNotaufnahmeTotal = selectedHospital?.disciplines?.notaufnahme?.bedsTotal || 0;
   const totalManvAllocation = allocationBreakdown["SK I"] + allocationBreakdown["SK II"] + allocationBreakdown["SK III"];
+  const totalPlannedAllocation = plannedBreakdown["SK I"] + plannedBreakdown["SK II"] + plannedBreakdown["SK III"];
   const combinedEmergencyLoad = baselineNotaufnahme + totalManvAllocation;
+  const plannedEmergencyLoad = baselineNotaufnahme + totalPlannedAllocation;
   const combinedEmergencyRatio = currentNotaufnahmeTotal > 0 ? combinedEmergencyLoad / currentNotaufnahmeTotal : 0;
+  const plannedEmergencyRatio = currentNotaufnahmeTotal > 0 ? plannedEmergencyLoad / currentNotaufnahmeTotal : 0;
+  const hospitalTab = state.rightPanelHospitalTab || "details";
   const baselineWidth = currentNotaufnahmeTotal > 0 ? Math.min(100, (baselineNotaufnahme / currentNotaufnahmeTotal) * 100) : 0;
   const sk1Width = currentNotaufnahmeTotal > 0 ? Math.min(100, (allocationBreakdown["SK I"] / currentNotaufnahmeTotal) * 100) : 0;
   const sk2Width = currentNotaufnahmeTotal > 0 ? Math.min(100, (allocationBreakdown["SK II"] / currentNotaufnahmeTotal) * 100) : 0;
   const sk3Width = currentNotaufnahmeTotal > 0 ? Math.min(100, (allocationBreakdown["SK III"] / currentNotaufnahmeTotal) * 100) : 0;
+  const plannedSk1Width = currentNotaufnahmeTotal > 0 ? Math.min(100, (plannedBreakdown["SK I"] / currentNotaufnahmeTotal) * 100) : 0;
+  const plannedSk2Width = currentNotaufnahmeTotal > 0 ? Math.min(100, (plannedBreakdown["SK II"] / currentNotaufnahmeTotal) * 100) : 0;
+  const plannedSk3Width = currentNotaufnahmeTotal > 0 ? Math.min(100, (plannedBreakdown["SK III"] / currentNotaufnahmeTotal) * 100) : 0;
   const sortedAlerts = [...state.data.alerts].sort((a, b) => {
     const sev = { critical: 0, warn: 1, info: 2 };
     if ((a.resolvedAt != null) !== (b.resolvedAt != null)) return a.resolvedAt != null ? 1 : -1;
@@ -724,7 +756,21 @@ function renderRightPanel() {
   const executableRecommendations = state.data.recommendations.filter((entry) => entry.executable);
 
   right.innerHTML = `
-    <div class="right-panel-top">
+    <div class="right-panel-top" style="flex-basis: calc(${100 - state.rightPanelBottomRatio}% - 6px);">
+      ${currentPlan ? `
+        <section class="section">
+          <div class="panel-head">
+            <span class="section-label">Vorplanung</span>
+            <span class="badge mono">${currentPlan.date}</span>
+          </div>
+          <div style="margin-top:8px;" class="muted mono">${currentPlan.address}</div>
+          <div class="chips">
+            <span class="badge mono">SK I ${currentPlan.counts.SK1}</span>
+            <span class="badge mono">SK II ${currentPlan.counts.SK2}</span>
+            <span class="badge mono">SK III ${currentPlan.counts.SK3}</span>
+          </div>
+        </section>
+      ` : ""}
       ${selectedHospital ? `
         <section class="section">
           <div class="panel-head">
@@ -732,11 +778,75 @@ function renderRightPanel() {
             <button class="btn ghost" id="close-selection">schliessen</button>
           </div>
           <div style="margin-top:8px;">${selectedHospital.name}</div>
-          <div class="muted mono">${selectedHospital.address.city} ? ${selectedHospital.versorgungsstufe} ? ${selectedHospital.traeger}</div>
+          <div class="muted mono">${selectedHospital.address.city} &middot; ${selectedHospital.versorgungsstufe} &middot; ${selectedHospital.traeger}</div>
           <div class="row-between" style="margin-top:10px;">
             <span class="section-label">Stufe</span>
             <span class="badge mono">${selectedHospital.escalationLevel}</span>
           </div>
+          <div class="panel-tabs" style="margin-top:12px;">
+            <button class="btn ${hospitalTab === "details" ? "primary" : "ghost"} hospital-tab" data-tab="details">Details</button>
+            <button class="btn ${hospitalTab === "capacity" ? "primary" : "ghost"} hospital-tab" data-tab="capacity">Kapazitaet</button>
+          </div>
+          ${hospitalTab === "capacity" ? `
+            <div class="capacity-compare" style="margin-top:12px;">
+              <div class="section-label">Kapazitaetsbild</div>
+              <div class="capacity-vertical-bars">
+                <div class="capacity-vertical-col">
+                  <div class="capacity-head">
+                    <span>Gesamt</span>
+                    <span class="mono">${hospitalStats.total}</span>
+                  </div>
+                  <div class="capacity-vertical-track">
+                    <div class="capacity-seg capacity-free" style="height:${hospitalStats.total ? (totalFree / hospitalStats.total) * 100 : 0}%"></div>
+                    <div class="capacity-seg capacity-incoming" style="height:${hospitalStats.total ? (totalIncomingDisplay / hospitalStats.total) * 100 : 0}%"></div>
+                    <div class="capacity-seg capacity-occupied" style="height:${hospitalStats.total ? (hospitalStats.occupied / hospitalStats.total) * 100 : 0}%"></div>
+                  </div>
+                  <div class="capacity-meta">
+                    <span class="badge mono">Belegt ${hospitalStats.occupied}</span>
+                    <span class="badge mono capacity-badge-incoming">Zulauf ${incomingTotal}</span>
+                    <span class="badge mono capacity-badge-free">Frei ${totalFree}</span>
+                  </div>
+                </div>
+                <div class="capacity-vertical-col">
+                  <div class="capacity-head">
+                    <span>Notaufnahme</span>
+                    <span class="mono">${emergencyTotal}</span>
+                  </div>
+                  <div class="capacity-vertical-track">
+                    <div class="capacity-seg capacity-free" style="height:${emergencyTotal ? (emergencyFree / emergencyTotal) * 100 : 0}%"></div>
+                    <div class="capacity-seg capacity-incoming" style="height:${emergencyTotal ? (emergencyIncomingDisplay / emergencyTotal) * 100 : 0}%"></div>
+                    <div class="capacity-seg capacity-occupied" style="height:${emergencyTotal ? (emergencyOccupied / emergencyTotal) * 100 : 0}%"></div>
+                  </div>
+                  <div class="capacity-meta">
+                    <span class="badge mono">Belegt ${emergencyOccupied}</span>
+                    <span class="badge mono capacity-badge-incoming">Zulauf ${incomingTotal}</span>
+                    <span class="badge mono capacity-badge-free">Frei ${emergencyFree}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ` : `
+          ${currentPlan && totalPlannedAllocation > 0 && currentNotaufnahmeTotal > 0 ? `
+            <div style="margin-top:12px;">
+              <div class="row-between">
+                <span class="section-label">Vorplanung Notaufnahme</span>
+                <span class="mono" style="color:${occupancyColor(plannedEmergencyRatio)}">${plannedEmergencyLoad}/${currentNotaufnahmeTotal}</span>
+              </div>
+              <div class="muted mono" style="margin-top:4px;">Geplant fuer ${currentPlan.date}</div>
+              <div style="height:12px;background:var(--bg-3);margin-top:6px;border:1px solid ${occupancyColor(plannedEmergencyRatio)};display:flex;overflow:hidden;">
+                <div style="width:${baselineWidth}%;background:#5f7283;"></div>
+                <div style="width:${plannedSk1Width}%;background:#e35f62;"></div>
+                <div style="width:${plannedSk2Width}%;background:#f4b33e;"></div>
+                <div style="width:${plannedSk3Width}%;background:#48c8f0;"></div>
+              </div>
+              <div class="chips" style="margin-top:6px;">
+                <span class="badge mono">Vorher ${baselineNotaufnahme}</span>
+                <span class="badge mono" style="color:#e35f62;">SK I ${plannedBreakdown["SK I"]}</span>
+                <span class="badge mono" style="color:#f4b33e;">SK II ${plannedBreakdown["SK II"]}</span>
+                <span class="badge mono" style="color:#48c8f0;">SK III ${plannedBreakdown["SK III"]}</span>
+              </div>
+            </div>
+          ` : ""}
           ${hasActiveScenario && currentNotaufnahmeTotal > 0 ? `
             <div style="margin-top:12px;">
               <div class="row-between">
@@ -778,6 +888,7 @@ function renderRightPanel() {
             }).join("")}
           </div>
           ${history.length >= 2 ? `<div class="spark">${history.map((entry) => `<span style="height:${Math.max(8, entry.occupancy[selectedHospital.id] * 100)}%;"></span>`).join("")}</div>` : ""}
+          `}
         </section>
       ` : ""}
       ${selectedContextHospital ? `
@@ -788,7 +899,7 @@ function renderRightPanel() {
           </div>
           <div style="margin-top:8px;">${selectedContextHospital.name}</div>
           <div class="muted mono">
-            ${selectedContextHospital.ort || "Unbekannter Ort"}${selectedContextHospital.bundesland ? ` ? ${selectedContextHospital.bundesland}` : ""}
+            ${selectedContextHospital.ort || "Unbekannter Ort"}${selectedContextHospital.bundesland ? ` &middot; ${selectedContextHospital.bundesland}` : ""}
           </div>
           <div class="stats-grid" style="margin-top:10px;">
             <span class="muted">Typ</span><span class="mono">${selectedContextHospital.art || "-"}</span>
@@ -798,7 +909,8 @@ function renderRightPanel() {
         </section>
       ` : ""}
     </div>
-    <div class="right-panel-bottom">
+    <div class="right-panel-resizer" id="right-panel-resizer" title="Bereich anpassen"></div>
+    <div class="right-panel-bottom" style="flex-basis: ${state.rightPanelBottomRatio}%;">
       <section class="section">
         <div class="panel-head"><span class="section-label">Alerts</span><span class="badge mono">${state.data.alerts.length}</span></div>
         <div class="list" style="margin-top:8px;">
@@ -835,6 +947,12 @@ function renderRightPanel() {
   `;
   const close = document.getElementById("close-selection");
   if (close) close.onclick = () => { state.selection = null; renderRightPanel(); renderMap(); };
+  right.querySelectorAll(".hospital-tab").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.rightPanelHospitalTab = button.dataset.tab || "details";
+      renderRightPanel();
+    });
+  });
   const escalate = document.getElementById("escalate-hospital");
   if (escalate) escalate.onclick = () => api(`/api/hospitals/${selectedHospital.id}/escalate`);
   const exclusion = document.getElementById("toggle-exclusion");
@@ -842,6 +960,27 @@ function renderRightPanel() {
   right.querySelectorAll(".execute-rec").forEach((button) => {
     button.addEventListener("click", () => api(`/api/recommendations/${button.dataset.id}/execute`));
   });
+  const resizer = document.getElementById("right-panel-resizer");
+  if (resizer) {
+    resizer.onmousedown = (event) => {
+      event.preventDefault();
+      const sidebar = document.getElementById("right-panel");
+      if (!sidebar) return;
+      const bounds = sidebar.getBoundingClientRect();
+      const onMove = (moveEvent) => {
+        const offsetFromTop = moveEvent.clientY - bounds.top;
+        const nextTopRatio = Math.max(20, Math.min(80, (offsetFromTop / bounds.height) * 100));
+        state.rightPanelBottomRatio = 100 - nextTopRatio;
+        renderRightPanel();
+      };
+      const onUp = () => {
+        document.removeEventListener("mousemove", onMove);
+        document.removeEventListener("mouseup", onUp);
+      };
+      document.addEventListener("mousemove", onMove);
+      document.addEventListener("mouseup", onUp);
+    };
+  }
 }
 
 function renderTimeline() {
@@ -863,7 +1002,6 @@ function renderTimeline() {
 
 function renderLeftPanelCollapsible() {
   const counts = patientStats();
-  const hasActiveScenario = state.data.incidents.length > 0;
   const activeHospitals = new Set(
     state.data.patients
       .filter((patient) => patient.assignedHospitalId && ["transport", "inTreatment"].includes(patient.status))
@@ -874,6 +1012,8 @@ function renderLeftPanelCollapsible() {
   const thresholds = state.data.manvSettings.transportThresholds;
   const capacityMode = state.data.manvSettings.capacityMode || "available";
   const totalManv = Object.values(state.manvForm.counts).reduce((sum, value) => sum + Number(value || 0), 0);
+  const totalVorplanung = Object.values(state.vorplanungForm.counts).reduce((sum, value) => sum + Number(value || 0), 0);
+  const currentPlan = state.data.vorplanung;
   const activeElement = document.activeElement;
   const activeId = activeElement && "id" in activeElement ? activeElement.id : null;
   const activeSelectionStart =
@@ -884,6 +1024,7 @@ function renderLeftPanelCollapsible() {
     activeElement && typeof activeElement.selectionEnd === "number"
       ? activeElement.selectionEnd
       : null;
+
   left.innerHTML = `
     <section class="section">
       <div class="panel-head">
@@ -891,7 +1032,7 @@ function renderLeftPanelCollapsible() {
       </div>
       ${sections.manv ? `
         <label class="field"><span>Adresse</span><span></span><input type="text" id="manv-address" value="${state.manvForm.address}" placeholder="Adresse eingeben"></label>
-        ${state.manvForm.suggestions.length ? `<div class="list">${state.manvForm.suggestions.map((item, index) => `<button class="btn ghost manv-suggestion" data-index="${index}" style="text-align:left;">${item.label}</button>`).join("")}</div>` : ""}
+        ${state.manvForm.suggestions.length ? `<div class="list">${state.manvForm.suggestions.map((item, index) => `<button class="btn ghost address-suggestion" data-target="manv" data-index="${index}" style="text-align:left;">${item.label}</button>`).join("")}</div>` : ""}
         ${state.manvForm.lat != null ? `<div class="muted mono" style="margin:8px 0;">${state.manvForm.lat.toFixed(5)}, ${state.manvForm.lng.toFixed(5)}</div>` : ""}
         <label class="field"><span>SK I</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="manv-sk1" value="${state.manvForm.counts.SK1}"></label>
         <label class="field"><span>SK II</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="manv-sk2" value="${state.manvForm.counts.SK2}"></label>
@@ -904,6 +1045,28 @@ function renderLeftPanelCollapsible() {
           </div>
         </div>
         <button class="btn primary" id="start-manv" style="width:100%;" ${state.manvForm.lat == null || totalManv <= 0 ? "disabled" : ""}>MANV verteilen</button>
+      ` : ""}
+    </section>
+    <section class="section">
+      <div class="panel-head">
+        <button class="btn ghost section-toggle" data-section="vorplanung">${sections.vorplanung ? "&#9662;" : "&#9656;"} Vorplanung</button>
+      </div>
+      ${sections.vorplanung ? `
+        <label class="field"><span>Datum</span><span></span><input type="date" id="vorplanung-date" value="${state.vorplanungForm.date}"></label>
+        <label class="field"><span>Adresse</span><span></span><input type="text" id="vorplanung-address" value="${state.vorplanungForm.address}" placeholder="Adresse eingeben"></label>
+        ${state.vorplanungForm.suggestions.length ? `<div class="list">${state.vorplanungForm.suggestions.map((item, index) => `<button class="btn ghost address-suggestion" data-target="vorplanung" data-index="${index}" style="text-align:left;">${item.label}</button>`).join("")}</div>` : ""}
+        ${state.vorplanungForm.lat != null ? `<div class="muted mono" style="margin:8px 0;">${state.vorplanungForm.lat.toFixed(5)}, ${state.vorplanungForm.lng.toFixed(5)}</div>` : ""}
+        <label class="field"><span>SK I</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="vorplanung-sk1" value="${state.vorplanungForm.counts.SK1}"></label>
+        <label class="field"><span>SK II</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="vorplanung-sk2" value="${state.vorplanungForm.counts.SK2}"></label>
+        <label class="field"><span>SK III</span><span></span><input type="text" inputmode="numeric" pattern="[0-9]*" id="vorplanung-sk3" value="${state.vorplanungForm.counts.SK3}"></label>
+        <button class="btn primary" id="start-vorplanung" style="width:100%;" ${state.vorplanungForm.lat == null || totalVorplanung <= 0 || !state.vorplanungForm.date ? "disabled" : ""}>Vorplanung speichern</button>
+        ${currentPlan ? `
+          <div class="settings-group" style="margin-top:10px;">
+            <div class="section-label">Gespeichert</div>
+            <div class="muted mono" style="margin-top:6px;">${currentPlan.date}</div>
+            <div class="muted mono">${currentPlan.address}</div>
+          </div>
+        ` : ""}
       ` : ""}
     </section>
     <section class="section">
@@ -968,53 +1131,100 @@ function renderLeftPanelCollapsible() {
       ` : ""}
     </section>
   `;
+
   left.querySelectorAll(".section-toggle").forEach((button) => {
     button.addEventListener("click", () => {
       state.leftSections[button.dataset.section] = !state.leftSections[button.dataset.section];
       renderLeftPanelCollapsible();
     });
   });
-  const addressInput = document.getElementById("manv-address");
-  if (addressInput) {
-    addressInput.oninput = (event) => {
-      state.manvForm.address = event.target.value;
-      state.manvForm.lat = null;
-      state.manvForm.lng = null;
-      if (state.geocodeTimer) clearTimeout(state.geocodeTimer);
-      state.geocodeTimer = setTimeout(() => {
-        fetchAddressSuggestions(event.target.value);
-      }, 250);
-    };
-  }
-  left.querySelectorAll(".manv-suggestion").forEach((button) => {
-    button.addEventListener("click", () => {
-      const item = state.manvForm.suggestions[Number(button.dataset.index)];
-      state.manvForm.address = item.label;
-      state.manvForm.lat = item.lat;
-      state.manvForm.lng = item.lng;
-      state.manvForm.suggestions = [];
-      renderLeftPanelCollapsible();
-    });
-  });
-  ["SK1", "SK2", "SK3"].forEach((key) => {
-    const input = document.getElementById(`manv-${key.toLowerCase()}`);
-    if (input) {
-      input.oninput = (event) => {
-        const cleaned = String(event.target.value || "").replace(/[^\d]/g, "");
-        event.target.value = cleaned;
-        state.manvForm.counts[key] = parseNonNegativeInt(cleaned, 0);
-        const startButton = document.getElementById("start-manv");
-        if (startButton) {
-          const currentTotal = Object.values(state.manvForm.counts).reduce((sum, value) => sum + Number(value || 0), 0);
-          startButton.disabled = state.manvForm.lat == null || currentTotal <= 0;
-        }
+
+  [["manv", state.manvForm], ["vorplanung", state.vorplanungForm]].forEach(([target, form]) => {
+    const addressInput = document.getElementById(`${target}-address`);
+    if (addressInput) {
+      addressInput.oninput = (event) => {
+        form.address = event.target.value;
+        form.lat = null;
+        form.lng = null;
+        if (state.geocodeTimer) clearTimeout(state.geocodeTimer);
+        state.geocodeTimer = setTimeout(() => {
+          fetchAddressSuggestions(event.target.value, target);
+        }, 250);
       };
     }
   });
+
+  const vorplanungDate = document.getElementById("vorplanung-date");
+  if (vorplanungDate) {
+    vorplanungDate.onchange = (event) => {
+      state.vorplanungForm.date = event.target.value;
+      const button = document.getElementById("start-vorplanung");
+      if (button) {
+        const currentTotal = Object.values(state.vorplanungForm.counts).reduce((sum, value) => sum + Number(value || 0), 0);
+        button.disabled = state.vorplanungForm.lat == null || currentTotal <= 0 || !state.vorplanungForm.date;
+      }
+    };
+  }
+
+  left.querySelectorAll(".address-suggestion").forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.target;
+      const form = target === "vorplanung" ? state.vorplanungForm : state.manvForm;
+      const item = form.suggestions[Number(button.dataset.index)];
+      form.address = item.label;
+      form.lat = item.lat;
+      form.lng = item.lng;
+      form.suggestions = [];
+      renderLeftPanelCollapsible();
+    });
+  });
+
+  [["manv", state.manvForm], ["vorplanung", state.vorplanungForm]].forEach(([target, form]) => {
+    ["SK1", "SK2", "SK3"].forEach((key) => {
+      const input = document.getElementById(`${target}-${key.toLowerCase()}`);
+      if (input) {
+        input.oninput = (event) => {
+          const cleaned = String(event.target.value || "").replace(/[^\d]/g, "");
+          event.target.value = cleaned;
+          form.counts[key] = parseNonNegativeInt(cleaned, 0);
+          const button = document.getElementById(target === "manv" ? "start-manv" : "start-vorplanung");
+          if (button) {
+            const currentTotal = Object.values(form.counts).reduce((sum, value) => sum + Number(value || 0), 0);
+            button.disabled = form.lat == null || currentTotal <= 0 || (target === "vorplanung" && !state.vorplanungForm.date);
+          }
+        };
+      }
+    });
+  });
+
   const startManv = document.getElementById("start-manv");
-  if (startManv) startManv.onclick = () => api("/api/manv", { body: { address: state.manvForm.address, lat: state.manvForm.lat, lng: state.manvForm.lng, counts: state.manvForm.counts } });
+  if (startManv) {
+    startManv.onclick = () => api("/api/manv", {
+      body: {
+        address: state.manvForm.address,
+        lat: state.manvForm.lat,
+        lng: state.manvForm.lng,
+        counts: state.manvForm.counts,
+      },
+    });
+  }
+
+  const startVorplanung = document.getElementById("start-vorplanung");
+  if (startVorplanung) {
+    startVorplanung.onclick = () => api("/api/vorplanung", {
+      body: {
+        date: state.vorplanungForm.date,
+        address: state.vorplanungForm.address,
+        lat: state.vorplanungForm.lat,
+        lng: state.vorplanungForm.lng,
+        counts: state.vorplanungForm.counts,
+      },
+    });
+  }
+
   const toggleContext = document.getElementById("toggle-context-hospitals");
   if (toggleContext) toggleContext.onchange = (event) => { state.showContextHospitals = event.target.checked; renderMap(); };
+
   ["SK1", "SK2", "SK3"].forEach((key) => {
     const input = document.getElementById(`threshold-${key.toLowerCase()}`);
     if (input) {
@@ -1024,12 +1234,14 @@ function renderLeftPanelCollapsible() {
       input.onchange = () => api("/api/settings/manv", { body: { transportThresholds: { SK1: Math.max(1, parseNonNegativeInt(document.getElementById("threshold-sk1")?.value, 10)), SK2: Math.max(1, parseNonNegativeInt(document.getElementById("threshold-sk2")?.value, 15)), SK3: Math.max(1, parseNonNegativeInt(document.getElementById("threshold-sk3")?.value, 30)) } } });
     }
   });
+
   left.querySelectorAll('input[name="capacity-mode"]').forEach((radio) => {
     radio.onchange = () => {
       if (!radio.checked) return;
       api("/api/settings/manv", { body: { capacityMode: radio.value } });
     };
   });
+
   const resetFilters = document.getElementById("reset-filters");
   if (resetFilters) resetFilters.onclick = () => api("/api/filters/reset");
   ["free", "occupied", "emergency"].forEach((name) => {
@@ -1041,6 +1253,7 @@ function renderLeftPanelCollapsible() {
       input.addEventListener("change", () => api("/api/filters", { body: { freeMin: parseNonNegativeInt(document.getElementById("filter-free")?.value, 0), occupiedMax: parseNonNegativeInt(document.getElementById("filter-occupied")?.value, 0), emergencyMin: parseNonNegativeInt(document.getElementById("filter-emergency")?.value, 0) } }));
     }
   });
+
   if (activeId) {
     const nextActive = document.getElementById(activeId);
     if (nextActive) {
